@@ -4,7 +4,7 @@
 
 [Public demo](https://roletrace-open.eric348737.chatgpt.site) · [MIT License](LICENSE)
 
-SignalFit is a local-first career intelligence toolkit for three role families:
+SignalFit is a local-first career intelligence toolkit focused exclusively on AI roles. Its first baseline covers three role families:
 
 - AI Product;
 - AI Full-stack / Agent Engineering;

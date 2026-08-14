@@ -111,11 +111,14 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span>OPEN CAREER INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.3</span></p>
-          <h1>别猜岗位要什么。<br /><em>沿着证据找差距。</em></h1>
+          <p className="eyebrow"><span>AI ROLE INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.3</span></p>
+          <h1>只看 AI 岗位。<br /><em>沿着证据找差距。</em></h1>
           <p className="hero-intro">
-            SignalFit 把公开 JD 和已核验面经压缩成岗位能力地图，再用简历里的可定位证据计算匹配度。它不预测录用，只显示你能证明什么、下一步该补什么。
+            SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
           </p>
+          <div className="role-scope" aria-label="当前覆盖的 AI 岗位">
+            <span>AI 产品</span><span>AI 全栈 / Agent 工程</span><span>FDE</span>
+          </div>
           <div className="hero-actions">
             <button className="primary-action" onClick={() => document.querySelector("#start")?.scrollIntoView({ behavior: "smooth" })}>
               使用 Coding Agent 一键启动 <span aria-hidden="true">↓</span>
@@ -147,7 +150,7 @@ export default function Home() {
 
       <section className="workspace" id="map">
         <header className="section-heading">
-          <div><p className="section-kicker">ROLE MAP / 岗位坐标</p><h2>三个方向，一套证据口径</h2></div>
+          <div><p className="section-kicker">AI ROLE MAP / 岗位坐标</p><h2>三个 AI 方向，一套证据口径</h2></div>
           <p>蓝色虚线代表岗位市场信号，绿色实线代表简历证据覆盖。硬约束单列，不混入能力分。</p>
         </header>
 
@@ -209,7 +212,7 @@ export default function Home() {
       <section className="method-section" id="method">
         <header className="section-heading"><div><p className="section-kicker">METHOD / 方法边界</p><h2>透明，比一个神秘总分更重要</h2></div></header>
         <div className="method-grid">
-          <article><span>DATA</span><h3>两条证据线，绝不混算</h3><p>官方 JD 回答市场在招什么；候选人面经回答实际怎么考。只有读取正文且通过验收的记录才进入统计。</p></article>
+          <article><span>DATA</span><h3>两条 AI 岗位证据线，绝不混算</h3><p>官方 JD 回答 AI 团队在招什么；候选人面经回答实际怎么考。只有读取正文且通过验收的记录才进入统计。</p></article>
           <article><span>SCORE</span><h3>只评简历能证明的内容</h3><p>能力分来自概念覆盖、项目证明和证据广度。技能列表不能冒充项目经历，没有证据就显示为缺口。</p></article>
           <article><span>BOUNDARY</span><h3>硬约束独立核对</h3><p>地点、工时、签证、学历和毕业时间会影响可申请性，但不代表能力强弱，因此从雷达图和总分中排除。</p></article>
         </div>
@@ -268,8 +271,8 @@ export default function Home() {
       <section className="open-source-section" id="open-source">
         <div className="source-copy">
           <p className="section-kicker">OPEN SOURCE / 开放协议</p>
-          <h2>Clone 仓库，把简历留在本机。</h2>
-          <p>项目以 MIT 协议开放。使用 OpenCode、Claude Code、Codex 或其他 Coding Agent 读取 AGENTS.md，即可在本机生成多岗位评分、证据清单和雷达报告。简历与结果默认写入 Git 忽略目录，不会自动上传或公开。</p>
+          <h2>为 AI 岗位准备，把简历留在本机。</h2>
+          <p>项目以 MIT 协议开放，并只围绕 AI 产品、AI 全栈 / Agent 工程和 FDE 构建能力基线。使用 OpenCode、Claude Code、Codex 或其他 Coding Agent 读取 AGENTS.md，即可在本机生成评分、证据清单和雷达报告。</p>
           <div className="source-actions">
             <a className="primary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">在 GitHub 获取项目</a>
             <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit#use-with-any-coding-cli" target="_blank" rel="noreferrer">本地运行说明</a>
@@ -284,7 +287,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><a className="brand" href="#top"><span className="brand-mark">SF</span><span>SignalFit</span></a><p>Evidence, not vibes.</p><span>MIT License · 2026</span></footer>
+      <footer><a className="brand" href="#top"><span className="brand-mark">SF</span><span>SignalFit</span></a><p>Built for AI roles. Evidence, not vibes.</p><span>MIT License · 2026</span></footer>
     </main>
   );
 }

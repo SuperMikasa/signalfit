@@ -22,6 +22,9 @@ test("server-renders the SignalFit workbench", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>SignalFit｜AI 岗位能力地图<\/title>/i);
+  assert.match(html, /只看 AI 岗位/);
+  assert.match(html, /SignalFit 只做 AI 相关岗位/);
+  assert.match(html, /三个 AI 方向，一套证据口径/);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /使用 Coding Agent 一键启动/);
   assert.match(html, /OpenCode、Claude Code、Codex 都可以/);

@@ -40,6 +40,8 @@ main { min-height: 100vh; }
 .hero h1 { margin: 0; max-width: 780px; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: clamp(58px, 6.1vw, 92px); line-height: 1.04; letter-spacing: -.055em; font-weight: 800; }
 .hero h1 em { font-style: normal; color: var(--cobalt); }
 .hero-intro { max-width: 660px; margin: 34px 0 0; font-size: 17px; line-height: 1.85; color: #465269; }
+.role-scope { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.role-scope span { padding: 8px 11px; color: #26406c; background: #e8efff; border-left: 3px solid var(--cobalt); font: 10px var(--font-mono); }
 .hero-actions, .source-actions { display: flex; align-items: center; gap: 12px; margin-top: 34px; }
 .source-actions { flex-wrap: wrap; }
 .primary-action, .secondary-action { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 22px; padding: 0 20px; border: 1px solid var(--ink); font-weight: 750; font-size: 13px; cursor: pointer; transition: background-color .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease), transform .18s var(--ease); }
