@@ -38,6 +38,9 @@ type FitData = {
 
 const roleOrder = ["ai_pm", "ai_fullstack", "fde"];
 
+const installCommand = "git clone https://github.com/SuperMikasa/signalfit.git && cd signalfit && ./signalfit doctor";
+const agentPrompt = "读取 AGENTS.md。使用 SignalFit 分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
+
 function isFitData(value: unknown): value is FitData {
   if (!value || typeof value !== "object") return false;
   const candidate = value as Partial<FitData>;
@@ -54,6 +57,7 @@ export default function Home() {
   const [fitData, setFitData] = useState<FitData>(exampleFit as FitData);
   const [selectedRole, setSelectedRole] = useState("ai_fullstack");
   const [importMessage, setImportMessage] = useState("正在查看匿名示例数据");
+  const [copyState, setCopyState] = useState<"install" | "prompt" | "error" | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
 
   const availableRoles = useMemo(
@@ -79,6 +83,16 @@ export default function Home() {
     }
   }
 
+  async function copyText(value: string, key: "install" | "prompt") {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopyState(key);
+      window.setTimeout(() => setCopyState(null), 2200);
+    } catch {
+      setCopyState("error");
+    }
+  }
+
   return (
     <main>
       <nav className="topbar" aria-label="主导航">
@@ -89,6 +103,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#map">能力地图</a>
           <a href="#method">方法</a>
+          <a href="#start">一键启用</a>
           <a href="#open-source">开源</a>
         </div>
         <a className="github-link" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
@@ -102,8 +117,8 @@ export default function Home() {
             SignalFit 把公开 JD 和已核验面经压缩成岗位能力地图，再用简历里的可定位证据计算匹配度。它不预测录用，只显示你能证明什么、下一步该补什么。
           </p>
           <div className="hero-actions">
-            <button className="primary-action" onClick={() => document.querySelector("#map")?.scrollIntoView({ behavior: "smooth" })}>
-              查看能力地图 <span aria-hidden="true">↓</span>
+            <button className="primary-action" onClick={() => document.querySelector("#start")?.scrollIntoView({ behavior: "smooth" })}>
+              一键启用 Coding Agent <span aria-hidden="true">↓</span>
             </button>
             <button className="secondary-action" onClick={() => fileInput.current?.click()}>
               导入评分 JSON
@@ -197,6 +212,61 @@ export default function Home() {
           <article><span>DATA</span><h3>两条证据线，绝不混算</h3><p>官方 JD 回答市场在招什么；候选人面经回答实际怎么考。只有读取正文且通过验收的记录才进入统计。</p></article>
           <article><span>SCORE</span><h3>只评简历能证明的内容</h3><p>能力分来自概念覆盖、项目证明和证据广度。技能列表不能冒充项目经历，没有证据就显示为缺口。</p></article>
           <article><span>BOUNDARY</span><h3>硬约束独立核对</h3><p>地点、工时、签证、学历和毕业时间会影响可申请性，但不代表能力强弱，因此从雷达图和总分中排除。</p></article>
+        </div>
+      </section>
+
+      <section className="agent-launch-section" id="start">
+        <div className="launch-intro">
+          <p className="section-kicker">AGENT QUICKSTART / 开箱即用</p>
+          <h2>不上传简历。<br /><em>把任务交给你的 Coding Agent。</em></h2>
+          <p>复制安装命令，再把标准指令粘贴给 Agent。它会读取仓库里的 <code>AGENTS.md</code>，在本机完成评分、证据提取、缺口排序和雷达报告。</p>
+          <div className="agent-chips" aria-label="兼容的 Coding Agent">
+            <span>Codex</span><span>Claude Code</span><span>Kimi Code</span><span>Gemini CLI</span><span>其他 Coding CLI</span>
+          </div>
+          <div className="local-route" aria-label="本地数据流">
+            <div><b>INPUT</b><strong>你的简历路径</strong></div>
+            <span aria-hidden="true">→</span>
+            <div><b>LOCAL</b><strong>.signalfit/</strong></div>
+            <span aria-hidden="true">→</span>
+            <div><b>OUTPUT</b><strong>雷达报告</strong></div>
+          </div>
+        </div>
+
+        <div className="launch-console" aria-label="Coding Agent 启动指令">
+          <div className="console-bar">
+            <div><i /><i /><i /></div>
+            <span>SIGNALFIT / LOCAL SESSION</span>
+            <strong>NO UPLOAD</strong>
+          </div>
+
+          <div className="console-step">
+            <div className="step-label"><b>01</b><span>克隆并自检</span></div>
+            <div className="copy-panel">
+              <code>{installCommand}</code>
+              <button type="button" onClick={() => copyText(installCommand, "install")}>
+                {copyState === "install" ? "已复制 ✓" : "复制安装命令"}
+              </button>
+            </div>
+          </div>
+
+          <div className="console-step prompt-step">
+            <div className="step-label"><b>02</b><span>粘贴给 Coding Agent</span></div>
+            <div className="copy-panel prompt-panel">
+              <p>{agentPrompt}</p>
+              <button type="button" onClick={() => copyText(agentPrompt, "prompt")}>
+                {copyState === "prompt" ? "已复制 ✓" : "复制 Agent 指令"}
+              </button>
+            </div>
+            <small>粘贴前，把 <code>/absolute/path/to/resume.pdf</code> 换成你电脑上的真实简历路径。</small>
+          </div>
+
+          <div className="console-foot">
+            <span className="local-lock"><b aria-hidden="true">●</b> 简历与结果默认只留在本机</span>
+            <a href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">打开 GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <p className="copy-status" role="status" aria-live="polite">
+            {copyState === "error" ? "浏览器未允许复制，请手动选中指令。" : ""}
+          </p>
         </div>
       </section>
 
