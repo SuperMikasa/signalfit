@@ -38,7 +38,7 @@ jobs:
               "",
               "维护清单：",
               "- [ ] 收集仍然有效的 AI 产品、AI 全栈 / Agent 工程、FDE 官方 JD",
-              "- [ ] 审核社区提交的真实面经与能力建议",
+              "- [ ] 审核社区提交的官方 JD 与真实面经",
               "- [ ] 只将 accepted + real_interview_report 计入真实面经",
               "- [ ] 运行 build-role-capability-map 并保留 provisional 状态（如基线未完成）",
               "- [ ] 回读三个岗位的 Top 能力、JD 数、面经数和约束",

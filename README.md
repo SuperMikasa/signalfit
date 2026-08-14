@@ -135,8 +135,7 @@ python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/r
 Community evidence is part of the product loop:
 
 - [submit an official AI job description](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-ai-jd.yml);
-- [submit a verifiable AI interview report](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml);
-- [propose a new capability axis](https://github.com/SuperMikasa/signalfit/issues/new?template=propose-capability.yml).
+- [submit a verifiable AI interview report](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml).
 
 Every contribution enters review first. Official JD signals, accepted real interview reports, inferred practice questions, and eligibility constraints remain separate. Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing scoring rules, evidence sources, or privacy behavior.
 

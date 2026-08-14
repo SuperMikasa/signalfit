@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 
 const title = "SignalFit｜AI 岗位能力地图";
-const description = "专注 AI 产品、AI 全栈 / Agent 工程与 FDE：Coding Agent 本地分析简历，能力基线定期更新，社区可提交 JD、面经与新能力。";
+const description = "专注 AI 产品、AI 全栈 / Agent 工程与 FDE：Coding Agent 本地分析简历，能力基线定期更新，社区可提交官方 JD 与真实面经。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

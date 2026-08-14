@@ -272,7 +272,7 @@ export default function Home() {
       <section className="community-loop-section" id="loop">
         <header className="section-heading">
           <div><p className="section-kicker">LIVING BASELINE / 持续更新</p><h2>用一次，也让 AI 能力地图更准。</h2></div>
-          <p>用户获取最新公开基线；仓库每周检查新鲜度；社区把新的 JD、真实面经和能力变化反向提交给维护者。</p>
+          <p>用户获取最新公开基线；仓库每周检查新鲜度；社区把新的官方 JD 和真实面经反向提交给维护者。</p>
         </header>
         <div className="loop-grid">
           <article>
@@ -286,12 +286,11 @@ export default function Home() {
             <a href="https://github.com/SuperMikasa/signalfit/actions/workflows/baseline-refresh.yml" target="_blank" rel="noreferrer">查看更新状态 <span aria-hidden="true">↗</span></a>
           </article>
           <article className="contribution-card">
-            <b>COMMUNITY IN</b><strong>03</strong><h3>把市场变化反向告诉我们</h3>
+            <b>COMMUNITY IN</b><strong>03</strong><h3>把岗位证据反向告诉我们</h3>
             <p>结构化提交先进入审核队列；只有可核验的官方 JD 和 accepted 真实面经才会进入下一版能力地图。</p>
             <div className="contribution-links">
               <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-ai-jd.yml" target="_blank" rel="noreferrer">提交 AI JD</a>
               <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml" target="_blank" rel="noreferrer">提交真实面经</a>
-              <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=propose-capability.yml" target="_blank" rel="noreferrer">建议新能力</a>
             </div>
           </article>
         </div>

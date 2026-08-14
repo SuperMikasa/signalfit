@@ -33,7 +33,6 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /每周检查是否过期/);
   assert.match(html, /提交 AI JD/);
   assert.match(html, /提交真实面经/);
-  assert.match(html, /建议新能力/);
   assert.match(html, /git clone https:\/\/github\.com\/SuperMikasa\/signalfit\.git/);
   assert.match(html, /读取 AGENTS\.md/);
   assert.match(html, /不要上传、复制或提交简历与生成结果/);
