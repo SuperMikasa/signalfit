@@ -133,7 +133,7 @@ main { min-height: 100vh; overflow: hidden; }
 .open-source-section .primary-action { background: white; color: var(--ink); border-color: white; }
 .open-source-section .secondary-action { color: white; border-color: #62708a; }
 .open-source-section .secondary-action:hover { background: #202b3e; }
-.source-pending { cursor: not-allowed; color: #8793a7 !important; border-style: dashed; }
+.mirror-note { font-size: 11px !important; color: #77849a !important; }
 .pipeline-code { border-top: 1px solid #435067; }
 .pipeline-code div { display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 22px 0; border-bottom: 1px solid #435067; }
 .pipeline-code span { grid-row: span 2; color: var(--orange); font: 10px SFMono-Regular, Consolas, monospace; }

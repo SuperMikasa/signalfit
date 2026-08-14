@@ -23,6 +23,8 @@ Most career tools collapse job descriptions, interview anecdotes, and resume key
 
 The site ships with an anonymized example in [`public/example-fit.json`](public/example-fit.json). You can import another compatible JSON file directly in the browser. Imported files are read locally and are not uploaded.
 
+The published site also exposes a versioned MIT source archive, so the project remains downloadable even when a GitHub mirror is temporarily unavailable.
+
 ## Run locally
 
 Requires Node.js 22.13 or newer.

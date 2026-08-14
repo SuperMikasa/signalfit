@@ -205,9 +205,10 @@ export default function Home() {
           <h2>拿走方法，换成你的岗位和简历。</h2>
           <p>项目以 MIT 协议开放。示例数据不含个人简历、Cookie、账号信息或受限页面正文。你可以替换岗位族、能力词典与评分规则，也可以把每日数据更新接入自己的任务系统。</p>
           <div className="source-actions">
-            <a className="primary-action" href="/example-fit.json" download>下载示例 JSON</a>
-            <span className="secondary-action source-pending" aria-disabled="true">GitHub 仓库准备中</span>
+            <a className="primary-action" href="/roletrace-source-v0.1.0.tar.gz" download>下载源代码（MIT）</a>
+            <a className="secondary-action" href="/example-fit.json" download>下载示例 JSON</a>
           </div>
+          <p className="mirror-note">GitHub 镜像将在仓库凭据恢复后补上；源码归档已经是完整、可构建版本。</p>
         </div>
         <div className="pipeline-code" aria-label="开源处理流程">
           <div><span>01</span><code>build-role-capability-map</code><p>JD + 面经 → Top 能力</p></div>
