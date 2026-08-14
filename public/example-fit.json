@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-14T00:00:00-04:00",
+  "candidate_label": "匿名示例候选人",
+  "baseline": { "status": "provisional", "jd_signal_count": 58, "interview_count": 12 },
+  "roles": {
+    "ai_pm": {
+      "role_label": "AI 产品",
+      "overall_score": 94,
+      "axes": [
+        { "rank": 1, "label": "Agent 架构与运行时", "candidate_score": 90, "market_score": 64, "gap_priority": 1.5, "learning_actions": ["补充一个可回放的 Agent 执行链路"] },
+        { "rank": 2, "label": "AI 产品策略与路线图", "candidate_score": 100, "market_score": 53, "gap_priority": 0, "learning_actions": ["保持路线图到指标的证据链"] },
+        { "rank": 3, "label": "LLM 评测与实验", "candidate_score": 70, "market_score": 21, "gap_priority": 3.1, "learning_actions": ["建立 30–50 条任务级 eval 数据集"] },
+        { "rank": 4, "label": "SQL、数据管道与建模", "candidate_score": 100, "market_score": 21, "gap_priority": 0, "learning_actions": ["保持项目证据"] },
+        { "rank": 5, "label": "产品指标、A/B 与 ROI", "candidate_score": 100, "market_score": 21, "gap_priority": 0, "learning_actions": ["保持项目证据"] },
+        { "rank": 6, "label": "客户发现与方案设计", "candidate_score": 100, "market_score": 21, "gap_priority": 0, "learning_actions": ["保持项目证据"] }
+      ],
+      "gaps": [{ "label": "LLM 评测与实验", "candidate_score": 70, "gap_priority": 3.1, "learning_actions": ["建立 30–50 条任务级 eval 数据集，并展示变更前后的质量、延迟和成本"] }],
+      "constraints_to_review": { "signal_count": 0 }
+    },
+    "ai_fullstack": {
+      "role_label": "AI 全栈 / Agent 工程",
+      "overall_score": 84,
+      "axes": [
+        { "rank": 1, "label": "全栈原型与生产交付", "candidate_score": 100, "market_score": 85, "gap_priority": 0, "learning_actions": ["保持生产交付证据"] },
+        { "rank": 2, "label": "Agent 架构与运行时", "candidate_score": 90, "market_score": 48, "gap_priority": 1.7, "learning_actions": ["补充复杂失败路径"] },
+        { "rank": 3, "label": "API、Webhook 与系统集成", "candidate_score": 68, "market_score": 42, "gap_priority": 5.6, "learning_actions": ["准备含幂等、鉴权、重试和一致性的端到端集成案例"] },
+        { "rank": 4, "label": "Python 与工程编码", "candidate_score": 78, "market_score": 23, "gap_priority": 2.1, "learning_actions": ["完成高频基础题并实现一个可测试的 Agent 服务"] },
+        { "rank": 5, "label": "生产可靠性、监控与排障", "candidate_score": 32, "market_score": 23, "gap_priority": 6.5, "learning_actions": ["增加 tracing、告警、失败重放并完成一次故障复盘"] },
+        { "rank": 6, "label": "AI 产品策略与路线图", "candidate_score": 100, "market_score": 21, "gap_priority": 0, "learning_actions": ["保持项目证据"] }
+      ],
+      "gaps": [
+        { "label": "生产可靠性、监控与排障", "candidate_score": 32, "gap_priority": 6.5, "learning_actions": ["增加 tracing、告警、失败重放并完成一次真实故障复盘"] },
+        { "label": "API、Webhook 与系统集成", "candidate_score": 68, "gap_priority": 5.6, "learning_actions": ["准备含幂等、鉴权、重试和一致性的端到端集成案例"] },
+        { "label": "Python 与工程编码", "candidate_score": 78, "gap_priority": 2.1, "learning_actions": ["完成高频基础题并实现一个可测试的 Agent 服务"] }
+      ],
+      "constraints_to_review": { "signal_count": 0 }
+    },
+    "fde": {
+      "role_label": "FDE / 前线部署工程",
+      "overall_score": 74,
+      "axes": [
+        { "rank": 1, "label": "客户发现与方案设计", "candidate_score": 100, "market_score": 61, "gap_priority": 0, "learning_actions": ["保持客户交付证据"] },
+        { "rank": 2, "label": "Agent 架构与运行时", "candidate_score": 90, "market_score": 44, "gap_priority": 1.9, "learning_actions": ["补充部署约束下的架构权衡"] },
+        { "rank": 3, "label": "生产可靠性、监控与排障", "candidate_score": 32, "market_score": 44, "gap_priority": 11.6, "learning_actions": ["增加 tracing、告警、失败重放并完成一次故障复盘"] },
+        { "rank": 4, "label": "API、Webhook 与系统集成", "candidate_score": 68, "market_score": 36, "gap_priority": 4.5, "learning_actions": ["补充企业集成中的重试、幂等和一致性"] },
+        { "rank": 5, "label": "LLM 评测与实验", "candidate_score": 70, "market_score": 36, "gap_priority": 4.2, "learning_actions": ["建立任务级 eval 数据集"] },
+        { "rank": 6, "label": "技术沟通、演示与影响力", "candidate_score": 70, "market_score": 36, "gap_priority": 4.2, "learning_actions": ["准备面向非技术客户的 10 分钟方案 Demo"] }
+      ],
+      "gaps": [
+        { "label": "生产可靠性、监控与排障", "candidate_score": 32, "gap_priority": 11.6, "learning_actions": ["增加 tracing、告警、失败重放并完成一次真实故障复盘"] },
+        { "label": "API、Webhook 与系统集成", "candidate_score": 68, "gap_priority": 4.5, "learning_actions": ["补充企业集成中的重试、幂等和一致性"] },
+        { "label": "LLM 评测与实验", "candidate_score": 70, "gap_priority": 4.2, "learning_actions": ["建立任务级 eval 数据集，并对比质量、延迟和成本"] },
+        { "label": "技术沟通、演示与影响力", "candidate_score": 70, "gap_priority": 4.2, "learning_actions": ["准备面向非技术客户的 10 分钟方案 Demo"] }
+      ],
+      "constraints_to_review": { "signal_count": 3 }
+    }
+  }
+}
