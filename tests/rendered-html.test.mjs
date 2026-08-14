@@ -25,11 +25,11 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /只看 AI 岗位/);
   assert.match(html, /SignalFit 只做 AI 相关岗位/);
   assert.match(html, /当前已收集/);
-  assert.match(html, /58<!-- --> 条 AI 岗位要求/);
-  assert.match(html, /15<!-- --> 份独立 JD/);
+  assert.match(html, /150<!-- --> 条 AI 岗位要求/);
+  assert.match(html, /30<!-- --> 份独立 JD/);
   assert.match(html, /20<!-- --> 条已验收真实面经/);
-  assert.match(html, /4<!-- --> JD · <!-- -->12<!-- --> 条要求 · <!-- -->7<!-- --> 面经/);
-  assert.match(html, /7<!-- --> JD · <!-- -->34<!-- --> 条要求 · <!-- -->2<!-- --> 面经/);
+  assert.match(html, /10<!-- --> JD · <!-- -->50<!-- --> 条要求 · <!-- -->7<!-- --> 面经/);
+  assert.match(html, /10<!-- --> JD · <!-- -->50<!-- --> 条要求 · <!-- -->2<!-- --> 面经/);
   assert.match(html, /三个 AI 方向，一套证据口径/);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /使用 Coding Agent 一键启动/);
@@ -39,6 +39,7 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /每周检查是否过期/);
   assert.match(html, /提交 AI JD/);
   assert.match(html, /提交真实面经/);
+  assert.match(html, /查看公开证据/);
   assert.match(html, /git clone https:\/\/github\.com\/SuperMikasa\/signalfit\.git/);
   assert.match(html, /读取 AGENTS\.md/);
   assert.match(html, /不要上传、复制或提交简历与生成结果/);

@@ -126,7 +126,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span>AI ROLE INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.4</span></p>
+          <p className="eyebrow"><span>AI ROLE INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.5</span></p>
           <h1>只看 AI 岗位。<br /><em>沿着证据找差距。</em></h1>
           <p className="hero-intro">
             SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
@@ -322,6 +322,7 @@ export default function Home() {
           <div className="source-actions">
             <a className="primary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">在 GitHub 获取项目</a>
             <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit#use-with-any-coding-cli" target="_blank" rel="noreferrer">本地运行说明</a>
+            <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit/tree/main/data/evidence" target="_blank" rel="noreferrer">查看公开证据</a>
             <a className="secondary-action" href="/example-fit.json" download>示例 JSON</a>
           </div>
           <p className="mirror-note"><code>./signalfit analyze /path/to/resume.pdf</code> · local-first · no upload</p>

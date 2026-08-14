@@ -234,6 +234,24 @@ def baseline_metadata(scout_root: Path) -> dict[str, Any]:
     }
 
 
+def accepted_interview_snapshot(scout_root: Path) -> dict[str, Any]:
+    """Read a public-safe aggregate of previously accepted interview evidence.
+
+    The public repository intentionally does not republish full interview posts.
+    When the raw accepted-question files are unavailable, this snapshot preserves
+    only reviewed counts and short question summaries from the prior baseline.
+    """
+    path = scout_root / "accepted-interview-snapshot.json"
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    roles = payload.get("roles") if isinstance(payload, dict) else None
+    return roles if isinstance(roles, dict) else {}
+
+
 def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
     signals = read_jsonl(scout_root / "jd-signals.jsonl")
     questions = read_jsonl(scout_root / "question-bank.jsonl")
@@ -243,6 +261,7 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
         if statuses.get(str(row.get("record_id") or "")) == "accepted"
         and row.get("evidence_type") == "real_interview_report"
     ]
+    interview_snapshot = accepted_interview_snapshot(scout_root)
     baseline = baseline_metadata(scout_root)
     maps: dict[str, Any] = {}
 
@@ -289,6 +308,21 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
             item["interview_questions"].append(str(row.get("question") or ""))
 
         role_interview_total = len({str(row.get("record_id") or "") for row in role_interviews})
+        snapshot_role = interview_snapshot.get(role) if isinstance(interview_snapshot.get(role), dict) else {}
+        use_snapshot = role_interview_total == 0 and bool(snapshot_role)
+        if use_snapshot:
+            role_interview_total = int(snapshot_role.get("accepted_record_count") or 0)
+            for key, snapshot_item in (snapshot_role.get("capabilities") or {}).items():
+                if not isinstance(snapshot_item, dict):
+                    continue
+                item = aggregates[str(key)]
+                snapshot_count = int(snapshot_item.get("interview_count") or 0)
+                item["interview_ids"].update(
+                    f"snapshot:{role}:{key}:{index}" for index in range(snapshot_count)
+                )
+                item["interview_questions"].extend(
+                    str(value) for value in (snapshot_item.get("sample_questions") or []) if value
+                )
         capabilities: list[dict[str, Any]] = []
         for key, item in aggregates.items():
             jd_count = len(item["jd_urls"])
@@ -358,7 +392,7 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
     return {
         "schema_version": 1,
         "generated_at": datetime.now(TIMEZONE).isoformat(),
-        "source_root": str(scout_root),
+        "source_root": "data/evidence",
         "baseline": baseline,
         "roles": maps,
     }

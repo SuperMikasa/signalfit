@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "signalfit_cli.py"
 SAMPLE_RESUME = ROOT / "examples" / "resume.sample.md"
+EVIDENCE = ROOT / "data" / "evidence" / "jd-signals.jsonl"
 
 spec = importlib.util.spec_from_file_location("signalfit_cli", CLI)
 assert spec and spec.loader
@@ -53,6 +54,24 @@ class SignalFitCliTest(unittest.TestCase):
         del baseline["roles"]["fde"]
         with self.assertRaisesRegex(ValueError, "必须包含"):
             signalfit_cli.validate_capability_map(baseline)
+
+    def test_public_baseline_has_balanced_auditable_evidence(self):
+        rows = [json.loads(line) for line in EVIDENCE.read_text(encoding="utf-8").splitlines() if line.strip()]
+        baseline = json.loads((ROOT / "data" / "baseline" / "role-capability-map.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(len(rows), 150)
+        for role_key in ("ai_pm", "ai_fullstack", "fde"):
+            role_rows = [row for row in rows if row["role_family"] == role_key]
+            self.assertEqual(len(role_rows), 50)
+            self.assertEqual(len({row["source_url"] for row in role_rows}), 10)
+            self.assertEqual(sum(row["capability_key"] == "eligibility_constraint" for row in role_rows), 10)
+            self.assertTrue(all(row["source_url"].startswith("https://") for row in role_rows))
+            self.assertTrue(all(row["retrieved_at"] == "2026-08-14" for row in role_rows))
+
+            role_map = baseline["roles"][role_key]
+            self.assertEqual(role_map["jd_job_count"], 10)
+            self.assertEqual(role_map["jd_signal_count"], 50)
+            self.assertEqual(role_map["constraints"]["signal_count"], 10)
 
 
 if __name__ == "__main__":

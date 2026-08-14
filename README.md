@@ -12,7 +12,9 @@ SignalFit is a local-first career intelligence toolkit focused exclusively on AI
 
 It compares a local resume with an evidence-backed capability baseline derived from public job descriptions and accepted interview reports. The result is a role scorecard, quoted resume evidence, prioritized gaps, SVG radar charts, and a standalone HTML report.
 
-The current `provisional` baseline contains 15 role-classified independent active JD URLs, 58 atomic job-requirement signals, and 20 accepted real-interview records: AI Product 4 / 12 / 7, AI Full-stack 4 / 12 / 11, and FDE 7 / 34 / 2 (JD / requirements / interviews).
+The current `provisional` baseline contains 30 role-classified independent active JD URLs, 150 atomic job-requirement signals, and 20 accepted real-interview records: AI Product 10 / 50 / 7, AI Full-stack 10 / 50 / 11, and FDE 10 / 50 / 2 (JD / requirements / interviews).
+
+The public-safe evidence layer lives in [`data/evidence`](data/evidence): every JD signal keeps its official source URL, retrieval date, role family, capability key, and separate eligibility constraint. Full copyrighted job pages and personal interview-post data are not mirrored.
 
 Scores mean **resume evidence coverage**. They are not hiring probabilities and do not measure abilities that are absent from the document.
 

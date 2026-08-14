@@ -1,12 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-14T01:51:40.624297-04:00",
-  "source_root": "bundled-public-baseline",
+  "generated_at": "2026-08-14T06:56:37.045551-04:00",
+  "source_root": "data/evidence",
   "baseline": {
     "status": "in_progress",
-    "current_batch": "na_ai_startups",
+    "current_batch": "expanded_public_baseline",
     "completed_batches": [
-      "na_frontier_enterprise"
+      "frontier_ai",
+      "enterprise_ai",
+      "ai_native_startups"
     ]
   },
   "roles": {
@@ -14,97 +16,105 @@
       "role_family": "ai_pm",
       "role_label": "AI 产品",
       "coverage_status": "provisional",
-      "jd_job_count": 4,
-      "jd_signal_count": 12,
+      "jd_job_count": 10,
+      "jd_signal_count": 50,
       "real_interview_count": 7,
       "top_capabilities": [
         {
-          "capability_key": "agent_architecture",
-          "label": "Agent 架构与运行时",
-          "market_score": 64,
-          "job_penetration": 0.75,
-          "jd_job_count": 3,
-          "jd_signal_count": 3,
+          "capability_key": "project_delivery",
+          "label": "项目推进与端到端交付",
+          "market_score": 68,
+          "job_penetration": 0.8,
+          "jd_job_count": 8,
+          "jd_signal_count": 8,
           "core_job_count": 3,
           "interview_count": 0,
           "companies": [
+            "Binance",
             "Cresta",
-            "Eliza",
-            "Vendelux"
+            "OpenAI",
+            "Perplexity",
+            "Reflection AI",
+            "WPP",
+            "Webflow",
+            "百度"
           ],
           "sample_signals": [
-            "Own prompt and agent architecture decisions, acceptance criteria, and the path from demo to production.",
-            "Design LLM-driven pipelines that classify, enrich, summarize, and recommend reliably.",
-            "Design, build, test, and iterate AI agents with FDEs while owning customer ROI metrics."
+            "在高不确定环境中快速交付，同时维持产品质量和用户体验标准。",
+            "以 Builder 身份亲手推进产品从概念、原型到快速上线和迭代。",
+            "与技术负责人、前端和 Skill 设计协作，把业务需求拆为可交付、可测试的产品规格。"
           ],
           "sample_interview_questions": [],
           "resume_evidence_groups": [
             {
-              "name": "Agent 基础",
+              "name": "所有权",
               "patterns": [
-                "agent",
-                "智能体"
+                "主导",
+                "独立",
+                "负责",
+                "owner",
+                "创始人"
               ]
             },
             {
-              "name": "编排与工具",
+              "name": "过程",
               "patterns": [
-                "langgraph",
-                "tool use",
-                "工具调用",
-                "mcp",
-                "subagent",
-                "multi-agent",
-                "multi agent",
-                "工作流编排"
+                "需求",
+                "设计",
+                "开发",
+                "测试",
+                "迭代"
               ]
             },
             {
-              "name": "上下文与记忆",
+              "name": "交付",
               "patterns": [
-                "memory",
-                "记忆",
-                "context engineering",
-                "上下文工程",
-                "rag",
-                "检索"
+                "上线",
+                "交付",
+                "通过验收",
+                "落地"
               ]
             },
             {
-              "name": "LLM 实现",
+              "name": "结果",
               "patterns": [
-                "llm api",
-                "agent loop",
-                "prompt",
-                "提示",
-                "大模型",
-                "llm"
+                "降低",
+                "提高",
+                "覆盖",
+                "支持",
+                "用户使用"
               ]
             }
           ],
           "learning_actions": [
-            "实现一个带工具调用、记忆和失败恢复的 Agent",
-            "为 Agent 补充可观察运行轨迹与回归用例"
+            "把一个项目压缩成目标、约束、行动、结果和复盘",
+            "补齐时间线、风险和验收证据"
           ],
           "rank": 1,
-          "priority_weight": 0.318408
+          "priority_weight": 0.214511
         },
         {
           "capability_key": "product_strategy",
           "label": "AI 产品策略与路线图",
-          "market_score": 53,
-          "job_penetration": 0.5,
-          "jd_job_count": 2,
-          "jd_signal_count": 2,
-          "core_job_count": 2,
+          "market_score": 70,
+          "job_penetration": 0.7,
+          "jd_job_count": 7,
+          "jd_signal_count": 7,
+          "core_job_count": 7,
           "interview_count": 5,
           "companies": [
-            "Eliza",
-            "Vendelux"
+            "Future Secure AI",
+            "OKX",
+            "OpenAI",
+            "Perplexity",
+            "Reflection AI",
+            "WPP",
+            "Webflow"
           ],
           "sample_signals": [
-            "AI 产品交付负责人，连接业务开发、范围界定、验证与客户组合交付",
-            "负责 AI 产品与系统；要求理解基础模型、提示、检索和定制模型工作流"
+            "定义 Agent API 基础设施的战略优先级和路线图，以用户结果为导向。",
+            "在小型高杠杆团队中定义 Agentic AI 新产品方向并加速人类生产力。",
+            "规划企业级 AI Native 工程平台，覆盖需求、设计、研发、测试、环境和知识全链路。"
           ],
           "sample_interview_questions": [
             "你为什么想做 AI 产品经理？请结合算法/技术背景说明动机。",
@@ -159,194 +169,104 @@
             "准备一次模型能力、用户价值和商业约束的取舍案例"
           ],
           "rank": 2,
-          "priority_weight": 0.263682
+          "priority_weight": 0.22082
         },
         {
-          "capability_key": "llm_evaluation",
-          "label": "LLM 评测与实验",
-          "market_score": 21,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 2,
-          "core_job_count": 1,
+          "capability_key": "agent_architecture",
+          "label": "Agent 架构与运行时",
+          "market_score": 60,
+          "job_penetration": 0.7,
+          "jd_job_count": 7,
+          "jd_signal_count": 7,
+          "core_job_count": 5,
           "interview_count": 0,
           "companies": [
-            "Meridianlink"
+            "Binance",
+            "Cresta",
+            "Future Secure AI",
+            "OKX",
+            "WPP",
+            "Webflow",
+            "百度"
           ],
           "sample_signals": [
-            "定义并交付 AI 自动化能力，结合生产级质量、准确性、可解释性与偏差指标",
-            "Partner with data scientists and ML engineers to define success metrics and human-in-the-loop review."
+            "设计 Agent 任务流、交互模式、能力边界、失败回退和结果反馈闭环。",
+            "把 Agent、AI Coding、上下文工程、知识输入和人机协作嵌入工程工作流。",
+            "推动 OpenClaw、Hermes 等 Agent 框架在会议、招聘和数字员工场景落地。"
           ],
           "sample_interview_questions": [],
           "resume_evidence_groups": [
             {
-              "name": "评测",
+              "name": "Agent 基础",
               "patterns": [
-                "eval",
-                "评测",
-                "准确率",
-                "quality gate",
-                "回归测试"
+                "agent",
+                "智能体"
               ]
             },
             {
-              "name": "实验",
+              "name": "编排与工具",
               "patterns": [
-                "a/b",
-                "ab test",
-                "实验",
-                "量化",
-                "剪枝",
-                "微调"
+                "langgraph",
+                "tool use",
+                "工具调用",
+                "mcp",
+                "subagent",
+                "multi-agent",
+                "multi agent",
+                "工作流编排"
               ]
             },
             {
-              "name": "指标",
+              "name": "上下文与记忆",
               "patterns": [
-                "指标",
-                "metric",
-                "bias",
-                "偏差",
-                "可解释"
+                "memory",
+                "记忆",
+                "context engineering",
+                "上下文工程",
+                "rag",
+                "检索"
+              ]
+            },
+            {
+              "name": "LLM 实现",
+              "patterns": [
+                "llm api",
+                "agent loop",
+                "prompt",
+                "提示",
+                "大模型",
+                "llm"
               ]
             }
           ],
           "learning_actions": [
-            "建立 30-50 条任务级 LLM eval 数据集",
-            "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
+            "实现一个带工具调用、记忆和失败恢复的 Agent",
+            "为 Agent 补充可观察运行轨迹与回归用例"
           ],
           "rank": 3,
-          "priority_weight": 0.104478
-        },
-        {
-          "capability_key": "data_sql_pipeline",
-          "label": "SQL、数据管道与数据建模",
-          "market_score": 21,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
-          "interview_count": 0,
-          "companies": [
-            "Vendelux"
-          ],
-          "sample_signals": [
-            "Define data flows and attribution logic for the data platform powering AI features."
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "SQL 或数据库",
-              "patterns": [
-                "sql",
-                "sqlite",
-                "数据库",
-                "落库"
-              ]
-            },
-            {
-              "name": "数据管道",
-              "patterns": [
-                "数据流",
-                "pipeline",
-                "ingest",
-                "etl",
-                "数据管道"
-              ]
-            },
-            {
-              "name": "建模",
-              "patterns": [
-                "数据模型",
-                "schema",
-                "结构化 json",
-                "标准化"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "完成一个 SQL 分析与数据建模练习",
-            "说明一条真实数据管道的质量、幂等和回放机制"
-          ],
-          "rank": 4,
-          "priority_weight": 0.104478
-        },
-        {
-          "capability_key": "product_metrics",
-          "label": "产品指标、A/B 测试与 ROI",
-          "market_score": 21,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
-          "interview_count": 0,
-          "companies": [
-            "Meridianlink"
-          ],
-          "sample_signals": [
-            "Track automation rates, exception volumes, model drift indicators, and business impact after launch."
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "指标",
-              "patterns": [
-                "指标",
-                "转化率",
-                "参与度",
-                "留存",
-                "效率"
-              ]
-            },
-            {
-              "name": "实验",
-              "patterns": [
-                "a/b",
-                "ab test",
-                "实验",
-                "验证"
-              ]
-            },
-            {
-              "name": "商业结果",
-              "patterns": [
-                "roi",
-                "成本",
-                "收入",
-                "降低约",
-                "提高"
-              ]
-            },
-            {
-              "name": "数据分析",
-              "patterns": [
-                "数据分析",
-                "用户行为数据",
-                "经营数据"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "为 Agent 功能定义离线质量、线上行为和商业三层指标",
-            "准备一次 A/B 测试或 ROI 归因案例"
-          ],
-          "rank": 5,
-          "priority_weight": 0.104478
+          "priority_weight": 0.189274
         },
         {
           "capability_key": "customer_discovery",
           "label": "客户发现、需求澄清与方案设计",
-          "market_score": 21,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
+          "market_score": 51,
+          "job_penetration": 0.6,
+          "jd_job_count": 6,
+          "jd_signal_count": 6,
+          "core_job_count": 5,
           "interview_count": 0,
           "companies": [
-            "Eliza"
+            "Cresta",
+            "OpenAI",
+            "Perplexity",
+            "Reflection AI",
+            "WPP",
+            "百度"
           ],
           "sample_signals": [
-            "Run structured client discovery and score AI use cases by feasibility, data readiness, and business impact."
+            "深入理解 Agent 开发者的问题，并从客户与开发者反馈中识别产品机会。",
+            "从用户真实工作流和高价值问题中发现下一代 Agent 产品机会。",
+            "识别 IT、安全、工程等企业工作流，洞察组织流程和效率瓶颈。"
           ],
           "sample_interview_questions": [],
           "resume_evidence_groups": [
@@ -393,110 +313,225 @@
             "整理一个从模糊客户问题到可验收方案的案例",
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
+          "rank": 4,
+          "priority_weight": 0.160883
+        },
+        {
+          "capability_key": "llm_evaluation",
+          "label": "LLM 评测与实验",
+          "market_score": 34,
+          "job_penetration": 0.4,
+          "jd_job_count": 4,
+          "jd_signal_count": 4,
+          "core_job_count": 4,
+          "interview_count": 0,
+          "companies": [
+            "Binance",
+            "Future Secure AI",
+            "Webflow",
+            "百度"
+          ],
+          "sample_signals": [
+            "参与 Harness 评测框架、测试场景、评价标准、任务集和性能分析建设。",
+            "搭建 Agent 效果指标看板，使组织效率问题可观测、可量化。",
+            "定义模型能力、可信度和治理状态的评估机制。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "评测",
+              "patterns": [
+                "eval",
+                "评测",
+                "准确率",
+                "quality gate",
+                "回归测试"
+              ]
+            },
+            {
+              "name": "实验",
+              "patterns": [
+                "a/b",
+                "ab test",
+                "实验",
+                "量化",
+                "剪枝",
+                "微调"
+              ]
+            },
+            {
+              "name": "指标",
+              "patterns": [
+                "指标",
+                "metric",
+                "bias",
+                "偏差",
+                "可解释"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "建立 30-50 条任务级 LLM eval 数据集",
+            "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
+          ],
+          "rank": 5,
+          "priority_weight": 0.107256
+        },
+        {
+          "capability_key": "product_metrics",
+          "label": "产品指标、A/B 测试与 ROI",
+          "market_score": 34,
+          "job_penetration": 0.4,
+          "jd_job_count": 4,
+          "jd_signal_count": 4,
+          "core_job_count": 2,
+          "interview_count": 0,
+          "companies": [
+            "Binance",
+            "Cresta",
+            "OKX",
+            "Perplexity"
+          ],
+          "sample_signals": [
+            "用实验和用户结果判断产品方向，并在快速变化的模型能力上持续重排优先级。",
+            "定义任务成功率、满意度、错误率、响应质量和工具调用准确率等指标。",
+            "建立产品效果评估、用户反馈和持续优化机制，支持从试点走向规模采用。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "指标",
+              "patterns": [
+                "指标",
+                "转化率",
+                "参与度",
+                "留存",
+                "效率"
+              ]
+            },
+            {
+              "name": "实验",
+              "patterns": [
+                "a/b",
+                "ab test",
+                "实验",
+                "验证"
+              ]
+            },
+            {
+              "name": "商业结果",
+              "patterns": [
+                "roi",
+                "成本",
+                "收入",
+                "降低约",
+                "提高"
+              ]
+            },
+            {
+              "name": "数据分析",
+              "patterns": [
+                "数据分析",
+                "用户行为数据",
+                "经营数据"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "为 Agent 功能定义离线质量、线上行为和商业三层指标",
+            "准备一次 A/B 测试或 ROI 归因案例"
+          ],
           "rank": 6,
-          "priority_weight": 0.104478
+          "priority_weight": 0.107256
         }
       ],
       "constraints": {
-        "signal_count": 0,
-        "items": []
+        "signal_count": 10,
+        "items": [
+          {
+            "signal": "岗位位于旧金山，要求 5 年以上产品管理或相关行业经验。",
+            "company": "OpenAI",
+            "source_url": "https://openai.com/careers/product-manager-api-agents-san-francisco/"
+          },
+          {
+            "signal": "岗位为全职，工作地在旧金山或 Palo Alto。",
+            "company": "Perplexity",
+            "source_url": "https://jobs.ashbyhq.com/Perplexity/f25e190e-0508-4707-b575-fcaed358dc13/"
+          },
+          {
+            "signal": "该岗位属于 3 至 6 个月加速项目，面向在校生和应届毕业生，工作地在亚洲。",
+            "company": "Binance",
+            "source_url": "https://jobs.lever.co/binance/3deb7448-cdcc-4590-94d1-3f288c31b557"
+          },
+          {
+            "signal": "要求本科及以上、软件工程或计算机背景；岗位位于香港或新加坡。",
+            "company": "OKX",
+            "source_url": "https://job-boards.greenhouse.io/okx/jobs/7780897003"
+          },
+          {
+            "signal": "要求具备大模型应用经验，并至少有一个稳定运行的 AI 提效 Workflow 或完整产品。",
+            "company": "百度",
+            "source_url": "https://talent.baidu.com/jobs/detail/SOCIAL/ad3bf79c-557c-495a-a6ee-2d90f42014f8"
+          },
+          {
+            "signal": "要求 5 年以上技术咨询、实施、产品或客户成功经验，岗位为美国远程。",
+            "company": "Cresta",
+            "source_url": "https://job-boards.greenhouse.io/cresta/jobs/4738837008"
+          },
+          {
+            "signal": "岗位在旧金山、伦敦或纽约现场办公，并要求企业 AI 产品领域经验。",
+            "company": "Reflection AI",
+            "source_url": "https://jobs.ashbyhq.com/reflectionai/40a6a128-76f2-47d9-99f8-8e1547c3371b"
+          },
+          {
+            "signal": "岗位位于纽约，并要求工作流自动化、编排或流程构建类产品经验。",
+            "company": "WPP",
+            "source_url": "https://job-boards.greenhouse.io/wpp/jobs/8584672002"
+          },
+          {
+            "signal": "岗位为 Austin 的高级产品经理职位，面向企业级 Agentic AI 平台。",
+            "company": "Future Secure AI",
+            "source_url": "https://job-boards.greenhouse.io/futuresecureai/jobs/4003159201"
+          },
+          {
+            "signal": "岗位为 Staff 级，面向美国远程或加拿大 BC、Ontario 指定区域。",
+            "company": "Webflow",
+            "source_url": "https://job-boards.greenhouse.io/webflow/jobs/8054709"
+          }
+        ]
       }
     },
     "ai_fullstack": {
       "role_family": "ai_fullstack",
       "role_label": "AI 全栈 / Agent 工程",
       "coverage_status": "provisional",
-      "jd_job_count": 4,
-      "jd_signal_count": 12,
+      "jd_job_count": 10,
+      "jd_signal_count": 50,
       "real_interview_count": 11,
       "top_capabilities": [
         {
-          "capability_key": "fullstack_delivery",
-          "label": "全栈原型与生产交付",
-          "market_score": 85,
-          "job_penetration": 1.0,
-          "jd_job_count": 4,
-          "jd_signal_count": 4,
-          "core_job_count": 4,
-          "interview_count": 0,
-          "companies": [
-            "Aifund",
-            "Benchling",
-            "Pallet",
-            "Turing"
-          ],
-          "sample_signals": [
-            "从客户发现到生产上线负责部署，衡量系统上线、可靠性和未知环境排障结果",
-            "使用 Python、LangChain/LangGraph 和 LLM 框架端到端交付 GenAI 应用",
-            "Build and ship AI product capabilities in collaboration with engineering and applied teams."
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "前端",
-              "patterns": [
-                "react",
-                "next.js",
-                "nextjs",
-                "前端",
-                "web"
-              ]
-            },
-            {
-              "name": "后端",
-              "patterns": [
-                "node.js",
-                "nodejs",
-                "backend",
-                "后端",
-                "python",
-                "sqlite"
-              ]
-            },
-            {
-              "name": "生产交付",
-              "patterns": [
-                "上线",
-                "生产",
-                "部署",
-                "交付",
-                "production"
-              ]
-            },
-            {
-              "name": "端到端",
-              "patterns": [
-                "端到端",
-                "0 到 1",
-                "0-1",
-                "从 0 到 1",
-                "全栈"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "用限时方式完成一个 AI 功能从 API 到前端的可部署原型",
-            "补充部署、测试和性能证据"
-          ],
-          "rank": 1,
-          "priority_weight": 0.35124
-        },
-        {
           "capability_key": "agent_architecture",
           "label": "Agent 架构与运行时",
-          "market_score": 48,
-          "job_penetration": 0.5,
-          "jd_job_count": 2,
-          "jd_signal_count": 2,
-          "core_job_count": 2,
+          "market_score": 73,
+          "job_penetration": 0.8,
+          "jd_job_count": 8,
+          "jd_signal_count": 8,
+          "core_job_count": 8,
           "interview_count": 4,
           "companies": [
-            "Aifund",
-            "Benchling"
+            "BJAK",
+            "Guild.ai",
+            "Implicit",
+            "Kestra",
+            "OpenAI",
+            "Rhythms",
+            "Synquery",
+            "Vori"
           ],
           "sample_signals": [
-            "动手构建并推动 Agent 系统，依赖数据基础并与 AI PM 协作",
-            "覆盖模型选择、提示、工具、检索、结构化输出、记忆和工作流编排"
+            "设计并迭代真实编码任务与长周期工作流中的 Agent 行为、工具策略和上下文构造。",
+            "开发连接知识引擎、工具调用和企业场景的 AI Agent 应用。",
+            "构建专家发现、语音访谈、内容合成和 Agent 基础设施中的自主 Agent 管道。"
           ],
           "sample_interview_questions": [
             "Agent runtime 和 multi-agent 的实现细节是什么？",
@@ -551,151 +586,31 @@
             "实现一个带工具调用、记忆和失败恢复的 Agent",
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
-          "rank": 2,
-          "priority_weight": 0.198347
-        },
-        {
-          "capability_key": "api_system_integration",
-          "label": "API、Webhook 与企业系统集成",
-          "market_score": 42,
-          "job_penetration": 0.5,
-          "jd_job_count": 2,
-          "jd_signal_count": 2,
-          "core_job_count": 2,
-          "interview_count": 0,
-          "companies": [
-            "Aifund",
-            "Pallet"
-          ],
-          "sample_signals": [
-            "Develop and integrate agentic AI capabilities into customer-facing product workflows.",
-            "Design integrations between customer systems and the AI platform, including undocumented APIs and internal tools."
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "API",
-              "patterns": [
-                "api",
-                "接口"
-              ]
-            },
-            {
-              "name": "事件集成",
-              "patterns": [
-                "webhook",
-                "回调",
-                "事件",
-                "消息队列"
-              ]
-            },
-            {
-              "name": "企业系统",
-              "patterns": [
-                "erp",
-                "pos",
-                "oms",
-                "wms",
-                "saas",
-                "多租户"
-              ]
-            },
-            {
-              "name": "数据契约",
-              "patterns": [
-                "json",
-                "数据流",
-                "schema",
-                "标准化",
-                "落库"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "准备一个第三方系统集成的端到端架构案例",
-            "补充幂等、鉴权、重试和数据一致性说明"
-          ],
-          "rank": 3,
-          "priority_weight": 0.173554
-        },
-        {
-          "capability_key": "coding_python",
-          "label": "Python 与工程编码",
-          "market_score": 23,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
-          "interview_count": 1,
-          "companies": [
-            "Turing"
-          ],
-          "sample_signals": [
-            "Architect and implement scalable GenAI applications with Python, LangChain/LangGraph, and LLM frameworks."
-          ],
-          "sample_interview_questions": [
-            "用三个线程按顺序打印 abcabc，并完成最多删除一个字符判断回文。"
-          ],
-          "resume_evidence_groups": [
-            {
-              "name": "Python",
-              "patterns": [
-                "python",
-                "pytorch",
-                "scikit-learn"
-              ]
-            },
-            {
-              "name": "工程实现",
-              "patterns": [
-                "开发",
-                "实现",
-                "代码",
-                "工程师",
-                "engineer"
-              ]
-            },
-            {
-              "name": "测试质量",
-              "patterns": [
-                "测试",
-                "pytest",
-                "回归",
-                "验收"
-              ]
-            },
-            {
-              "name": "算法与复杂度",
-              "patterns": [
-                "leetcode",
-                "算法",
-                "数据结构",
-                "时间复杂度",
-                "空间复杂度"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "完成 LeetCode 高频基础题并记录可解释解法",
-            "用 Python 实现一个可测试的 Agent 或 RAG 服务"
-          ],
-          "rank": 4,
-          "priority_weight": 0.095041
+          "rank": 1,
+          "priority_weight": 0.245791
         },
         {
           "capability_key": "production_reliability",
           "label": "生产可靠性、监控与排障",
-          "market_score": 23,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
+          "market_score": 61,
+          "job_penetration": 0.7,
+          "jd_job_count": 7,
+          "jd_signal_count": 7,
+          "core_job_count": 4,
           "interview_count": 1,
           "companies": [
-            "Pallet"
+            "BJAK",
+            "Guild.ai",
+            "Help Scout",
+            "OpenAI",
+            "Rhythms",
+            "Synquery",
+            "Tambo"
           ],
           "sample_signals": [
-            "Debug production failures across distributed systems, authentication layers, and data pipelines."
+            "分析生产失败，并围绕延迟、可靠性、成本和容量系统化提升稳健性。",
+            "负责自动化、韧性、监控、告警和日志，并为模型或供应商故障设计降级。",
+            "建设 Agent 可观测、使用分析和调试界面，使非工程用户也能理解运行状态。"
           ],
           "sample_interview_questions": [
             "模型首字符返回时间过长如何优化，并用哪些模块减少幻觉？"
@@ -745,109 +660,357 @@
             "给现有 Agent 增加 tracing、告警和失败重放",
             "整理一次真实生产故障的定位与修复复盘"
           ],
-          "rank": 5,
-          "priority_weight": 0.095041
+          "rank": 2,
+          "priority_weight": 0.205387
         },
         {
-          "capability_key": "product_strategy",
-          "label": "AI 产品策略与路线图",
-          "market_score": 21,
-          "job_penetration": 0.25,
-          "jd_job_count": 1,
-          "jd_signal_count": 1,
-          "core_job_count": 1,
+          "capability_key": "fullstack_delivery",
+          "label": "全栈原型与生产交付",
+          "market_score": 51,
+          "job_penetration": 0.6,
+          "jd_job_count": 6,
+          "jd_signal_count": 6,
+          "core_job_count": 6,
           "interview_count": 0,
           "companies": [
-            "Benchling"
+            "Help Scout",
+            "Kestra",
+            "Rhythms",
+            "Synquery",
+            "Tambo",
+            "Vori"
           ],
           "sample_signals": [
-            "Translate user workflows into reliable AI product requirements and production outcomes."
+            "从 RAG 与 Agent 管道到 React 前端，端到端交付客户直接使用的 AI 功能。",
+            "从数据库 Schema、API 到 React 前端端到端构建 Agent 分析、配置与调试产品。",
+            "拥有一块产品面，从需求和文档到实现、发布和快速迭代全程负责。"
           ],
           "sample_interview_questions": [],
           "resume_evidence_groups": [
             {
-              "name": "产品方向",
+              "name": "前端",
               "patterns": [
-                "产品路线",
-                "路线图",
-                "product strategy",
-                "产品策略",
+                "react",
+                "next.js",
+                "nextjs",
+                "前端",
+                "web"
+              ]
+            },
+            {
+              "name": "后端",
+              "patterns": [
+                "node.js",
+                "nodejs",
+                "backend",
+                "后端",
+                "python",
+                "sqlite"
+              ]
+            },
+            {
+              "name": "生产交付",
+              "patterns": [
+                "上线",
+                "生产",
+                "部署",
+                "交付",
+                "production"
+              ]
+            },
+            {
+              "name": "端到端",
+              "patterns": [
+                "端到端",
                 "0 到 1",
-                "从 0 到 1"
-              ]
-            },
-            {
-              "name": "AI 产品",
-              "patterns": [
-                "genai 产品",
-                "ai 产品",
-                "ai insight",
-                "智友",
-                "agent 早期用户研究"
-              ]
-            },
-            {
-              "name": "发现与定义",
-              "patterns": [
-                "用户研究",
-                "市场研究",
-                "核心场景",
-                "mvp",
-                "需求"
-              ]
-            },
-            {
-              "name": "迭代决策",
-              "patterns": [
-                "a/b",
-                "指标",
-                "数据分析",
-                "迭代",
-                "优先级"
+                "0-1",
+                "从 0 到 1",
+                "全栈"
               ]
             }
           ],
           "learning_actions": [
-            "为一个 AI 产品写一页市场、用户、方案、指标路线图",
-            "准备一次模型能力、用户价值和商业约束的取舍案例"
+            "用限时方式完成一个 AI 功能从 API 到前端的可部署原型",
+            "补充部署、测试和性能证据"
+          ],
+          "rank": 3,
+          "priority_weight": 0.171717
+        },
+        {
+          "capability_key": "llm_evaluation",
+          "label": "LLM 评测与实验",
+          "market_score": 51,
+          "job_penetration": 0.6,
+          "jd_job_count": 6,
+          "jd_signal_count": 6,
+          "core_job_count": 5,
+          "interview_count": 0,
+          "companies": [
+            "Guild.ai",
+            "Help Scout",
+            "Implicit",
+            "OpenAI",
+            "Rhythms",
+            "Vori"
+          ],
+          "sample_signals": [
+            "开发并运行 evals，衡量 Agent 表现、回归、失败模式、边缘情况和任务解决率。",
+            "将 eval、验证、guardrail 与监控嵌入 AI 功能，使质量可测且可回归。",
+            "通过 Prompt、评测框架与检索优化持续改进答案质量。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "评测",
+              "patterns": [
+                "eval",
+                "评测",
+                "准确率",
+                "quality gate",
+                "回归测试"
+              ]
+            },
+            {
+              "name": "实验",
+              "patterns": [
+                "a/b",
+                "ab test",
+                "实验",
+                "量化",
+                "剪枝",
+                "微调"
+              ]
+            },
+            {
+              "name": "指标",
+              "patterns": [
+                "指标",
+                "metric",
+                "bias",
+                "偏差",
+                "可解释"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "建立 30-50 条任务级 LLM eval 数据集",
+            "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
+          ],
+          "rank": 4,
+          "priority_weight": 0.171717
+        },
+        {
+          "capability_key": "rag_context_engineering",
+          "label": "RAG 与上下文工程",
+          "market_score": 34,
+          "job_penetration": 0.4,
+          "jd_job_count": 4,
+          "jd_signal_count": 4,
+          "core_job_count": 3,
+          "interview_count": 0,
+          "companies": [
+            "BJAK",
+            "Help Scout",
+            "Implicit",
+            "Vori"
+          ],
+          "sample_signals": [
+            "具备检索、向量嵌入、Prompt 与上下文工程和 Agent 工具调用经验。",
+            "构建 LLM、RAG、语义搜索、文档摄取和知识抽取管道。",
+            "建设 context pipelines、knowledge systems、向量检索和事件驱动知识层。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "检索",
+              "patterns": [
+                "rag",
+                "检索",
+                "retrieval",
+                "向量"
+              ]
+            },
+            {
+              "name": "上下文",
+              "patterns": [
+                "context engineering",
+                "上下文工程",
+                "context window",
+                "上下文"
+              ]
+            },
+            {
+              "name": "数据摄取",
+              "patterns": [
+                "ingest",
+                "数据摄取",
+                "文本 ingest",
+                "结构化 json",
+                "embedding"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "完成一个带召回评测的 RAG 项目",
+            "记录 chunking、召回和上下文压缩的实验结果"
+          ],
+          "rank": 5,
+          "priority_weight": 0.114478
+        },
+        {
+          "capability_key": "coding_python",
+          "label": "Python 与工程编码",
+          "market_score": 27,
+          "job_penetration": 0.3,
+          "jd_job_count": 3,
+          "jd_signal_count": 3,
+          "core_job_count": 0,
+          "interview_count": 1,
+          "companies": [
+            "BJAK",
+            "Implicit",
+            "OpenAI"
+          ],
+          "sample_signals": [
+            "要求较强 Python 和现代 ML 工具能力，并能处理真实生产日志与数据系统。",
+            "使用 Python、现代 AI 框架、API 和向量数据库构建生产服务。",
+            "要求 Python、TypeScript、JavaScript 等实际工程编码能力并能持续改进可靠性。"
+          ],
+          "sample_interview_questions": [
+            "用三个线程按顺序打印 abcabc，并完成最多删除一个字符判断回文。"
+          ],
+          "resume_evidence_groups": [
+            {
+              "name": "Python",
+              "patterns": [
+                "python",
+                "pytorch",
+                "scikit-learn"
+              ]
+            },
+            {
+              "name": "工程实现",
+              "patterns": [
+                "开发",
+                "实现",
+                "代码",
+                "工程师",
+                "engineer"
+              ]
+            },
+            {
+              "name": "测试质量",
+              "patterns": [
+                "测试",
+                "pytest",
+                "回归",
+                "验收"
+              ]
+            },
+            {
+              "name": "算法与复杂度",
+              "patterns": [
+                "leetcode",
+                "算法",
+                "数据结构",
+                "时间复杂度",
+                "空间复杂度"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "完成 LeetCode 高频基础题并记录可解释解法",
+            "用 Python 实现一个可测试的 Agent 或 RAG 服务"
           ],
           "rank": 6,
-          "priority_weight": 0.086777
+          "priority_weight": 0.090909
         }
       ],
       "constraints": {
-        "signal_count": 0,
-        "items": []
+        "signal_count": 10,
+        "items": [
+          {
+            "signal": "岗位位于旧金山、纽约、西雅图或伦敦，要求有 ML 或 LLM 产品交付经验。",
+            "company": "OpenAI",
+            "source_url": "https://openai.com/careers/applied-ai-engineer-codex-core-agent-san-francisco/"
+          },
+          {
+            "signal": "岗位为 Staff 级、全远程，要求前端重心的全栈能力和已上线 LLM 产品经验。",
+            "company": "Help Scout",
+            "source_url": "https://jobs.ashbyhq.com/helpscout/f000b241-7974-4a2d-a80d-07fb807b2f90"
+          },
+          {
+            "signal": "岗位为美国远程兼职，要求 3 年以上 AI、ML 或 NLP 应用经验。",
+            "company": "Implicit",
+            "source_url": "https://job-boards.greenhouse.io/implicit/jobs/8039713"
+          },
+          {
+            "signal": "岗位为美国远程并偏好太平洋时区，要求 5 年以上全栈经验。",
+            "company": "Tambo",
+            "source_url": "https://jobs.ashbyhq.com/tambo-ai/6a0007fd-1165-46a4-ae46-c00ed0fb6d87/"
+          },
+          {
+            "signal": "岗位位于 Nashville 或 Boston，面向 1 至 3 年产品、软件或咨询经验候选人。",
+            "company": "Synquery",
+            "source_url": "https://jobs.ashbyhq.com/synquery/e8d5537a-c50d-49b2-a002-04db23e48495/"
+          },
+          {
+            "signal": "岗位位于旧金山，要求 2 至 5 年生产软件经验和已上线 LLM 或 Agent 产品。",
+            "company": "Rhythms",
+            "source_url": "https://jobs.ashbyhq.com/Rhythms/dca64cbf-7206-42f9-94a3-7fa2dcb45449/"
+          },
+          {
+            "signal": "岗位为欧洲远程，要求强 Java 后端和全栈工程能力。",
+            "company": "Kestra",
+            "source_url": "https://jobs.ashbyhq.com/kestra/e90677e6-784b-41e0-aa65-299da93994b5"
+          },
+          {
+            "signal": "岗位在旧金山混合办公，要求 3 至 8 年以上生产软件系统经验。",
+            "company": "Vori",
+            "source_url": "https://jobs.ashbyhq.com/Vori/0c95f610-b802-47a4-bb53-1c75c036c6d8"
+          },
+          {
+            "signal": "岗位远程但候选人必须已在中国，且英语为主要工作语言。",
+            "company": "BJAK",
+            "source_url": "https://jobs.ashbyhq.com/bjakcareer/bbc89cf7-ebc9-4c2d-a210-6d63d7083b90"
+          },
+          {
+            "signal": "要求扎实软件工程背景、生产级 LLM 经验、Python 熟练及 TypeScript 或现代 Web 栈能力。",
+            "company": "Guild.ai",
+            "source_url": "https://jobs.ashbyhq.com/guild/c4182f04-28e4-4acf-a505-75730cd0feb1/"
+          }
+        ]
       }
     },
     "fde": {
       "role_family": "fde",
       "role_label": "FDE / 前线部署工程",
       "coverage_status": "provisional",
-      "jd_job_count": 7,
-      "jd_signal_count": 34,
+      "jd_job_count": 10,
+      "jd_signal_count": 50,
       "real_interview_count": 2,
       "top_capabilities": [
         {
           "capability_key": "customer_discovery",
           "label": "客户发现、需求澄清与方案设计",
-          "market_score": 61,
-          "job_penetration": 0.7143,
-          "jd_job_count": 5,
-          "jd_signal_count": 5,
-          "core_job_count": 5,
+          "market_score": 51,
+          "job_penetration": 0.6,
+          "jd_job_count": 6,
+          "jd_signal_count": 6,
+          "core_job_count": 6,
           "interview_count": 0,
           "companies": [
-            "Cresta",
-            "Outreach",
-            "Provectus",
-            "Retell AI",
-            "Tavily"
+            "Aircall",
+            "Anthropic",
+            "Cohere",
+            "Diligent",
+            "Glean",
+            "OpenAI"
           ],
           "sample_signals": [
-            "直接与客户完成技术发现、方案设计、POC 范围界定及上线后跟踪。",
-            "与销售和客户一起收集需求、制作原型演示并呈现系统设计。",
-            "与客户和内部干系人收集技术要求，把业务需求转成 Agent 方案。"
+            "拥有客户发现、技术范围界定和方案设计，并嵌入客户工程与业务团队。",
+            "从技术发现、初始评估到部署，持续把客户业务目标翻译为 LLM 方案。",
+            "深入战略客户业务，寻找最大未解决价值并形成可测试的产品假设。"
           ],
           "sample_interview_questions": [],
           "resume_evidence_groups": [
@@ -895,26 +1058,230 @@
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
           "rank": 1,
-          "priority_weight": 0.237354
+          "priority_weight": 0.201581
+        },
+        {
+          "capability_key": "api_system_integration",
+          "label": "API、Webhook 与企业系统集成",
+          "market_score": 42,
+          "job_penetration": 0.5,
+          "jd_job_count": 5,
+          "jd_signal_count": 5,
+          "core_job_count": 5,
+          "interview_count": 0,
+          "companies": [
+            "Aircall",
+            "Anthropic",
+            "Dun & Bradstreet",
+            "ElevenLabs",
+            "Sonar"
+          ],
+          "sample_signals": [
+            "指导客户把 Claude API、Claude Code 和 Enterprise 集成进现有技术栈。",
+            "使用 Python、软件架构和 API 集成能力构建完整客户方案。",
+            "把 Sonar 集成到客户 CI/CD 与 AI 编码工作流，配置质量与安全策略。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "API",
+              "patterns": [
+                "api",
+                "接口"
+              ]
+            },
+            {
+              "name": "事件集成",
+              "patterns": [
+                "webhook",
+                "回调",
+                "事件",
+                "消息队列"
+              ]
+            },
+            {
+              "name": "企业系统",
+              "patterns": [
+                "erp",
+                "pos",
+                "oms",
+                "wms",
+                "saas",
+                "多租户"
+              ]
+            },
+            {
+              "name": "数据契约",
+              "patterns": [
+                "json",
+                "数据流",
+                "schema",
+                "标准化",
+                "落库"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "准备一个第三方系统集成的端到端架构案例",
+            "补充幂等、鉴权、重试和数据一致性说明"
+          ],
+          "rank": 2,
+          "priority_weight": 0.166008
+        },
+        {
+          "capability_key": "fullstack_delivery",
+          "label": "全栈原型与生产交付",
+          "market_score": 42,
+          "job_penetration": 0.5,
+          "jd_job_count": 5,
+          "jd_signal_count": 5,
+          "core_job_count": 4,
+          "interview_count": 0,
+          "companies": [
+            "Anthropic",
+            "Dun & Bradstreet",
+            "ElevenLabs",
+            "Glean",
+            "OpenAI"
+          ],
+          "sample_signals": [
+            "从原型到稳定生产拥有多个部署，并直接编写 Python、JavaScript 前后端生产代码。",
+            "亲手交付原型、POC、评测框架和接近生产的可扩展示例代码。",
+            "在模糊环境中从零构建并规模上线真实用户使用的生产 AI 软件。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "前端",
+              "patterns": [
+                "react",
+                "next.js",
+                "nextjs",
+                "前端",
+                "web"
+              ]
+            },
+            {
+              "name": "后端",
+              "patterns": [
+                "node.js",
+                "nodejs",
+                "backend",
+                "后端",
+                "python",
+                "sqlite"
+              ]
+            },
+            {
+              "name": "生产交付",
+              "patterns": [
+                "上线",
+                "生产",
+                "部署",
+                "交付",
+                "production"
+              ]
+            },
+            {
+              "name": "端到端",
+              "patterns": [
+                "端到端",
+                "0 到 1",
+                "0-1",
+                "从 0 到 1",
+                "全栈"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "用限时方式完成一个 AI 功能从 API 到前端的可部署原型",
+            "补充部署、测试和性能证据"
+          ],
+          "rank": 3,
+          "priority_weight": 0.166008
+        },
+        {
+          "capability_key": "customer_communication",
+          "label": "技术沟通、演示与影响力",
+          "market_score": 42,
+          "job_penetration": 0.5,
+          "jd_job_count": 5,
+          "jd_signal_count": 5,
+          "core_job_count": 3,
+          "interview_count": 0,
+          "companies": [
+            "Dun & Bradstreet",
+            "ElevenLabs",
+            "Field AI",
+            "Glean",
+            "Sonar"
+          ],
+          "sample_signals": [
+            "成为 C-suite 技术伙伴，能够面向不同听众说明方案、风险与业务价值。",
+            "每天与客户工程师和高管协作，并将复杂技术知识压缩成清晰方案。",
+            "培训并支持客户操作团队，把复杂技术转成可执行工作流和上线准备。"
+          ],
+          "sample_interview_questions": [],
+          "resume_evidence_groups": [
+            {
+              "name": "沟通对象",
+              "patterns": [
+                "客户",
+                "商户",
+                "教授",
+                "跨团队",
+                "合作伙伴"
+              ]
+            },
+            {
+              "name": "表达",
+              "patterns": [
+                "面向客户演示",
+                "方案演示",
+                "培训",
+                "汇报",
+                "技术沟通",
+                "presented",
+                "workshop"
+              ]
+            },
+            {
+              "name": "影响",
+              "patterns": [
+                "推动",
+                "协调",
+                "支持",
+                "获得",
+                "使用"
+              ]
+            }
+          ],
+          "learning_actions": [
+            "准备 10 分钟面向非技术客户的方案 Demo",
+            "用 STAR 结构整理一次跨团队推动案例"
+          ],
+          "rank": 4,
+          "priority_weight": 0.166008
         },
         {
           "capability_key": "agent_architecture",
           "label": "Agent 架构与运行时",
-          "market_score": 44,
-          "job_penetration": 0.4286,
-          "jd_job_count": 3,
-          "jd_signal_count": 3,
-          "core_job_count": 3,
+          "market_score": 42,
+          "job_penetration": 0.4,
+          "jd_job_count": 4,
+          "jd_signal_count": 4,
+          "core_job_count": 4,
           "interview_count": 1,
           "companies": [
-            "Cresta",
-            "Outreach",
-            "Retell AI"
+            "Aircall",
+            "Cohere",
+            "Diligent",
+            "Glean"
           ],
           "sample_signals": [
-            "理解 LLM 驱动系统及其用户体验影响，能掌握语音 Agent 和提示工程。",
-            "理解通用 Agent 框架、函数调用和 RAG，并有实际构建经验。",
-            "Deploy and configure AI Revenue Agents in customer environments and tune behavior using prompts, data integrations, and routing logic."
+            "交付 Prompt、Agent、评测和规模部署，并理解 LLM、检索系统与企业系统。",
+            "设计、构建和交付跨工具、API 与敏感企业数据的多步 LLM Agents。",
+            "配置 Agent 意图、Prompt、Action、Guardrail 与性能指标，并持续优化。"
           ],
           "sample_interview_questions": [
             "如何设计可扩展的 Agent 系统，并处理安全护栏、卡死循环、监控和人工介入？"
@@ -967,284 +1334,131 @@
             "实现一个带工具调用、记忆和失败恢复的 Agent",
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
-          "rank": 2,
-          "priority_weight": 0.171206
+          "rank": 5,
+          "priority_weight": 0.166008
         },
         {
-          "capability_key": "production_reliability",
-          "label": "生产可靠性、监控与排障",
-          "market_score": 44,
-          "job_penetration": 0.4286,
-          "jd_job_count": 3,
+          "capability_key": "project_delivery",
+          "label": "项目推进与端到端交付",
+          "market_score": 34,
+          "job_penetration": 0.4,
+          "jd_job_count": 4,
           "jd_signal_count": 4,
           "core_job_count": 3,
-          "interview_count": 1,
+          "interview_count": 0,
           "companies": [
-            "Cresta",
-            "Tavily",
-            "Upscale"
+            "Aircall",
+            "ElevenLabs",
+            "Field AI",
+            "OpenAI"
           ],
           "sample_signals": [
-            "监控 API 使用模式并提升可靠性、效率与覆盖率。",
-            "优化 Agent 性能并排查复杂企业环境中的问题，同时规划安全与扩展性。",
-            "端到端处理复杂系统问题，进行根因分析、修复验证，并承担客户现场协作与 on-call"
+            "进行工作拆解、交付排序、风险识别以及范围、速度和质量权衡。",
+            "为最具战略价值的客户全程拥有复杂、高影响项目的端到端执行。",
+            "领导自主系统在客户环境中的部署、配置、测试与持续运营。"
           ],
-          "sample_interview_questions": [
-            "如何为大型代码库设计安全的全库重命名迁移：识别候选、避免破坏外部 API、自动验证、更新测试并安全发布？"
-          ],
+          "sample_interview_questions": [],
           "resume_evidence_groups": [
             {
-              "name": "可靠性",
+              "name": "所有权",
               "patterns": [
-                "可靠性",
-                "reliability",
-                "容错",
-                "失败恢复",
-                "重试"
+                "主导",
+                "独立",
+                "负责",
+                "owner",
+                "创始人"
               ]
             },
             {
-              "name": "监控",
+              "name": "过程",
               "patterns": [
-                "监控",
-                "observability",
-                "日志",
-                "trace",
-                "告警"
-              ]
-            },
-            {
-              "name": "排障",
-              "patterns": [
-                "排障",
-                "debug",
-                "诊断",
-                "故障",
-                "恢复"
-              ]
-            },
-            {
-              "name": "测试",
-              "patterns": [
+                "需求",
+                "设计",
+                "开发",
                 "测试",
-                "test",
-                "回归",
-                "验收"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "给现有 Agent 增加 tracing、告警和失败重放",
-            "整理一次真实生产故障的定位与修复复盘"
-          ],
-          "rank": 3,
-          "priority_weight": 0.171206
-        },
-        {
-          "capability_key": "api_system_integration",
-          "label": "API、Webhook 与企业系统集成",
-          "market_score": 36,
-          "job_penetration": 0.4286,
-          "jd_job_count": 3,
-          "jd_signal_count": 3,
-          "core_job_count": 3,
-          "interview_count": 0,
-          "companies": [
-            "Cresta",
-            "Retell AI",
-            "Tavily"
-          ],
-          "sample_signals": [
-            "使用 Tavily API 为客户构建定制集成和生产级应用。",
-            "把语音 AI 与 CRM、ERP、排期工具等企业系统做全栈集成。",
-            "通过 API、Webhook 和数据管道把 Agent 接入外部系统。"
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "API",
-              "patterns": [
-                "api",
-                "接口"
+                "迭代"
               ]
             },
             {
-              "name": "事件集成",
+              "name": "交付",
               "patterns": [
-                "webhook",
-                "回调",
-                "事件",
-                "消息队列"
+                "上线",
+                "交付",
+                "通过验收",
+                "落地"
               ]
             },
             {
-              "name": "企业系统",
+              "name": "结果",
               "patterns": [
-                "erp",
-                "pos",
-                "oms",
-                "wms",
-                "saas",
-                "多租户"
-              ]
-            },
-            {
-              "name": "数据契约",
-              "patterns": [
-                "json",
-                "数据流",
-                "schema",
-                "标准化",
-                "落库"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "准备一个第三方系统集成的端到端架构案例",
-            "补充幂等、鉴权、重试和数据一致性说明"
-          ],
-          "rank": 4,
-          "priority_weight": 0.140078
-        },
-        {
-          "capability_key": "llm_evaluation",
-          "label": "LLM 评测与实验",
-          "market_score": 36,
-          "job_penetration": 0.4286,
-          "jd_job_count": 3,
-          "jd_signal_count": 3,
-          "core_job_count": 3,
-          "interview_count": 0,
-          "companies": [
-            "Ahead",
-            "Provectus",
-            "Upscale"
-          ],
-          "sample_signals": [
-            "Use test sets, quality metrics, evaluation, observability, and cost telemetry to improve LLM solutions.",
-            "Ship production GenAI/LLM systems and build an evaluation suite for non-deterministic systems.",
-            "Validate AI-agent accuracy against real-world outcomes and maintain detection signatures, classifications, and thresholds."
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "评测",
-              "patterns": [
-                "eval",
-                "评测",
-                "准确率",
-                "quality gate",
-                "回归测试"
-              ]
-            },
-            {
-              "name": "实验",
-              "patterns": [
-                "a/b",
-                "ab test",
-                "实验",
-                "量化",
-                "剪枝",
-                "微调"
-              ]
-            },
-            {
-              "name": "指标",
-              "patterns": [
-                "指标",
-                "metric",
-                "bias",
-                "偏差",
-                "可解释"
-              ]
-            }
-          ],
-          "learning_actions": [
-            "建立 30-50 条任务级 LLM eval 数据集",
-            "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
-          ],
-          "rank": 5,
-          "priority_weight": 0.140078
-        },
-        {
-          "capability_key": "customer_communication",
-          "label": "技术沟通、演示与影响力",
-          "market_score": 36,
-          "job_penetration": 0.4286,
-          "jd_job_count": 3,
-          "jd_signal_count": 3,
-          "core_job_count": 3,
-          "interview_count": 0,
-          "companies": [
-            "Outreach",
-            "Retell AI",
-            "Tavily"
-          ],
-          "sample_signals": [
-            "需要直接面对企业技术干系人，并在架构评审和客户沟通中代表公司。",
-            "需要说服并对齐技术和非技术干系人，清楚解释复杂技术。",
-            "部署、定制和运营 AI Revenue Agents，并培训客户团队、闭环产品反馈"
-          ],
-          "sample_interview_questions": [],
-          "resume_evidence_groups": [
-            {
-              "name": "沟通对象",
-              "patterns": [
-                "客户",
-                "商户",
-                "教授",
-                "跨团队",
-                "合作伙伴"
-              ]
-            },
-            {
-              "name": "表达",
-              "patterns": [
-                "面向客户演示",
-                "方案演示",
-                "培训",
-                "汇报",
-                "技术沟通",
-                "presented",
-                "workshop"
-              ]
-            },
-            {
-              "name": "影响",
-              "patterns": [
-                "推动",
-                "协调",
+                "降低",
+                "提高",
+                "覆盖",
                 "支持",
-                "获得",
-                "使用"
+                "用户使用"
               ]
             }
           ],
           "learning_actions": [
-            "准备 10 分钟面向非技术客户的方案 Demo",
-            "用 STAR 结构整理一次跨团队推动案例"
+            "把一个项目压缩成目标、约束、行动、结果和复盘",
+            "补齐时间线、风险和验收证据"
           ],
           "rank": 6,
-          "priority_weight": 0.140078
+          "priority_weight": 0.134387
         }
       ],
       "constraints": {
-        "signal_count": 3,
+        "signal_count": 10,
         "items": [
           {
-            "signal": "全职到岗；倾向 3 年以上软件工程及客户型、咨询型或合作伙伴型经验。",
-            "company": "Tavily",
-            "source_url": "https://jobs.ashbyhq.com/tavily/1999e01d-f9e3-4f43-a097-812c0800fb0f"
+            "signal": "要求 5 年以上工程或技术部署经验，纽约混合办公并需最多 50% 出差。",
+            "company": "OpenAI",
+            "source_url": "https://openai.com/careers/forward-deployed-engineer-%28fde%29-nyc-new-york-city/"
           },
           {
-            "signal": "全职 Senior 岗，倾向 2 年以上客户型技术岗位；页面写明可为合格候选人提供多类签证支持。",
-            "company": "Retell AI",
-            "source_url": "https://jobs.ashbyhq.com/retell-ai/5652ab47-6c89-4889-a507-7a3a943c3669"
+            "signal": "要求 3 年以上软件工程或解决方案架构经验、Python 能力，并需偶尔客户现场出差。",
+            "company": "Anthropic",
+            "source_url": "https://job-boards.greenhouse.io/anthropic/jobs/5192805008"
           },
           {
-            "signal": "全职 Senior 岗；要求 3 年以上软件开发、咨询、AI/ML 工程或 FDE 经验。",
-            "company": "Cresta",
-            "source_url": "https://job-boards.greenhouse.io/cresta/jobs/4759347008"
+            "signal": "要求 4 年以上技术岗位与生产交付经验，纽约混合办公并需 25% 至 50% 出差。",
+            "company": "Glean",
+            "source_url": "https://job-boards.greenhouse.io/gleanwork/jobs/4659412005"
+          },
+          {
+            "signal": "岗位位于新加坡，预计 20% 至 40% 出差并要求生产 Python 软件经验。",
+            "company": "Cohere",
+            "source_url": "https://jobs.ashbyhq.com/cohere/9c18b199-cd1f-4ef3-9fab-ce05589348ae"
+          },
+          {
+            "signal": "优先新加坡候选人，要求普通话和英语并能频繁到客户现场。",
+            "company": "ElevenLabs",
+            "source_url": "https://jobs.ashbyhq.com/elevenlabs/36bdb528-004b-482c-8924-33b27b76121f"
+          },
+          {
+            "signal": "要求相关硕士或同等经验、2 至 3 年软件或系统集成经验，并能客户现场出差。",
+            "company": "Field AI",
+            "source_url": "https://jobs.lever.co/field-ai/dfa08958-6fc7-43f3-ac1f-b4c5767b0d12"
+          },
+          {
+            "signal": "岗位位于新加坡，要求 2 年以上技术客户岗位或带咨询经验的软件/ML 工程经验。",
+            "company": "Sonar",
+            "source_url": "https://jobs.lever.co/sonarsource/c04741d3-f72c-47e1-9a7f-f53d33664bcc"
+          },
+          {
+            "signal": "要求 2 至 8 年技术咨询、解决方案工程或集成项目经验，纽约混合办公。",
+            "company": "Aircall",
+            "source_url": "https://job-boards.greenhouse.io/aircallioinc/jobs/4308436009"
+          },
+          {
+            "signal": "纽约混合办公，需在欧盟和美国客户现场定期出差，并具备受监管企业环境适应力。",
+            "company": "Diligent",
+            "source_url": "https://job-boards.greenhouse.io/diligentcorporation/jobs/5829711004"
+          },
+          {
+            "signal": "要求 7 年以上软件工程和 3 年以上客户技术岗位经验，英语与普通话商务流利。",
+            "company": "Dun & Bradstreet",
+            "source_url": "https://jobs.lever.co/dnb/d62d9a7c-e5a1-480e-8fc4-458c1d264c51"
           }
         ]
       }

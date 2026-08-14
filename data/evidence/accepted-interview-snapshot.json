@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-08-14",
+  "policy": "Only previously accepted real-interview aggregates are retained here; full posts and personal data are not republished.",
+  "roles": {
+    "ai_pm": {
+      "accepted_record_count": 7,
+      "capabilities": {
+        "product_strategy": {
+          "interview_count": 5,
+          "sample_questions": [
+            "你为什么想做 AI 产品经理？请结合算法/技术背景说明动机。",
+            "AI 产品经理与传统互联网产品经理的差异是什么？",
+            "你认为产品经理需要哪些素质？分别用经历说明。"
+          ]
+        }
+      }
+    },
+    "ai_fullstack": {
+      "accepted_record_count": 11,
+      "capabilities": {
+        "agent_architecture": {
+          "interview_count": 4,
+          "sample_questions": [
+            "Agent runtime 和 multi-agent 的实现细节是什么？",
+            "多 Agent 并发的性能问题是什么，如何控制并发量？",
+            "Agent 会话上下文持续变长时，如何做上下文压缩并避免历史信息遗忘？"
+          ]
+        },
+        "coding_python": {
+          "interview_count": 1,
+          "sample_questions": [
+            "用三个线程按顺序打印 abcabc，并完成最多删除一个字符判断回文。"
+          ]
+        },
+        "production_reliability": {
+          "interview_count": 1,
+          "sample_questions": [
+            "模型首字符返回时间过长如何优化，并用哪些模块减少幻觉？"
+          ]
+        }
+      }
+    },
+    "fde": {
+      "accepted_record_count": 2,
+      "capabilities": {
+        "agent_architecture": {
+          "interview_count": 1,
+          "sample_questions": [
+            "如何设计可扩展的 Agent 系统，并处理安全护栏、卡死循环、监控和人工介入？"
+          ]
+        },
+        "production_reliability": {
+          "interview_count": 1,
+          "sample_questions": [
+            "如何为大型代码库设计安全的全库重命名迁移：识别候选、避免破坏外部 API、自动验证、更新测试并安全发布？"
+          ]
+        }
+      }
+    }
+  }
+}
