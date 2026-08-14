@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "RoleTrace｜AI 岗位能力地图";
+const title = "SignalFit｜AI 岗位能力地图";
 const description = "把公开 JD、真实面经和简历证据转化为可解释的岗位能力地图与缺口雷达。";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    openGraph: { title, description, type: "website", images: [{ url: imageUrl, width: 1731, height: 909, alt: "RoleTrace — Evidence, not vibes." }] },
+    openGraph: { title, description, type: "website", images: [{ url: imageUrl, width: 1729, height: 910, alt: "SignalFit — Evidence, not vibes." }] },
     twitter: { card: "summary_large_image", title, description, images: [imageUrl] },
   };
 }

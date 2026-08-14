@@ -15,13 +15,13 @@ async function render() {
   );
 }
 
-test("server-renders the RoleTrace workbench", async () => {
+test("server-renders the SignalFit workbench", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>RoleTrace｜AI 岗位能力地图<\/title>/i);
+  assert.match(html, /<title>SignalFit｜AI 岗位能力地图<\/title>/i);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /AI 全栈 \/ Agent 工程/);
   assert.match(html, /透明，比一个神秘总分更重要/);
@@ -39,7 +39,7 @@ test("keeps public assets anonymous and open-source ready", async () => {
 
   const publicText = [page, example, readme].join("\n");
   assert.doesNotMatch(publicText, /\/Users\/|resume_path|candidate_name/i);
-  assert.match(packageJson, /"name": "roletrace"/);
+  assert.match(packageJson, /"name": "signalfit"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await access(new URL("../LICENSE", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

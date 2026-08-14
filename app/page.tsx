@@ -82,24 +82,24 @@ export default function Home() {
   return (
     <main>
       <nav className="topbar" aria-label="主导航">
-        <a className="brand" href="#top" aria-label="RoleTrace 首页">
-          <span className="brand-mark" aria-hidden="true">RT</span>
-          <span>RoleTrace</span>
+        <a className="brand" href="#top" aria-label="SignalFit 首页">
+          <span className="brand-mark" aria-hidden="true">SF</span>
+          <span>SignalFit</span>
         </a>
         <div className="nav-links">
           <a href="#map">能力地图</a>
           <a href="#method">方法</a>
           <a href="#open-source">开源</a>
         </div>
-        <a className="github-link" href="https://github.com/SuperMikasa/roletrace" target="_blank" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
+        <a className="github-link" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
       </nav>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span>OPEN CAREER INTELLIGENCE</span><span>v0.1</span></p>
+          <p className="eyebrow"><span>OPEN CAREER INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.2</span></p>
           <h1>别猜岗位要什么。<br /><em>沿着证据找差距。</em></h1>
           <p className="hero-intro">
-            RoleTrace 把公开 JD 和已核验面经压缩成岗位能力地图，再用简历里的可定位证据计算匹配度。它不预测录用，只显示你能证明什么、下一步该补什么。
+            SignalFit 把公开 JD 和已核验面经压缩成岗位能力地图，再用简历里的可定位证据计算匹配度。它不预测录用，只显示你能证明什么、下一步该补什么。
           </p>
           <div className="hero-actions">
             <button className="primary-action" onClick={() => document.querySelector("#map")?.scrollIntoView({ behavior: "smooth" })}>
@@ -133,7 +133,7 @@ export default function Home() {
       <section className="workspace" id="map">
         <header className="section-heading">
           <div><p className="section-kicker">ROLE MAP / 岗位坐标</p><h2>三个方向，一套证据口径</h2></div>
-          <p>外圈代表岗位目标，蓝色迹线代表简历证据覆盖。硬约束单列，不混入能力分。</p>
+          <p>蓝色虚线代表岗位市场信号，绿色实线代表简历证据覆盖。硬约束单列，不混入能力分。</p>
         </header>
 
         <div className="role-switcher" role="tablist" aria-label="选择岗位">
@@ -157,8 +157,9 @@ export default function Home() {
               <div className={`overall-score ${scoreTone(role.overall_score)}`}><strong>{role.overall_score}</strong><span>/100</span></div>
             </div>
             <RadarChart axes={role.axes} label={role.role_label} />
-            <div className="radar-legend" aria-label="雷达图能力轴">
-              {role.axes.map((axis) => <span key={axis.label}><b>{String(axis.rank).padStart(2, "0")}</b>{axis.label}</span>)}
+            <div className="radar-key" aria-label="雷达图数据图例">
+              <span><i className="market-key" />岗位市场信号</span>
+              <span><i className="evidence-key" />简历证据覆盖</span>
             </div>
           </article>
 
@@ -182,9 +183,9 @@ export default function Home() {
           {role.axes.map((axis) => (
             <div className="ledger-row" key={axis.label}>
               <div><b>{String(axis.rank).padStart(2, "0")}</b><strong>{axis.label}</strong></div>
-              <div className="meter"><i style={{ "--value": `${axis.market_score}%` } as React.CSSProperties} /><span>{axis.market_score}</span></div>
-              <div className="meter evidence"><i style={{ "--value": `${axis.candidate_score}%` } as React.CSSProperties} /><span>{axis.candidate_score}</span></div>
-              <div><span className={`priority ${axis.gap_priority >= 8 ? "high" : axis.gap_priority >= 4 ? "medium" : "low"}`}>{axis.gap_priority.toFixed(1)}</span></div>
+              <div className="meter" data-label="市场信号"><i style={{ "--value": `${axis.market_score}%` } as React.CSSProperties} /><span>{axis.market_score}</span></div>
+              <div className="meter evidence" data-label="简历证据"><i style={{ "--value": `${axis.candidate_score}%` } as React.CSSProperties} /><span>{axis.candidate_score}</span></div>
+              <div className="priority-cell" data-label="缺口优先级"><span className={`priority ${axis.gap_priority >= 8 ? "high" : axis.gap_priority >= 4 ? "medium" : "low"}`}>{axis.gap_priority.toFixed(1)}</span></div>
             </div>
           ))}
         </div>
@@ -205,8 +206,8 @@ export default function Home() {
           <h2>拿走方法，换成你的岗位和简历。</h2>
           <p>项目以 MIT 协议开放。示例数据不含个人简历、Cookie、账号信息或受限页面正文。你可以替换岗位族、能力词典与评分规则，也可以把每日数据更新接入自己的任务系统。</p>
           <div className="source-actions">
-            <a className="primary-action" href="/roletrace-source-v0.1.0.tar.gz" download>下载源代码（MIT）</a>
-            <a className="secondary-action" href="https://github.com/SuperMikasa/roletrace" target="_blank" rel="noreferrer">打开 GitHub</a>
+            <a className="primary-action" href="/signalfit-source-v0.2.0.tar.gz" download>下载源代码（MIT）</a>
+            <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">打开 GitHub</a>
             <a className="secondary-action" href="/example-fit.json" download>示例 JSON</a>
           </div>
           <p className="mirror-note">GitHub 与版本化源码归档保持同一套 MIT 开源代码。</p>
@@ -218,7 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><a className="brand" href="#top"><span className="brand-mark">RT</span><span>RoleTrace</span></a><p>Evidence, not vibes.</p><span>MIT License · 2026</span></footer>
+      <footer><a className="brand" href="#top"><span className="brand-mark">SF</span><span>SignalFit</span></a><p>Evidence, not vibes.</p><span>MIT License · 2026</span></footer>
     </main>
   );
 }

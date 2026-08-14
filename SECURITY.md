@@ -1,6 +1,6 @@
 # Security and privacy
 
-RoleTrace is designed to work with career data, which can contain personally identifying information.
+SignalFit is designed to work with career data, which can contain personally identifying information.
 
 ## Supported versions
 

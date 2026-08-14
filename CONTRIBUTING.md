@@ -1,6 +1,6 @@
-# Contributing to RoleTrace
+# Contributing to SignalFit
 
-Thanks for improving RoleTrace. Small, evidence-backed changes are preferred over broad scoring rewrites.
+Thanks for improving SignalFit. Small, evidence-backed changes are preferred over broad scoring rewrites.
 
 ## Before opening a pull request
 

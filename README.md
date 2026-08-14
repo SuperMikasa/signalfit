@@ -1,8 +1,8 @@
-# RoleTrace
+# SignalFit
 
-[Live site](https://roletrace-open.eric348737.chatgpt.site) · [Source repository](https://github.com/SuperMikasa/roletrace)
+[Live site](https://roletrace-open.eric348737.chatgpt.site) · [Source repository](https://github.com/SuperMikasa/signalfit)
 
-RoleTrace is an open-source career intelligence workbench for AI Product, AI Full-stack / Agent Engineering, and Forward Deployed Engineering roles.
+SignalFit is an open-source career intelligence workbench for AI Product, AI Full-stack / Agent Engineering, and Forward Deployed Engineering roles.
 
 It turns three distinct inputs into an explainable capability map:
 
@@ -14,7 +14,7 @@ The output is a role-specific scorecard, prioritized gap list, and radar visuali
 
 ## Why this exists
 
-Most career tools collapse job descriptions, interview anecdotes, and resume keywords into one opaque score. RoleTrace keeps their provenance separate:
+Most career tools collapse job descriptions, interview anecdotes, and resume keywords into one opaque score. SignalFit keeps their provenance separate:
 
 - JD signals describe what the market asks for.
 - Verified interview reports describe what candidates were actually tested on.
