@@ -23,7 +23,7 @@ cd signalfit
 ./signalfit example
 ```
 
-Then start Codex, Claude Code, Kimi Code, Gemini CLI, or another repository-aware coding agent in this directory and ask:
+Then start OpenCode, Claude Code, Codex, or another repository-aware coding agent and ask:
 
 ```text
 Read AGENTS.md. Analyze my local resume at /absolute/path/to/resume.pdf with SignalFit. Keep the resume and all generated results local. Then summarize my fit for AI Product, AI Full-stack / Agent Engineering, and FDE, and give me the local radar report path.

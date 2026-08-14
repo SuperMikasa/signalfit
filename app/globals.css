@@ -144,6 +144,7 @@ main { min-height: 100vh; }
 .launch-intro code, .prompt-step small code { font-family: var(--font-mono); font-size: .9em; }
 .agent-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
 .agent-chips span { padding: 7px 10px; background: rgba(255,255,255,.5); border: 1px solid #9fb2d4; font: 10px var(--font-mono); color: #3e506d; }
+.agent-chips strong { align-self: center; margin-left: 4px; color: var(--cobalt); font-size: 10px; }
 .local-route { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 10px; margin-top: 34px; padding-top: 19px; border-top: 1px solid #9fb2d4; }
 .local-route div { min-width: 0; }
 .local-route b { display: block; color: var(--cobalt); font: 9px var(--font-mono); letter-spacing: .07em; }
@@ -167,6 +168,9 @@ main { min-height: 100vh; }
 .copy-panel button:hover { background: var(--cobalt); border-color: var(--cobalt); }
 .prompt-panel { align-items: end; border-left-color: var(--orange); }
 .prompt-step small { display: block; margin-top: 12px; color: #74829a; font-size: 10px; line-height: 1.6; }
+.manual-fallback { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; padding: 17px 25px; color: #74829a; border-bottom: 1px solid #34425a; }
+.manual-fallback span { font: 9px var(--font-mono); letter-spacing: .05em; }
+.manual-fallback code { color: #91a2bd; font: 10px/1.6 var(--font-mono); overflow-wrap: anywhere; }
 .console-foot { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 25px; font-size: 10px; }
 .local-lock { color: #8fa0b9; }
 .local-lock b { color: #6fe3bd; margin-right: 6px; }
@@ -235,6 +239,7 @@ footer > span { justify-self: end; }
   .console-bar > span { display: none; }
   .copy-panel { grid-template-columns: 1fr; }
   .copy-panel button { width: 100%; }
+  .manual-fallback { grid-template-columns: 1fr; }
   .console-foot { align-items: flex-start; flex-direction: column; padding-top: 18px; padding-bottom: 18px; }
   .open-source-section { gap: 55px; padding-top: 76px; padding-bottom: 76px; }
   footer { grid-template-columns: 1fr auto; }

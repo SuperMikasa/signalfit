@@ -23,12 +23,14 @@ test("server-renders the SignalFit workbench", async () => {
   const html = await response.text();
   assert.match(html, /<title>SignalFit｜AI 岗位能力地图<\/title>/i);
   assert.match(html, /沿着证据找差距/);
-  assert.match(html, /一键启用 Coding Agent/);
+  assert.match(html, /使用 Coding Agent 一键启动/);
+  assert.match(html, /OpenCode、Claude Code、Codex 都可以/);
+  assert.match(html, /复制一键启动指令/);
   assert.match(html, /git clone https:\/\/github\.com\/SuperMikasa\/signalfit\.git/);
   assert.match(html, /读取 AGENTS\.md/);
   assert.match(html, /不要上传、复制或提交简历与生成结果/);
   assert.match(html, /Claude Code/);
-  assert.match(html, /Kimi Code/);
+  assert.match(html, /OpenCode/);
   assert.match(html, /AI 全栈 \/ Agent 工程/);
   assert.match(html, /透明，比一个神秘总分更重要/);
   assert.match(html, /MIT License/);

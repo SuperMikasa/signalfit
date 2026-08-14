@@ -39,7 +39,7 @@ type FitData = {
 const roleOrder = ["ai_pm", "ai_fullstack", "fde"];
 
 const installCommand = "git clone https://github.com/SuperMikasa/signalfit.git && cd signalfit && ./signalfit doctor";
-const agentPrompt = "读取 AGENTS.md。使用 SignalFit 分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
+const agentPrompt = "请在当前目录使用 Coding Agent 一键启动 SignalFit：如果尚未存在 signalfit，先运行 git clone https://github.com/SuperMikasa/signalfit.git；进入 signalfit 后读取 AGENTS.md，并分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
 
 function isFitData(value: unknown): value is FitData {
   if (!value || typeof value !== "object") return false;
@@ -57,7 +57,7 @@ export default function Home() {
   const [fitData, setFitData] = useState<FitData>(exampleFit as FitData);
   const [selectedRole, setSelectedRole] = useState("ai_fullstack");
   const [importMessage, setImportMessage] = useState("正在查看匿名示例数据");
-  const [copyState, setCopyState] = useState<"install" | "prompt" | "error" | null>(null);
+  const [copyState, setCopyState] = useState<"prompt" | "error" | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
 
   const availableRoles = useMemo(
@@ -83,10 +83,10 @@ export default function Home() {
     }
   }
 
-  async function copyText(value: string, key: "install" | "prompt") {
+  async function copyText(value: string) {
     try {
       await navigator.clipboard.writeText(value);
-      setCopyState(key);
+      setCopyState("prompt");
       window.setTimeout(() => setCopyState(null), 2200);
     } catch {
       setCopyState("error");
@@ -103,7 +103,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#map">能力地图</a>
           <a href="#method">方法</a>
-          <a href="#start">一键启用</a>
+          <a href="#start">Agent 启动</a>
           <a href="#open-source">开源</a>
         </div>
         <a className="github-link" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
@@ -118,7 +118,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <button className="primary-action" onClick={() => document.querySelector("#start")?.scrollIntoView({ behavior: "smooth" })}>
-              一键启用 Coding Agent <span aria-hidden="true">↓</span>
+              使用 Coding Agent 一键启动 <span aria-hidden="true">↓</span>
             </button>
             <button className="secondary-action" onClick={() => fileInput.current?.click()}>
               导入评分 JSON
@@ -218,10 +218,10 @@ export default function Home() {
       <section className="agent-launch-section" id="start">
         <div className="launch-intro">
           <p className="section-kicker">AGENT QUICKSTART / 开箱即用</p>
-          <h2>不上传简历。<br /><em>把任务交给你的 Coding Agent。</em></h2>
-          <p>复制安装命令，再把标准指令粘贴给 Agent。它会读取仓库里的 <code>AGENTS.md</code>，在本机完成评分、证据提取、缺口排序和雷达报告。</p>
+          <h2>打开 Coding Agent。<br /><em>一条指令直接启动。</em></h2>
+          <p>OpenCode、Claude Code、Codex 都可以。复制一条启动指令，Agent 会自行克隆仓库、读取 <code>AGENTS.md</code>，并在本机完成评分、证据提取、缺口排序和雷达报告。</p>
           <div className="agent-chips" aria-label="兼容的 Coding Agent">
-            <span>Codex</span><span>Claude Code</span><span>Kimi Code</span><span>Gemini CLI</span><span>其他 Coding CLI</span>
+            <span>OpenCode</span><span>Claude Code</span><span>Codex</span><span>其他 Coding Agent</span><strong>均可使用</strong>
           </div>
           <div className="local-route" aria-label="本地数据流">
             <div><b>INPUT</b><strong>你的简历路径</strong></div>
@@ -239,25 +239,20 @@ export default function Home() {
             <strong>NO UPLOAD</strong>
           </div>
 
-          <div className="console-step">
-            <div className="step-label"><b>01</b><span>克隆并自检</span></div>
-            <div className="copy-panel">
-              <code>{installCommand}</code>
-              <button type="button" onClick={() => copyText(installCommand, "install")}>
-                {copyState === "install" ? "已复制 ✓" : "复制安装命令"}
-              </button>
-            </div>
-          </div>
-
           <div className="console-step prompt-step">
-            <div className="step-label"><b>02</b><span>粘贴给 Coding Agent</span></div>
+            <div className="step-label"><b>01</b><span>复制并粘贴给 OpenCode / Claude Code / Codex</span></div>
             <div className="copy-panel prompt-panel">
               <p>{agentPrompt}</p>
-              <button type="button" onClick={() => copyText(agentPrompt, "prompt")}>
-                {copyState === "prompt" ? "已复制 ✓" : "复制 Agent 指令"}
+              <button type="button" onClick={() => copyText(agentPrompt)}>
+                {copyState === "prompt" ? "已复制，可以启动 ✓" : "复制一键启动指令"}
               </button>
             </div>
             <small>粘贴前，把 <code>/absolute/path/to/resume.pdf</code> 换成你电脑上的真实简历路径。</small>
+          </div>
+
+          <div className="manual-fallback">
+            <span>MANUAL FALLBACK / 手动备用</span>
+            <code>{installCommand}</code>
           </div>
 
           <div className="console-foot">
@@ -274,7 +269,7 @@ export default function Home() {
         <div className="source-copy">
           <p className="section-kicker">OPEN SOURCE / 开放协议</p>
           <h2>Clone 仓库，把简历留在本机。</h2>
-          <p>项目以 MIT 协议开放。下载后让 Codex、Claude Code、Kimi Code 或其他 coding CLI 读取 AGENTS.md，再运行本地命令即可生成多岗位评分、证据清单和雷达报告。简历与结果默认写入 Git 忽略目录，不会自动上传或公开。</p>
+          <p>项目以 MIT 协议开放。使用 OpenCode、Claude Code、Codex 或其他 Coding Agent 读取 AGENTS.md，即可在本机生成多岗位评分、证据清单和雷达报告。简历与结果默认写入 Git 忽略目录，不会自动上传或公开。</p>
           <div className="source-actions">
             <a className="primary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">在 GitHub 获取项目</a>
             <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit#use-with-any-coding-cli" target="_blank" rel="noreferrer">本地运行说明</a>
