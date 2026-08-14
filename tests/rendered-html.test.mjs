@@ -38,7 +38,7 @@ test("keeps public assets anonymous and open-source ready", async () => {
   ]);
 
   const publicText = [page, example, readme].join("\n");
-  assert.doesNotMatch(publicText, /hexuchen|何徐宸|\/Users\//i);
+  assert.doesNotMatch(publicText, /\/Users\/|resume_path|candidate_name/i);
   assert.match(packageJson, /"name": "roletrace"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await access(new URL("../LICENSE", import.meta.url));
