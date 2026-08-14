@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useMemo, useRef, useState } from "react";
+import baselineMap from "@/data/baseline/role-capability-map.json";
 import exampleFit from "@/public/example-fit.json";
 import { RadarChart } from "./radar-chart";
 
@@ -37,6 +38,19 @@ type FitData = {
 };
 
 const roleOrder = ["ai_pm", "ai_fullstack", "fde"];
+const marketRoles = baselineMap.roles as Record<string, {
+  jd_job_count: number;
+  jd_signal_count: number;
+  real_interview_count: number;
+}>;
+const marketTotals = Object.values(marketRoles).reduce(
+  (total, role) => ({
+    jobs: total.jobs + role.jd_job_count,
+    requirements: total.requirements + role.jd_signal_count,
+    interviews: total.interviews + role.real_interview_count,
+  }),
+  { jobs: 0, requirements: 0, interviews: 0 },
+);
 
 const installCommand = "git clone https://github.com/SuperMikasa/signalfit.git && cd signalfit && ./signalfit doctor";
 const agentPrompt = "请在当前目录使用 Coding Agent 一键启动 SignalFit：如果尚未存在 signalfit，先运行 git clone https://github.com/SuperMikasa/signalfit.git；进入 signalfit 后先运行 ./signalfit update 获取最新公开 AI 岗位基线，再读取 AGENTS.md，并分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
@@ -117,6 +131,7 @@ export default function Home() {
           <p className="hero-intro">
             SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
           </p>
+          <p className="market-proof">当前已收集 <strong>{marketTotals.requirements} 条 AI 岗位要求</strong>，来自 {marketTotals.jobs} 份独立 JD，并纳入 {marketTotals.interviews} 条已验收真实面经。</p>
           <div className="role-scope" aria-label="当前覆盖的 AI 岗位">
             <span>AI 产品</span><span>AI 全栈 / Agent 工程</span><span>FDE</span>
           </div>
@@ -135,16 +150,16 @@ export default function Home() {
         <aside className="signal-board" aria-label="证据流水线概览">
           <div className="board-header"><span>证据流水线</span><span>持续更新</span></div>
           <div className="signal-flow">
-            <div><b>01</b><span>官方 JD</span><strong>{fitData.baseline.jd_signal_count}</strong><small>原子信号</small></div>
+            <div><b>01</b><span>独立 JD</span><strong>{marketTotals.jobs}</strong><small>公开有效岗位</small></div>
             <i aria-hidden="true">→</i>
-            <div><b>02</b><span>真实面经</span><strong>{fitData.baseline.interview_count}</strong><small>核验记录</small></div>
+            <div><b>02</b><span>岗位要求</span><strong>{marketTotals.requirements}</strong><small>原子能力信号</small></div>
             <i aria-hidden="true">→</i>
-            <div><b>03</b><span>能力轴</span><strong>{role.axes.length}</strong><small>当前 Top</small></div>
+            <div><b>03</b><span>真实面经</span><strong>{marketTotals.interviews}</strong><small>已验收记录</small></div>
           </div>
           <div className="board-foot">
             <span className="status-dot" />
-            <p><b>{fitData.baseline.status === "complete" ? "完整基线" : "临时基线"}</b><br />排名会随新增证据重算</p>
-            <time>{new Date(fitData.generated_at).toLocaleDateString("zh-CN")}</time>
+            <p><b>{baselineMap.baseline.status === "complete" ? "完整基线" : "provisional / 临时基线"}</b><br />排名会随新增证据重算</p>
+            <time>{new Date(baselineMap.generated_at).toLocaleDateString("zh-CN")}</time>
           </div>
         </aside>
       </section>
@@ -163,7 +178,10 @@ export default function Home() {
               aria-selected={selectedRole === key}
               onClick={() => setSelectedRole(key)}
             >
-              <span>{fitData.roles[key].role_label}</span>
+              <div>
+                <span>{fitData.roles[key].role_label}</span>
+                <small>{marketRoles[key].jd_job_count} JD · {marketRoles[key].jd_signal_count} 条要求 · {marketRoles[key].real_interview_count} 面经</small>
+              </div>
               <strong>{fitData.roles[key].overall_score}</strong>
             </button>
           ))}

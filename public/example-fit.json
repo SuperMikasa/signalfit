@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "generated_at": "2026-08-14T00:00:00-04:00",
   "candidate_label": "匿名示例候选人",
-  "baseline": { "status": "provisional", "jd_signal_count": 58, "interview_count": 12 },
+  "baseline": { "status": "provisional", "jd_job_count": 15, "jd_signal_count": 58, "interview_count": 20 },
   "roles": {
     "ai_pm": {
       "role_label": "AI 产品",

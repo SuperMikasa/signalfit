@@ -40,6 +40,8 @@ main { min-height: 100vh; }
 .hero h1 { margin: 0; max-width: 780px; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: clamp(58px, 6.1vw, 92px); line-height: 1.04; letter-spacing: -.055em; font-weight: 800; }
 .hero h1 em { font-style: normal; color: var(--cobalt); }
 .hero-intro { max-width: 660px; margin: 34px 0 0; font-size: 17px; line-height: 1.85; color: #465269; }
+.market-proof { max-width: 660px; margin: 17px 0 0; color: #57657c; font-size: 12px; line-height: 1.7; }
+.market-proof strong { color: var(--cobalt); font-size: 13px; }
 .role-scope { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
 .role-scope span { padding: 8px 11px; color: #26406c; background: #e8efff; border-left: 3px solid var(--cobalt); font: 10px var(--font-mono); }
 .hero-actions, .source-actions { display: flex; align-items: center; gap: 12px; margin-top: 34px; }
@@ -79,6 +81,9 @@ main { min-height: 100vh; }
 .role-switcher button:last-child { border-right: 0; }
 .role-switcher button[aria-selected="true"] { color: white; background: var(--cobalt); }
 .role-switcher span { font-weight: 700; }
+.role-switcher button > div { display: grid; gap: 6px; }
+.role-switcher small { color: var(--muted); font: 9px var(--font-mono); }
+.role-switcher button[aria-selected="true"] small { color: #c9d5ff; }
 .role-switcher strong { font: 700 25px "Arial Narrow", sans-serif; }
 .instrument-grid { display: grid; grid-template-columns: 1.03fr .97fr; border: 1px solid var(--line); }
 .radar-panel, .gap-panel { min-width: 0; padding: 30px; }
