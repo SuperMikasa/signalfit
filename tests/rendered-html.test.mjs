@@ -42,6 +42,7 @@ test("keeps public assets anonymous and open-source ready", async () => {
   assert.match(packageJson, /"name": "signalfit"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await access(new URL("../LICENSE", import.meta.url));
+  await access(new URL("../public/signalfit-source-v0.2.0.tar.gz", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
   await access(root);
 });
