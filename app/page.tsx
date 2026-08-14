@@ -39,7 +39,7 @@ type FitData = {
 const roleOrder = ["ai_pm", "ai_fullstack", "fde"];
 
 const installCommand = "git clone https://github.com/SuperMikasa/signalfit.git && cd signalfit && ./signalfit doctor";
-const agentPrompt = "请在当前目录使用 Coding Agent 一键启动 SignalFit：如果尚未存在 signalfit，先运行 git clone https://github.com/SuperMikasa/signalfit.git；进入 signalfit 后读取 AGENTS.md，并分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
+const agentPrompt = "请在当前目录使用 Coding Agent 一键启动 SignalFit：如果尚未存在 signalfit，先运行 git clone https://github.com/SuperMikasa/signalfit.git；进入 signalfit 后先运行 ./signalfit update 获取最新公开 AI 岗位基线，再读取 AGENTS.md，并分析我的本地简历：/absolute/path/to/resume.pdf。不要上传、复制或提交简历与生成结果。完成后总结我对 AI 产品、AI 全栈 / Agent 工程和 FDE 三个岗位的匹配度、最强证据、优先缺口，并给出本地雷达报告路径。";
 
 function isFitData(value: unknown): value is FitData {
   if (!value || typeof value !== "object") return false;
@@ -104,6 +104,7 @@ export default function Home() {
           <a href="#map">能力地图</a>
           <a href="#method">方法</a>
           <a href="#start">Agent 启动</a>
+          <a href="#loop">持续更新</a>
           <a href="#open-source">开源</a>
         </div>
         <a className="github-link" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
@@ -111,7 +112,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span>AI ROLE INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.3</span></p>
+          <p className="eyebrow"><span>AI ROLE INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.4</span></p>
           <h1>只看 AI 岗位。<br /><em>沿着证据找差距。</em></h1>
           <p className="hero-intro">
             SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
@@ -268,6 +269,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="community-loop-section" id="loop">
+        <header className="section-heading">
+          <div><p className="section-kicker">LIVING BASELINE / 持续更新</p><h2>用一次，也让 AI 能力地图更准。</h2></div>
+          <p>用户获取最新公开基线；仓库每周检查新鲜度；社区把新的 JD、真实面经和能力变化反向提交给维护者。</p>
+        </header>
+        <div className="loop-grid">
+          <article>
+            <b>USER UPDATE</b><strong>01</strong><h3>一条命令同步最新基线</h3>
+            <code>./signalfit update</code>
+            <p>只下载公开能力地图，不上传简历。离线时仍可继续使用仓库内 provisional 基线。</p>
+          </article>
+          <article>
+            <b>WEEKLY CHECK</b><strong>02</strong><h3>每周检查是否过期</h3>
+            <p>GitHub 定时检查基线生成时间。超过新鲜度目标就自动创建维护任务，提醒重新核验 JD 与面经。</p>
+            <a href="https://github.com/SuperMikasa/signalfit/actions/workflows/baseline-refresh.yml" target="_blank" rel="noreferrer">查看更新状态 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article className="contribution-card">
+            <b>COMMUNITY IN</b><strong>03</strong><h3>把市场变化反向告诉我们</h3>
+            <p>结构化提交先进入审核队列；只有可核验的官方 JD 和 accepted 真实面经才会进入下一版能力地图。</p>
+            <div className="contribution-links">
+              <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-ai-jd.yml" target="_blank" rel="noreferrer">提交 AI JD</a>
+              <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml" target="_blank" rel="noreferrer">提交真实面经</a>
+              <a href="https://github.com/SuperMikasa/signalfit/issues/new?template=propose-capability.yml" target="_blank" rel="noreferrer">建议新能力</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="open-source-section" id="open-source">
         <div className="source-copy">
           <p className="section-kicker">OPEN SOURCE / 开放协议</p>
@@ -282,8 +311,9 @@ export default function Home() {
         </div>
         <div className="pipeline-code" aria-label="开源处理流程">
           <div><span>01</span><code>git clone signalfit</code><p>获取公开基线与 Agent 说明</p></div>
-          <div><span>02</span><code>./signalfit analyze</code><p>本地简历 → 证据与缺口</p></div>
-          <div><span>03</span><code>./signalfit serve</code><p>本机展示能力雷达</p></div>
+          <div><span>02</span><code>./signalfit update</code><p>同步最新公开 AI 能力基线</p></div>
+          <div><span>03</span><code>./signalfit analyze</code><p>本地简历 → 证据与缺口</p></div>
+          <div><span>04</span><code>./signalfit serve</code><p>本机展示能力雷达</p></div>
         </div>
       </section>
 

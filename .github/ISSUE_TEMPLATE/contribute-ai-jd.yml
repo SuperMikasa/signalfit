@@ -1,0 +1,42 @@
+name: 提交 AI 岗位 JD
+description: 提交一个公开、可访问的 AI 产品、AI 全栈 / Agent 工程或 FDE 官方 JD
+title: "[AI JD] "
+labels: ["evidence:jd", "needs-review"]
+body:
+  - type: dropdown
+    id: role
+    attributes:
+      label: 岗位方向
+      options:
+        - AI 产品
+        - AI 全栈 / Agent 工程
+        - FDE / 前线部署工程
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 官方 JD 链接
+      placeholder: https://company.com/careers/...
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: 公司与岗位名称
+    validations:
+      required: true
+  - type: textarea
+    id: signals
+    attributes:
+      label: 你认为关键的能力信号
+      description: 请概括 1–5 条，不要复制整份 JD。
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 提交确认
+      options:
+        - label: 链接来自公开官方招聘页面，不含简历、联系方式、Cookie 或登录后内容。
+          required: true

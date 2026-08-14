@@ -17,3 +17,9 @@ Include the affected path, why it is sensitive, and the minimum steps needed to 
 ## Local import boundary
 
 The public web interface reads imported JSON in the browser. The current version does not send imported files to a server or persist them in a database.
+
+`./signalfit update` is the only default CLI operation that accesses the network. It downloads the public capability-map JSON over HTTPS, validates its schema and required AI role families, and stores it under the Git-ignored `.signalfit/baseline/` directory. It does not read or upload a resume.
+
+## Public contribution boundary
+
+GitHub contribution forms are public. Never submit a resume, candidate name, email address, phone number, private message, account identifier, cookie, credential, or login-only source. Summarize public JD and interview evidence instead of copying full pages. Report accidental sensitive disclosure through the private security channel above.

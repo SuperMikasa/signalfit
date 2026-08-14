@@ -1,4 +1,5 @@
 import json
+import importlib.util
 import subprocess
 import sys
 import tempfile
@@ -9,6 +10,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "signalfit_cli.py"
 SAMPLE_RESUME = ROOT / "examples" / "resume.sample.md"
+
+spec = importlib.util.spec_from_file_location("signalfit_cli", CLI)
+assert spec and spec.loader
+signalfit_cli = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(signalfit_cli)
 
 
 class SignalFitCliTest(unittest.TestCase):
@@ -40,6 +46,13 @@ class SignalFitCliTest(unittest.TestCase):
             self.assertEqual(set(fit["roles"]), {"ai_pm", "ai_fullstack", "fde"})
             self.assertTrue((output / "role-fit-radar.html").is_file())
             self.assertTrue((output / "role-fit-radar-ai_pm.svg").is_file())
+
+    def test_rejects_incomplete_updated_baseline(self):
+        baseline = json.loads((ROOT / "data" / "baseline" / "role-capability-map.json").read_text(encoding="utf-8"))
+        signalfit_cli.validate_capability_map(baseline)
+        del baseline["roles"]["fde"]
+        with self.assertRaisesRegex(ValueError, "必须包含"):
+            signalfit_cli.validate_capability_map(baseline)
 
 
 if __name__ == "__main__":

@@ -12,6 +12,24 @@ Run both the local CLI tests and public demo tests before opening a pull request
 4. Run `npm run build` and `npm test`.
 5. Confirm the change does not add resumes, private paths, credentials, cookies, or copyrighted page dumps.
 
+## Contribute market evidence
+
+Use the structured GitHub forms for [AI job descriptions](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-ai-jd.yml), [real interview reports](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml), and [new capability proposals](https://github.com/SuperMikasa/signalfit/issues/new?template=propose-capability.yml).
+
+Submissions are an intake queue, not accepted evidence. A maintainer must verify the source and classify it before it can affect a baseline:
+
+1. Official JD signals require a public company careers URL and an active-role check.
+2. Interview evidence requires a public, traceable source. Only the latest `accepted` record with `evidence_type=real_interview_report` enters interview counts.
+3. Practice questions and inferred topics never count as real interview reports.
+4. Location, work authorization, graduation timing, experience years, and working hours remain eligibility constraints rather than capabilities.
+5. Capability proposals should cite at least two independent sources and explain their boundary from existing axes.
+
+Summarize sources in your own words. Do not paste full copyrighted pages or include candidate identities, private messages, or personal contact details.
+
+## Baseline refresh cadence
+
+The weekly GitHub workflow checks the bundled baseline age. When it exceeds 14 days, it creates or updates a maintainer refresh task. A reviewed refresh uses `build-role-capability-map`, reads back all three role maps, and preserves `provisional` until the expanded baseline is complete.
+
 ## Design principles
 
 - Explain every score with inspectable inputs.

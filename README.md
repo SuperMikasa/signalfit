@@ -20,13 +20,14 @@ Scores mean **resume evidence coverage**. They are not hiring probabilities and 
 git clone https://github.com/SuperMikasa/signalfit.git
 cd signalfit
 ./signalfit doctor
+./signalfit update
 ./signalfit example
 ```
 
 Then start OpenCode, Claude Code, Codex, or another repository-aware coding agent and ask:
 
 ```text
-Read AGENTS.md. Analyze my local resume at /absolute/path/to/resume.pdf with SignalFit. Keep the resume and all generated results local. Then summarize my fit for AI Product, AI Full-stack / Agent Engineering, and FDE, and give me the local radar report path.
+Update SignalFit's public AI-role baseline, read AGENTS.md, and analyze my local resume at /absolute/path/to/resume.pdf. Keep the resume and all generated results local. Then summarize my fit for AI Product, AI Full-stack / Agent Engineering, and FDE, and give me the local radar report path.
 ```
 
 The deterministic command behind that workflow is:
@@ -67,6 +68,18 @@ Each run creates:
 
 The generated JSON stores only the resume filename, not its absolute filesystem path or a file fingerprint.
 
+## Keep the AI-role baseline current
+
+Users can fetch the latest reviewed public baseline without uploading a resume:
+
+```bash
+./signalfit update
+```
+
+The downloaded map is schema-checked and stored under the Git-ignored `.signalfit/baseline/` directory. Future analyses prefer this cache and fall back to the bundled provisional baseline when no update is available.
+
+The repository also runs a weekly freshness check. If the bundled baseline is older than 14 days, GitHub Actions opens or updates a maintainer task for a reviewed JD and interview-evidence refresh. The scheduled check does not admit unreviewed community content directly into scores.
+
 ## How it works
 
 ```text
@@ -94,7 +107,7 @@ SignalFit is designed so a user can keep sensitive career material on their own 
 
 - resumes are read from the path the user provides;
 - private runs default to the ignored `.signalfit/` directory;
-- the launcher makes no network requests;
+- resume analysis makes no network requests; the explicit `update` command downloads only the public capability baseline;
 - generated reports are never published automatically;
 - public examples are synthetic and contain no personal resume data.
 
@@ -119,7 +132,13 @@ python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/r
 
 ## Contributing
 
-Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing scoring rules, evidence sources, or privacy behavior.
+Community evidence is part of the product loop:
+
+- [submit an official AI job description](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-ai-jd.yml);
+- [submit a verifiable AI interview report](https://github.com/SuperMikasa/signalfit/issues/new?template=contribute-interview.yml);
+- [propose a new capability axis](https://github.com/SuperMikasa/signalfit/issues/new?template=propose-capability.yml).
+
+Every contribution enters review first. Official JD signals, accepted real interview reports, inferred practice questions, and eligibility constraints remain separate. Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing scoring rules, evidence sources, or privacy behavior.
 
 ## License
 
