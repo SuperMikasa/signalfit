@@ -2,6 +2,8 @@
 
 SignalFit is designed to work with career data, which can contain personally identifying information.
 
+The default CLI reads resumes locally and writes results only to the Git-ignored `.signalfit/` directory. It does not upload resumes or publish reports. Users should still review generated artifacts before moving them outside that directory.
+
 ## Supported versions
 
 Security and privacy fixes are applied to the latest release.

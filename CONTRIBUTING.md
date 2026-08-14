@@ -2,6 +2,8 @@
 
 Thanks for improving SignalFit. Small, evidence-backed changes are preferred over broad scoring rewrites.
 
+Run both the local CLI tests and public demo tests before opening a pull request. Never add a real resume or generated private report as a fixture; use synthetic data under `examples/`.
+
 ## Before opening a pull request
 
 1. Create an issue for changes to scoring semantics or accepted evidence types.

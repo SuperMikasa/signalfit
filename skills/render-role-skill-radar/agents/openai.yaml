@@ -1,0 +1,4 @@
+interface:
+  display_name: "生成岗位能力雷达图"
+  short_description: "将多岗位简历匹配结果生成雷达图、优势和缺口摘要结果。"
+  default_prompt: "Use $render-role-skill-radar to render the latest role-fit scores as radar charts and a gap report."

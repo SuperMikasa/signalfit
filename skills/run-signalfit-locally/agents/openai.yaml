@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run SignalFit Locally"
+  short_description: "Analyze a private resume against AI role maps"
+  default_prompt: "Use $run-signalfit-locally to analyze my local resume and generate a private role-fit radar."

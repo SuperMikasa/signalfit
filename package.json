@@ -1,6 +1,6 @@
 {
   "name": "signalfit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "engines": {
     "node": ">=22.13.0"
@@ -9,7 +9,8 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs && python3 -m unittest tests/test_signalfit_cli.py",
+    "test:cli": "python3 -m unittest tests/test_signalfit_cli.py",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {

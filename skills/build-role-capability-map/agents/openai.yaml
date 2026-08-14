@@ -1,0 +1,4 @@
+interface:
+  display_name: "构建岗位能力地图"
+  short_description: "从最新 JD 与面经证据生成多岗位 Top 能力地图。"
+  default_prompt: "Use $build-role-capability-map to refresh the AI PM, AI fullstack, and FDE capability maps from the latest evidence."

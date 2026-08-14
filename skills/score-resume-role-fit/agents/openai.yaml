@@ -1,0 +1,4 @@
+interface:
+  display_name: "评估简历岗位匹配"
+  short_description: "按岗位能力地图评估简历证据、匹配分数和关键能力缺口。"
+  default_prompt: "Use $score-resume-role-fit to score this resume against the latest role capability maps and list evidence-backed gaps."

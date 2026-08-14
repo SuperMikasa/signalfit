@@ -1,99 +1,125 @@
 # SignalFit
 
-[Live site](https://roletrace-open.eric348737.chatgpt.site) · [Source repository](https://github.com/SuperMikasa/signalfit)
+**Clone it. Point your coding agent at a local resume. Get an evidence-backed AI role radar.**
 
-SignalFit is an open-source career intelligence workbench for AI Product, AI Full-stack / Agent Engineering, and Forward Deployed Engineering roles.
+[Public demo](https://roletrace-open.eric348737.chatgpt.site) · [MIT License](LICENSE)
 
-It turns three distinct inputs into an explainable capability map:
+SignalFit is a local-first career intelligence toolkit for three role families:
 
-1. official job-description signals;
-2. accepted, candidate-authored interview reports;
-3. evidence that can be located in a resume.
+- AI Product;
+- AI Full-stack / Agent Engineering;
+- Forward Deployed Engineering (FDE).
 
-The output is a role-specific scorecard, prioritized gap list, and radar visualization. A score is **resume evidence coverage**, not a hiring probability or a claim about a person’s full ability.
+It compares a local resume with an evidence-backed capability baseline derived from public job descriptions and accepted interview reports. The result is a role scorecard, quoted resume evidence, prioritized gaps, SVG radar charts, and a standalone HTML report.
 
-## Why this exists
+Scores mean **resume evidence coverage**. They are not hiring probabilities and do not measure abilities that are absent from the document.
 
-Most career tools collapse job descriptions, interview anecdotes, and resume keywords into one opaque score. SignalFit keeps their provenance separate:
-
-- JD signals describe what the market asks for.
-- Verified interview reports describe what candidates were actually tested on.
-- Resume evidence describes what a candidate can currently prove.
-- Location, work authorization, graduation date, and work hours remain separate eligibility constraints.
-
-## Demo
-
-The site ships with an anonymized example in [`public/example-fit.json`](public/example-fit.json). You can import another compatible JSON file directly in the browser. Imported files are read locally and are not uploaded.
-
-The published site also exposes a versioned MIT source archive, so the project remains downloadable even when a GitHub mirror is temporarily unavailable.
-
-## Run locally
-
-Requires Node.js 22.13 or newer.
+## Use with any coding CLI
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/SuperMikasa/signalfit.git
+cd signalfit
+./signalfit doctor
+./signalfit example
 ```
 
-Then open the local URL printed by the development server.
+Then start Codex, Claude Code, Kimi Code, Gemini CLI, or another repository-aware coding agent in this directory and ask:
 
-## Validate
+```text
+Read AGENTS.md. Analyze my local resume at /absolute/path/to/resume.pdf with SignalFit. Keep the resume and all generated results local. Then summarize my fit for AI Product, AI Full-stack / Agent Engineering, and FDE, and give me the local radar report path.
+```
+
+The deterministic command behind that workflow is:
 
 ```bash
-npm run build
+./signalfit analyze /absolute/path/to/resume.pdf
+```
+
+Results are written under `.signalfit/`, which is ignored by Git. To view the latest report over a local-only HTTP server:
+
+```bash
+./signalfit serve
+# http://127.0.0.1:8788/role-fit-radar.html
+```
+
+No global skill installation is required. Coding agents can follow [AGENTS.md](AGENTS.md). Codex users may optionally copy `skills/run-signalfit-locally` into their personal skills directory.
+
+## Supported resume files
+
+Markdown, TXT, and DOCX work with Python's standard library. PDF requires either `pdftotext` or `pypdf`:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+./signalfit analyze /absolute/path/to/resume.pdf
+```
+
+The `signalfit` launcher automatically uses `.venv/bin/python` when that environment exists.
+
+## Outputs
+
+Each run creates:
+
+- `resume-role-fit.json` — machine-readable scores and quoted evidence;
+- `resume-role-fit.md` — readable Chinese evidence and gap report;
+- `role-fit-radar.html` — standalone responsive report;
+- `role-fit-radar-*.svg` — one chart per role.
+
+The generated JSON stores only the resume filename, not its absolute filesystem path or a file fingerprint.
+
+## How it works
+
+```text
+public JD signals + accepted interview reports
+                    ↓
+          role capability baseline
+                    ↓
+             local resume file
+                    ↓
+ evidence scoring → gaps → radar report
+```
+
+The repository packages four agent skills:
+
+- `run-signalfit-locally` — private end-to-end local workflow;
+- `build-role-capability-map` — JD/interview evidence → ranked role capabilities;
+- `score-resume-role-fit` — resume → quoted evidence and prioritized gaps;
+- `render-role-skill-radar` — fit JSON → HTML, Markdown, and SVG.
+
+The bundled baseline is currently marked `provisional`. Eligibility constraints such as location, work authorization, graduation date, and work hours stay separate from capability scores.
+
+## Privacy model
+
+SignalFit is designed so a user can keep sensitive career material on their own machine:
+
+- resumes are read from the path the user provides;
+- private runs default to the ignored `.signalfit/` directory;
+- the launcher makes no network requests;
+- generated reports are never published automatically;
+- public examples are synthetic and contain no personal resume data.
+
+Do not commit private resumes, generated fit reports, cookies, tokens, or restricted source text. See [SECURITY.md](SECURITY.md).
+
+## Development
+
+The local resume pipeline requires Python 3.10 or newer. The public demo additionally requires Node.js 22.13 or newer.
+
+```bash
+./signalfit doctor
+./signalfit example
+npm install
 npm test
 ```
 
-## Input shape
+Validate the repository skills with:
 
-The browser accepts a JSON document with a `roles` object. Each role contains:
-
-```json
-{
-  "role_label": "AI Full-stack / Agent Engineering",
-  "overall_score": 84,
-  "axes": [
-    {
-      "rank": 1,
-      "label": "Full-stack production delivery",
-      "candidate_score": 100,
-      "market_score": 85,
-      "gap_priority": 0,
-      "learning_actions": ["Keep production-delivery evidence current"]
-    }
-  ],
-  "gaps": [],
-  "constraints_to_review": { "signal_count": 0 }
-}
+```bash
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/run-signalfit-locally
 ```
-
-See the complete example for all supported fields.
-
-## Companion skills
-
-The pipeline is deliberately split into three single-purpose skills:
-
-- `build-role-capability-map`: JD and accepted interview evidence → ranked capabilities.
-- `score-resume-role-fit`: resume → evidence coverage and prioritized gaps.
-- `render-role-skill-radar`: fit JSON → radar and readable report.
-
-This repository contains the public web surface. The skills can be used independently or connected to a scheduled evidence collection workflow.
-
-## Privacy and evidence policy
-
-Do not commit:
-
-- private resumes or personally identifying application material;
-- cookies, tokens, account data, private messages, or paywalled text;
-- complete copies of third-party articles or job boards;
-- unverified search snippets presented as interview evidence.
-
-Public examples should use aggregate counts, short paraphrases, and synthetic or anonymized candidate evidence. See [SECURITY.md](SECURITY.md) for reporting sensitive-data exposure.
 
 ## Contributing
 
-Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a new scoring rule or evidence source.
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing scoring rules, evidence sources, or privacy behavior.
 
 ## License
 

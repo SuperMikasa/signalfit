@@ -96,7 +96,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span>OPEN CAREER INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.2</span></p>
+          <p className="eyebrow"><span>OPEN CAREER INTELLIGENCE</span><span aria-hidden="true">/</span><span>v0.3</span></p>
           <h1>别猜岗位要什么。<br /><em>沿着证据找差距。</em></h1>
           <p className="hero-intro">
             SignalFit 把公开 JD 和已核验面经压缩成岗位能力地图，再用简历里的可定位证据计算匹配度。它不预测录用，只显示你能证明什么、下一步该补什么。
@@ -203,19 +203,19 @@ export default function Home() {
       <section className="open-source-section" id="open-source">
         <div className="source-copy">
           <p className="section-kicker">OPEN SOURCE / 开放协议</p>
-          <h2>拿走方法，换成你的岗位和简历。</h2>
-          <p>项目以 MIT 协议开放。示例数据不含个人简历、Cookie、账号信息或受限页面正文。你可以替换岗位族、能力词典与评分规则，也可以把每日数据更新接入自己的任务系统。</p>
+          <h2>Clone 仓库，把简历留在本机。</h2>
+          <p>项目以 MIT 协议开放。下载后让 Codex、Claude Code、Kimi Code 或其他 coding CLI 读取 AGENTS.md，再运行本地命令即可生成多岗位评分、证据清单和雷达报告。简历与结果默认写入 Git 忽略目录，不会自动上传或公开。</p>
           <div className="source-actions">
-            <a className="primary-action" href="/signalfit-source-v0.2.0.tar.gz" download>下载源代码（MIT）</a>
-            <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">打开 GitHub</a>
+            <a className="primary-action" href="https://github.com/SuperMikasa/signalfit" target="_blank" rel="noreferrer">在 GitHub 获取项目</a>
+            <a className="secondary-action" href="https://github.com/SuperMikasa/signalfit#use-with-any-coding-cli" target="_blank" rel="noreferrer">本地运行说明</a>
             <a className="secondary-action" href="/example-fit.json" download>示例 JSON</a>
           </div>
-          <p className="mirror-note">GitHub 与版本化源码归档保持同一套 MIT 开源代码。</p>
+          <p className="mirror-note"><code>./signalfit analyze /path/to/resume.pdf</code> · local-first · no upload</p>
         </div>
         <div className="pipeline-code" aria-label="开源处理流程">
-          <div><span>01</span><code>build-role-capability-map</code><p>JD + 面经 → Top 能力</p></div>
-          <div><span>02</span><code>score-resume-role-fit</code><p>简历 → 证据与缺口</p></div>
-          <div><span>03</span><code>render-role-skill-radar</code><p>评分 → 可视化工作台</p></div>
+          <div><span>01</span><code>git clone signalfit</code><p>获取公开基线与 Agent 说明</p></div>
+          <div><span>02</span><code>./signalfit analyze</code><p>本地简历 → 证据与缺口</p></div>
+          <div><span>03</span><code>./signalfit serve</code><p>本机展示能力雷达</p></div>
         </div>
       </section>
 
