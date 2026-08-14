@@ -36,6 +36,7 @@ main { min-height: 100vh; overflow: hidden; }
 .hero h1 em { font-style: normal; color: var(--cobalt); }
 .hero-intro { max-width: 660px; margin: 34px 0 0; font-size: 17px; line-height: 1.85; color: #465269; }
 .hero-actions, .source-actions { display: flex; align-items: center; gap: 12px; margin-top: 34px; }
+.source-actions { flex-wrap: wrap; }
 .primary-action, .secondary-action { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 22px; padding: 0 20px; border: 1px solid var(--ink); font-weight: 750; font-size: 13px; cursor: pointer; }
 .primary-action { color: white; background: var(--ink); }
 .primary-action:hover { background: var(--cobalt); border-color: var(--cobalt); }

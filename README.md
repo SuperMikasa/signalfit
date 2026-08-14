@@ -1,5 +1,7 @@
 # RoleTrace
 
+[Live site](https://roletrace-open.eric348737.chatgpt.site) · [Source repository](https://github.com/SuperMikasa/roletrace)
+
 RoleTrace is an open-source career intelligence workbench for AI Product, AI Full-stack / Agent Engineering, and Forward Deployed Engineering roles.
 
 It turns three distinct inputs into an explainable capability map:
