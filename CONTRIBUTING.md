@@ -28,10 +28,10 @@ Summarize sources in your own words. Do not paste full copyrighted pages or incl
 To add an official ATS board, update `data/evidence/source-catalog.json` and run:
 
 ```bash
-python3 tools/scan_recent_jds.py --as-of YYYY-MM-DD --days 14 --output-dir data/evidence/recent-14d
+tools/run_daily_discovery.sh
 ```
 
-Review `coverage-report.md`, every `needs_review` row, and the accepted atomic signals before promotion. A successful API response is discovery evidence, not automatic admission into the scored baseline.
+Use `provider: auto` with an official HTTPS `careers_url` when the ATS slug is unknown or may have migrated. The resolver currently recognizes Ashby, Greenhouse, Lever, and `JobPosting` JSON-LD. Review `source-run.log`, `source-runs.jsonl`, every `needs_review` row, and the accepted atomic signals before promotion. A successful API response is discovery evidence, not automatic admission into the scored baseline.
 
 ## Baseline refresh cadence
 

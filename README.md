@@ -87,10 +87,29 @@ The repository also runs a weekly freshness check. If the bundled baseline is ol
 Maintainers can reproduce the high-recall official ATS scan before review:
 
 ```bash
-python3 tools/scan_recent_jds.py --as-of YYYY-MM-DD --days 14 --output-dir data/evidence/recent-14d
+tools/run_daily_discovery.sh
 ```
 
-The source registry is [`data/evidence/source-catalog.json`](data/evidence/source-catalog.json). Generic roles that merely mention AI stay in `needs_review`; only strict or explicitly reviewed AI roles produce scoring signals.
+The daily runner streams a detailed Chinese log and writes an auditable run under `.signalfit-cache/runs/YYYY-MM-DD/`. Full provider responses are gzip-compressed under `.signalfit-cache/raw/YYYY-MM-DD/`; both locations are Git-ignored. The scheduled discovery run never promotes evidence or rewrites the public capability map automatically.
+
+On macOS with cmux installed, open the same run in a dedicated workspace:
+
+```bash
+tools/open_daily_discovery_cmux.sh
+```
+
+The source registry is [`data/evidence/source-catalog.json`](data/evidence/source-catalog.json). SignalFit v0.7 uses provider adapters for Ashby, Greenhouse, and Lever, plus an official-page resolver that can detect those providers or standards-based `JobPosting` JSON-LD. A resolver entry looks like:
+
+```json
+{
+  "provider": "auto",
+  "company": "Example AI",
+  "careers_url": "https://example.ai/careers",
+  "region": "US"
+}
+```
+
+Each run produces `source-run.log` with the site, request URL, HTTP result, raw count, 14-day count, accepted count, review count, and raw snapshot location. `source-runs.jsonl` contains the same evidence in machine-readable form. Generic roles that merely mention AI stay in `needs_review`; only strict or explicitly reviewed AI roles produce scoring signals.
 
 ## How it works
 

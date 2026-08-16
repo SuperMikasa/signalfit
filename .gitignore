@@ -43,5 +43,6 @@ yarn-error.log*
 
 # SignalFit private local runs
 /.signalfit/
+/.signalfit-cache/
 /private/
 resume.private.*

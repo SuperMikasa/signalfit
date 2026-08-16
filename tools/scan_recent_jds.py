@@ -5,22 +5,25 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import html
 import json
 import re
 import sys
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from threading import Lock
+from time import perf_counter
 from typing import Any
-from urllib.parse import quote
-from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+
+from source_adapters import HttpClient, get_adapter, resolve_source, write_raw_snapshot
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = ROOT / "data" / "evidence" / "source-catalog.json"
-USER_AGENT = "SignalFit/0.6 (+https://github.com/SuperMikasa/signalfit)"
+USER_AGENT = "SignalFit/0.7 (+https://github.com/SuperMikasa/signalfit)"
 
 ROLE_LABELS = {
     "ai_pm": "AI 产品",
@@ -137,17 +140,102 @@ ROLE_PRIORITY = {
 }
 
 
-def fetch_json(url: str) -> Any:
-    request = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
-    with urlopen(request, timeout=45) as response:
-        return json.load(response)
+class ChineseRunLogger:
+    def __init__(self, quiet: bool = False) -> None:
+        self.quiet = quiet
+        self.lines: list[str] = []
+        self._lock = Lock()
+
+    def emit(self, message: str) -> None:
+        stamp = datetime.now().astimezone().isoformat(timespec="seconds")
+        line = f"[{stamp}] {message}"
+        with self._lock:
+            self.lines.append(line)
+            if not self.quiet:
+                print(line, file=sys.stderr, flush=True)
+
+    def write(self, path: Path) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("\n".join(self.lines) + "\n", encoding="utf-8")
 
 
-def strip_html(value: str) -> str:
-    value = re.sub(r"<script\b[^>]*>.*?</script>", " ", value or "", flags=re.I | re.S)
-    value = re.sub(r"<style\b[^>]*>.*?</style>", " ", value, flags=re.I | re.S)
-    value = re.sub(r"<[^>]+>", " ", value)
-    return re.sub(r"\s+", " ", html.unescape(value)).strip()
+@dataclass
+class SourceScan:
+    source_key: str
+    source_index: int
+    configured_source: dict[str, Any]
+    effective_source: dict[str, Any]
+    started_at: str
+    finished_at: str
+    elapsed_ms: int
+    jobs: list[dict[str, Any]] = field(default_factory=list)
+    request_url: str | None = None
+    final_url: str | None = None
+    http_status: int | None = None
+    outcome: str = "success"
+    error: str | None = None
+    raw_snapshot_path: str | None = None
+    raw_body_sha256: str | None = None
+    resolver_snapshot_path: str | None = None
+    resolver_body_sha256: str | None = None
+    resolution: dict[str, str] | None = None
+
+
+def _source_key(index: int, source: dict[str, Any]) -> str:
+    identity = f"{index}:{source.get('provider')}:{source.get('board')}:{source.get('company')}"
+    return hashlib.sha256(identity.encode("utf-8")).hexdigest()[:16]
+
+
+def _display_raw_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT))
+    except ValueError:
+        return str(path.resolve())
+
+
+def _failure_outcome(exc: Exception) -> str:
+    if isinstance(exc, HTTPError):
+        if exc.code == 404:
+            return "migration_suspected"
+        if exc.code in {401, 403, 429}:
+            return "access_limited"
+    if isinstance(exc, ValueError) and "auto source" in str(exc):
+        return "resolver_required"
+    if isinstance(exc, URLError):
+        return "environment_unavailable"
+    return "failed"
+
+
+def validate_source_catalog(catalog: Any) -> list[dict[str, Any]]:
+    if not isinstance(catalog, dict):
+        raise ValueError("source catalog must be a JSON object")
+    sources = catalog.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("catalog sources must be a list")
+    seen: set[tuple[str, str, str]] = set()
+    for index, source in enumerate(sources):
+        if not isinstance(source, dict):
+            raise ValueError(f"source #{index} must be an object")
+        provider = str(source.get("provider") or "")
+        company = str(source.get("company") or "")
+        if not company:
+            raise ValueError(f"source #{index} requires company")
+        if provider == "auto":
+            careers_url = str(source.get("careers_url") or "")
+            if not careers_url.startswith("https://"):
+                raise ValueError(f"auto source #{index} requires an HTTPS careers_url")
+            identity_value = careers_url
+        else:
+            get_adapter(provider)
+            board = str(source.get("board") or "")
+            if not board:
+                raise ValueError(f"{provider} source #{index} requires board")
+            identity_value = board
+        identity = (provider, identity_value, company)
+        if identity in seen:
+            raise ValueError(f"duplicate source #{index}: {provider} / {company} / {identity_value}")
+        seen.add(identity)
+    return sources
 
 
 def parse_day(value: Any) -> date | None:
@@ -161,75 +249,6 @@ def parse_day(value: Any) -> date | None:
             return date.fromisoformat(text[:10])
         except ValueError:
             return None
-
-
-def provider_url(provider: str, board: str) -> str:
-    if provider == "ashby":
-        return f"https://api.ashbyhq.com/posting-api/job-board/{quote(board, safe='')}"
-    if provider == "greenhouse":
-        return f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs?content=true"
-    if provider == "lever":
-        return f"https://api.lever.co/v0/postings/{board}?mode=json"
-    raise ValueError(f"unsupported provider: {provider}")
-
-
-def normalize_jobs(source: dict[str, str], payload: Any) -> list[dict[str, Any]]:
-    provider = source["provider"]
-    rows = payload.get("jobs", []) if isinstance(payload, dict) else payload if isinstance(payload, list) else []
-    jobs: list[dict[str, Any]] = []
-    for row in rows:
-        if not isinstance(row, dict):
-            continue
-        if provider == "ashby":
-            description = row.get("descriptionPlain") or strip_html(str(row.get("descriptionHtml") or ""))
-            jobs.append({
-                "provider": provider,
-                "board": source["board"],
-                "company": source["company"],
-                "allow_generic_ai_pm": bool(source.get("allow_generic_ai_pm")),
-                "provider_job_id": str(row.get("id") or ""),
-                "title": str(row.get("title") or ""),
-                "source_url": str(row.get("jobUrl") or row.get("applyUrl") or ""),
-                "location": str(row.get("location") or row.get("address", {}).get("postalAddress", {}).get("addressLocality") or "Unspecified"),
-                "posted_at": row.get("publishedAt"),
-                "timestamp_basis": "publishedAt",
-                "description": str(description or ""),
-            })
-        elif provider == "greenhouse":
-            location = row.get("location") or {}
-            jobs.append({
-                "provider": provider,
-                "board": source["board"],
-                "company": source["company"] if str(row.get("company_name") or "") in {"", "Job Board"} else str(row["company_name"]),
-                "allow_generic_ai_pm": bool(source.get("allow_generic_ai_pm")),
-                "provider_job_id": str(row.get("id") or ""),
-                "title": str(row.get("title") or ""),
-                "source_url": str(row.get("absolute_url") or ""),
-                "location": str(location.get("name") if isinstance(location, dict) else location or "Unspecified"),
-                "posted_at": row.get("first_published"),
-                "timestamp_basis": "first_published",
-                "description": strip_html(str(row.get("content") or "")),
-            })
-        else:
-            categories = row.get("categories") or {}
-            created_at = row.get("createdAt")
-            posted_at = None
-            if isinstance(created_at, (int, float)):
-                posted_at = datetime.fromtimestamp(created_at / 1000, tz=timezone.utc).isoformat()
-            jobs.append({
-                "provider": provider,
-                "board": source["board"],
-                "company": source["company"],
-                "allow_generic_ai_pm": bool(source.get("allow_generic_ai_pm")),
-                "provider_job_id": str(row.get("id") or ""),
-                "title": str(row.get("text") or ""),
-                "source_url": str(row.get("hostedUrl") or row.get("applyUrl") or ""),
-                "location": str(categories.get("location") if isinstance(categories, dict) else "Unspecified"),
-                "posted_at": posted_at,
-                "timestamp_basis": "createdAt",
-                "description": " ".join(str(row.get(key) or "") for key in ("descriptionPlain", "descriptionBodyPlain", "additionalPlain", "openingPlain")),
-            })
-    return jobs
 
 
 def classify_role(job: dict[str, Any]) -> tuple[str, str] | None:
@@ -292,7 +311,7 @@ def public_job(job: dict[str, Any], role: str, scope_tier: str, posted_day: date
         "retrieved_at": retrieved_at.isoformat(),
         "location": job["location"],
         "description_sha256": hashlib.sha256(description.encode()).hexdigest(),
-        "validation_method": "official_ats_api+strict_date_window+body_readable",
+        "validation_method": job.get("validation_method") or "official_ats_api+strict_date_window+body_readable",
     }
 
 
@@ -345,12 +364,116 @@ def signal_rows(job: dict[str, Any], role: str, scope_tier: str, posted_day: dat
     return rows
 
 
-def scan_source(source: dict[str, str]) -> tuple[dict[str, str], list[dict[str, Any]], str | None]:
+def scan_source(
+    source_index: int,
+    source: dict[str, Any],
+    client: HttpClient,
+    raw_dir: Path,
+    snapshot_day: date,
+    raw_cache: bool,
+    logger: ChineseRunLogger,
+) -> SourceScan:
+    source_key = _source_key(source_index, source)
+    configured = dict(source)
+    effective = dict(source)
+    resolution_payload = None
+    resolver_raw_path = None
+    resolver_raw_sha = None
+    started_at = datetime.now(timezone.utc).isoformat()
+    started_clock = perf_counter()
+    logger.emit(
+        f"开始扫描：{source.get('provider', 'auto')} / {source.get('company', '未知公司')} "
+        f"（{source.get('board') or source.get('careers_url') or '未配置入口'}）"
+    )
     try:
-        payload = fetch_json(provider_url(source["provider"], source["board"]))
-        return source, normalize_jobs(source, payload), None
+        if source.get("provider") == "auto":
+            effective, resolution, resolver_response = resolve_source(source, client)
+            resolution_payload = {
+                "provider": resolution.provider,
+                "board": resolution.board,
+                "evidence_url": resolution.evidence_url,
+            }
+            logger.emit(
+                f"来源识别：{source.get('company', '未知公司')} → "
+                f"{resolution.provider} / {resolution.board}"
+            )
+            if raw_cache:
+                resolver_source = dict(source)
+                resolver_source["provider"] = "resolver"
+                resolver_source["board"] = source.get("careers_url")
+                snapshot_path, resolver_raw_sha = write_raw_snapshot(
+                    raw_dir, snapshot_day, resolver_source, resolver_response
+                )
+                resolver_raw_path = _display_raw_path(snapshot_path)
+                logger.emit(
+                    f"Resolver Raw 快照：{source.get('company')} → {resolver_raw_path}"
+                    f"（sha256 {resolver_raw_sha[:12]}…）"
+                )
+        adapter = get_adapter(str(effective.get("provider") or ""))
+        response = adapter.fetch(effective, client)
+        raw_path = None
+        raw_sha = None
+        if raw_cache:
+            snapshot_path, raw_sha = write_raw_snapshot(raw_dir, snapshot_day, effective, response)
+            raw_path = _display_raw_path(snapshot_path)
+        jobs = adapter.normalize(effective, response)
+        for job in jobs:
+            job["_source_key"] = source_key
+        finished_at = datetime.now(timezone.utc).isoformat()
+        elapsed_ms = round((perf_counter() - started_clock) * 1000)
+        logger.emit(
+            f"读取完成：{effective.get('provider')} / {effective.get('company')}，"
+            f"HTTP {response.status_code}，获取 active 职位 {len(jobs)} 个，"
+            f"入口 {response.request_url}，耗时 {elapsed_ms}ms"
+        )
+        if raw_path:
+            logger.emit(f"Raw 快照：{effective.get('company')} → {raw_path}（sha256 {raw_sha[:12]}…）")
+        return SourceScan(
+            source_key=source_key,
+            source_index=source_index,
+            configured_source=configured,
+            effective_source=effective,
+            started_at=started_at,
+            finished_at=finished_at,
+            elapsed_ms=elapsed_ms,
+            jobs=jobs,
+            request_url=response.request_url,
+            final_url=response.final_url,
+            http_status=response.status_code,
+            raw_snapshot_path=raw_path,
+            raw_body_sha256=raw_sha,
+            resolver_snapshot_path=resolver_raw_path,
+            resolver_body_sha256=resolver_raw_sha,
+            resolution=resolution_payload,
+        )
     except Exception as exc:  # network/provider error is part of the audit report
-        return source, [], f"{type(exc).__name__}: {exc}"
+        finished_at = datetime.now(timezone.utc).isoformat()
+        elapsed_ms = round((perf_counter() - started_clock) * 1000)
+        error = f"{type(exc).__name__}: {exc}"
+        outcome = _failure_outcome(exc)
+        request_url = getattr(exc, "url", None)
+        http_status = getattr(exc, "code", None)
+        logger.emit(
+            f"读取失败：{source.get('provider')} / {source.get('company')}，"
+            f"状态 {outcome}，HTTP {http_status or '-'}，原因 {error}，"
+            f"入口 {request_url or source.get('careers_url') or source.get('board') or '-'}"
+        )
+        return SourceScan(
+            source_key=source_key,
+            source_index=source_index,
+            configured_source=configured,
+            effective_source=effective,
+            started_at=started_at,
+            finished_at=finished_at,
+            elapsed_ms=elapsed_ms,
+            outcome=outcome,
+            error=error,
+            request_url=str(request_url) if request_url else None,
+            http_status=int(http_status) if http_status else None,
+            resolver_snapshot_path=resolver_raw_path,
+            resolver_body_sha256=resolver_raw_sha,
+            resolution=resolution_payload,
+        )
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -363,7 +486,7 @@ def render_report(report: dict[str, Any]) -> str:
         "# 最近 14 天 AI 岗位覆盖报告",
         "",
         f"时间窗：{report['window']['start']} 至 {report['window']['end']}（含首尾）",
-        f"来源：{report['sources']['succeeded']} / {report['sources']['attempted']} 个官方 ATS 看板读取成功",
+        f"来源：{report['sources']['succeeded']} / {report['sources']['attempted']} 个官方招聘来源读取成功",
         f"扫描：{report['jobs']['raw']} 个 active 职位；时间窗内 {report['jobs']['within_window']} 个；目标岗位 {report['jobs']['accepted']} 个",
         "",
         "| 岗位 | 已验收 JD | 待复核相邻岗 | 原子信号 | 公司数 |",
@@ -383,6 +506,12 @@ def render_report(report: dict[str, Any]) -> str:
         f"- 正文能力信号不足：{report['jobs']['insufficient_signals']}",
         f"- URL 重复：{report['jobs']['duplicates']}",
         "",
+        "## 运行与 Raw 产物",
+        "",
+        f"- 中文详细日志：`{report['artifacts']['human_log']}`",
+        f"- 逐来源机器日志：`{report['artifacts']['source_runs']}`",
+        f"- Raw 快照目录：`{report['artifacts']['raw_cache']}`",
+        "",
         "## 失败来源",
         "",
     ])
@@ -395,34 +524,111 @@ def render_report(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def source_run_record(scan: SourceScan, counts: Counter[str]) -> dict[str, Any]:
+    configured = scan.configured_source
+    effective = scan.effective_source
+    return {
+        "schema_version": 1,
+        "source_key": scan.source_key,
+        "source_index": scan.source_index,
+        "company": configured.get("company"),
+        "configured_provider": configured.get("provider"),
+        "resolved_provider": effective.get("provider"),
+        "board": effective.get("board") or configured.get("board"),
+        "careers_url": configured.get("careers_url"),
+        "request_url": scan.request_url,
+        "final_url": scan.final_url,
+        "http_status": scan.http_status,
+        "outcome": scan.outcome,
+        "started_at": scan.started_at,
+        "finished_at": scan.finished_at,
+        "elapsed_ms": scan.elapsed_ms,
+        "raw_jobs": len(scan.jobs),
+        "within_window": counts["within_window"],
+        "target_jobs": counts["target_jobs"],
+        "accepted": counts["accepted"],
+        "needs_review": counts["needs_review"],
+        "outside_window": counts["outside_window"],
+        "missing_date": counts["missing_date"],
+        "not_target_role": counts["not_target_role"],
+        "duplicates": counts["duplicates"],
+        "insufficient_signals": counts["insufficient_signals"],
+        "raw_snapshot_path": scan.raw_snapshot_path,
+        "raw_body_sha256": scan.raw_body_sha256,
+        "resolver_snapshot_path": scan.resolver_snapshot_path,
+        "resolver_body_sha256": scan.resolver_body_sha256,
+        "resolution": scan.resolution,
+        "error": scan.error,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
     parser.add_argument("--as-of", type=date.fromisoformat, default=datetime.now(timezone.utc).date())
     parser.add_argument("--days", type=int, default=14)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "data" / "evidence" / "recent-14d")
+    parser.add_argument("--raw-dir", type=Path, default=ROOT / ".signalfit-cache" / "raw")
+    parser.add_argument("--no-raw-cache", action="store_true", help="do not persist private raw source snapshots")
+    parser.add_argument("--quiet", action="store_true", help="write detailed logs to disk without streaming them to stderr")
     parser.add_argument("--promote", type=Path, help="also write accepted signals to this canonical JSONL path")
     parser.add_argument("--merge-existing", action="store_true", help="preserve older canonical URLs when promoting")
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
     if args.days < 1 or args.days > 90:
         raise SystemExit("--days must be between 1 and 90")
+    if args.workers < 1 or args.workers > 32:
+        raise SystemExit("--workers must be between 1 and 32")
 
     catalog = json.loads(args.catalog.read_text(encoding="utf-8"))
-    sources = catalog.get("sources", [])
+    try:
+        sources = validate_source_catalog(catalog)
+    except ValueError as exc:
+        raise SystemExit(f"invalid source catalog: {exc}") from exc
     window_start = args.as_of - timedelta(days=args.days - 1)
+    output_dir = args.output_dir.resolve()
+    raw_dir = args.raw_dir.resolve()
+    logger = ChineseRunLogger(quiet=args.quiet)
+    client = HttpClient(USER_AGENT)
+    logger.emit(
+        f"SignalFit v0.7 开始：时间窗 {window_start.isoformat()} 至 {args.as_of.isoformat()}，"
+        f"来源 {len(sources)} 个，并发 {args.workers}，Raw 缓存 {'关闭' if args.no_raw_cache else raw_dir}"
+    )
+
     all_jobs: list[dict[str, Any]] = []
-    failures: list[dict[str, str]] = []
-    succeeded = 0
+    scans: list[SourceScan] = []
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = [executor.submit(scan_source, source) for source in sources]
+        futures = [
+            executor.submit(
+                scan_source,
+                index,
+                source,
+                client,
+                raw_dir,
+                args.as_of,
+                not args.no_raw_cache,
+                logger,
+            )
+            for index, source in enumerate(sources)
+        ]
         for future in as_completed(futures):
-            source, jobs, error = future.result()
-            if error:
-                failures.append({**source, "error": error})
-            else:
-                succeeded += 1
-                all_jobs.extend(jobs)
+            scan = future.result()
+            scans.append(scan)
+            all_jobs.extend(scan.jobs)
+    scans.sort(key=lambda item: item.source_index)
+    succeeded = sum(scan.error is None for scan in scans)
+    failures = [
+        {
+            "provider": scan.configured_source.get("provider"),
+            "board": scan.configured_source.get("board") or scan.configured_source.get("careers_url"),
+            "company": scan.configured_source.get("company"),
+            "outcome": scan.outcome,
+            "http_status": scan.http_status,
+            "request_url": scan.request_url,
+            "error": scan.error,
+        }
+        for scan in scans if scan.error
+    ]
 
     counters = Counter({
         "raw": len(all_jobs),
@@ -438,39 +644,59 @@ def main() -> int:
     discovered_jobs: list[dict[str, Any]] = []
     accepted_jobs: list[dict[str, Any]] = []
     accepted_signals: list[dict[str, Any]] = []
+    source_counts: dict[str, Counter[str]] = defaultdict(Counter)
     seen_urls: set[str] = set()
     for job in sorted(all_jobs, key=lambda item: (str(item.get("posted_at") or ""), item["company"], item["title"]), reverse=True):
+        job_source_key = str(job.get("_source_key") or "unknown")
+        per_source = source_counts[job_source_key]
         posted_day = parse_day(job.get("posted_at"))
         if not posted_day:
             counters["missing_date"] += 1
+            per_source["missing_date"] += 1
             continue
         if not (window_start <= posted_day <= args.as_of):
             counters["outside_window"] += 1
+            per_source["outside_window"] += 1
             continue
         counters["within_window"] += 1
+        per_source["within_window"] += 1
         classification = classify_role(job)
         if not classification:
             counters["not_target_role"] += 1
+            per_source["not_target_role"] += 1
             continue
+        per_source["target_jobs"] += 1
         role, scope_tier = classification
         url = job["source_url"].split("?")[0].rstrip("/")
         if not url or url in seen_urls:
             counters["duplicates"] += 1
+            per_source["duplicates"] += 1
             continue
         public = public_job(job, role, scope_tier, posted_day, args.as_of)
         discovered_jobs.append(public)
         if scope_tier == "adjacent_review":
             seen_urls.add(url)
             counters["adjacent_review"] += 1
+            per_source["needs_review"] += 1
             continue
         rows = signal_rows(job, role, scope_tier, posted_day, args.as_of)
         if not rows:
             counters["insufficient_signals"] += 1
+            per_source["insufficient_signals"] += 1
             continue
         seen_urls.add(url)
         accepted_jobs.append(public)
         accepted_signals.extend(rows)
+        per_source["accepted"] += 1
     counters["accepted"] = len(accepted_jobs)
+
+    source_runs = [source_run_record(scan, source_counts[scan.source_key]) for scan in scans]
+    for run in source_runs:
+        logger.emit(
+            f"来源汇总：{run['resolved_provider']} / {run['company']}，原始 {run['raw_jobs']}，"
+            f"14 天内 {run['within_window']}，目标 {run['target_jobs']}，"
+            f"已验收 {run['accepted']}，待复核 {run['needs_review']}，状态 {run['outcome']}"
+        )
 
     role_report: dict[str, Any] = {}
     for role in ROLE_LABELS:
@@ -488,22 +714,37 @@ def main() -> int:
         }
 
     report = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "window": {"start": window_start.isoformat(), "end": args.as_of.isoformat(), "days": args.days},
         "sources": {
             "attempted": len(sources),
             "succeeded": succeeded,
             "failed": len(failures),
-            "failures": sorted(failures, key=lambda item: (item["provider"], item["board"])),
+            "outcomes": dict(Counter(scan.outcome for scan in scans)),
+            "failures": sorted(failures, key=lambda item: (str(item["provider"]), str(item["board"]))),
         },
         "jobs": dict(counters),
         "roles": role_report,
+        "artifacts": {
+            "human_log": "source-run.log",
+            "source_runs": "source-runs.jsonl",
+            "raw_cache": _display_raw_path(raw_dir) if not args.no_raw_cache else "disabled",
+        },
     }
-    output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(output_dir / "recent-jobs.jsonl", discovered_jobs)
     write_jsonl(output_dir / "jd-signals.jsonl", accepted_signals)
+    write_jsonl(output_dir / "source-runs.jsonl", source_runs)
+    logger.emit(
+        f"扫描完成：成功来源 {succeeded}/{len(sources)}，active 职位 {len(all_jobs)}，"
+        f"14 天内 {counters['within_window']}，已验收 {counters['accepted']}，"
+        f"待复核 {counters['adjacent_review']}"
+    )
+    all_sources_failed = bool(sources) and succeeded == 0
+    if all_sources_failed:
+        logger.emit("运行失败：所有来源均不可读取；保留审计日志，但本轮不得视为有效侦查。")
+    logger.write(output_dir / "source-run.log")
     (output_dir / "coverage-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output_dir / "coverage-report.md").write_text(render_report(report), encoding="utf-8")
     if args.promote:
@@ -521,7 +762,7 @@ def main() -> int:
             ] + accepted_signals
         write_jsonl(promote_path, promoted)
     print(json.dumps(report, ensure_ascii=False))
-    return 0
+    return 2 if all_sources_failed else 0
 
 
 if __name__ == "__main__":

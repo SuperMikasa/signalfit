@@ -5,8 +5,8 @@ This directory is the auditable, public-safe input for the bundled SignalFit bas
 - `jd-signals.jsonl` contains one atomic requirement per line. Each row includes an official job URL, retrieval date, role family, capability key, importance, and a concise paraphrase.
 - `accepted-interview-snapshot.json` preserves only aggregate counts and short question summaries from previously accepted real-interview records. It does not republish full posts or personal data.
 - `question-bank.jsonl` and `record-status.jsonl` are the import surfaces for newly reviewed interview evidence.
-- `source-catalog.json` is the community-editable official ATS source registry.
-- `recent-14d/` contains the strict rolling discovery set, accepted signals, source success/failure report, and adjacent roles waiting for review.
+- `source-catalog.json` is the community-editable official source registry; `source-catalog.schema.json` documents provider and resolver fields.
+- `recent-14d/` contains the strict rolling discovery set, accepted signals, source success/failure report, detailed Chinese run log, per-source machine log, and adjacent roles waiting for review.
 - `baseline/baseline-progress.json` records coverage progress. The baseline remains `provisional` while China coverage and accepted interview breadth are still being expanded.
 
 Current cumulative snapshot: 106 independent active JD URLs and 606 atomic requirements. The 2026-08-02 to 2026-08-15 rolling scan attempted 138 official ATS boards, read 105 successfully, scanned 10,299 active jobs, found 1,581 jobs in-window, accepted 76 strict target jobs, and separated 22 adjacent jobs for manual review. Every newly accepted job contributes five capability signals plus one eligibility constraint; constraints never enter the radar score.
@@ -23,8 +23,24 @@ Source policy:
 Reproduce the rolling scan:
 
 ```bash
+tools/run_daily_discovery.sh
+```
+
+To stream that same command in a dedicated cmux workspace:
+
+```bash
+tools/open_daily_discovery_cmux.sh
+```
+
+The normal daily run writes to `.signalfit-cache/runs/YYYY-MM-DD/` so unreviewed discovery does not dirty or overwrite the public baseline. Raw provider responses are stored as private gzip envelopes under `.signalfit-cache/raw/YYYY-MM-DD/<provider>/`; the public run log keeps only paths, hashes, counts, URLs, statuses, and errors. Both cache roots are ignored by Git.
+
+For a reviewed maintainer refresh, write to the public audit directory explicitly:
+
+```bash
 python3 tools/scan_recent_jds.py \
-  --as-of 2026-08-15 \
+  --as-of YYYY-MM-DD \
   --days 14 \
   --output-dir data/evidence/recent-14d
 ```
+
+Source entries may use `ashby`, `greenhouse`, or `lever` with a provider board slug. A company with an official Careers page can instead use `provider: auto` plus `careers_url`; the resolver records the detected provider and evidence URL. An unresolved page is reported as `resolver_required` and never enters scoring.

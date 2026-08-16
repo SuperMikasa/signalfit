@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "sources": [
     {"provider": "ashby", "board": "Perplexity", "company": "Perplexity"},
     {"provider": "ashby", "board": "cohere", "company": "Cohere"},

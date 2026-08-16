@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SuperMikasa/signalfit/data/evidence/source-catalog.schema.json",
+  "title": "SignalFit public source catalog",
+  "type": "object",
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 2},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["provider", "company"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "provider": {"enum": ["ashby", "greenhouse", "lever", "auto", "jsonld"]},
+          "company": {"type": "string", "minLength": 1},
+          "board": {"type": "string"},
+          "careers_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "allow_generic_ai_pm": {"type": "boolean"},
+          "region": {"type": "string"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"provider": {"const": "auto"}}},
+            "then": {"required": ["careers_url"]},
+            "else": {"required": ["board"]}
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
