@@ -27,11 +27,11 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /当前累计/);
   assert.match(html, /606<!-- --> 条 AI 岗位要求/);
   assert.match(html, /106<!-- --> 份独立 JD/);
-  assert.match(html, /最近 14 天已扫描 105 个可读官方 ATS 看板/);
-  assert.match(html, /45<!-- --> 份可追溯真实面经/);
-  assert.match(html, /207<!-- --> 道已验收问题/);
-  assert.match(html, /36<!-- --> JD · <!-- -->206<!-- --> 条要求 · <!-- -->15<!-- --> 份面经 \/ <!-- -->76<!-- --> 题/);
-  assert.match(html, /40<!-- --> JD · <!-- -->230<!-- --> 条要求 · <!-- -->15<!-- --> 份面经 \/ <!-- -->46<!-- --> 题/);
+  assert.match(html, /最近 14 天已扫描 123 个可读官方 ATS 看板/);
+  assert.match(html, /57<!-- --> 份可追溯真实面经/);
+  assert.match(html, /277<!-- --> 道已验收问题/);
+  assert.match(html, /36<!-- --> JD · <!-- -->206<!-- --> 条要求 · <!-- -->18<!-- --> 份面经 \/ <!-- -->94<!-- --> 题/);
+  assert.match(html, /40<!-- --> JD · <!-- -->230<!-- --> 条要求 · <!-- -->16<!-- --> 份面经 \/ <!-- -->51<!-- --> 题/);
   assert.match(html, /三个 AI 方向，一套证据口径/);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /使用 Coding Agent 一键启动/);

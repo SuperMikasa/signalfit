@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-16T15:28:26.743416-04:00",
+  "generated_at": "2026-08-16T15:55:10.421742-04:00",
   "source_root": "data/evidence",
   "baseline": {
     "status": "in_progress",
@@ -34,9 +34,9 @@
       "coverage_status": "provisional",
       "jd_job_count": 36,
       "jd_signal_count": 206,
-      "real_interview_count": 15,
-      "real_interview_report_count": 15,
-      "real_interview_question_count": 76,
+      "real_interview_count": 18,
+      "real_interview_report_count": 18,
+      "real_interview_question_count": 94,
       "legacy_snapshot_question_count": 7,
       "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
@@ -48,9 +48,9 @@
           "jd_job_count": 33,
           "jd_signal_count": 33,
           "core_job_count": 26,
-          "interview_count": 7,
-          "interview_report_count": 7,
-          "interview_question_count": 7,
+          "interview_count": 8,
+          "interview_report_count": 8,
+          "interview_question_count": 8,
           "companies": [
             "Anthropic",
             "Asana",
@@ -128,19 +128,19 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 1,
-          "priority_weight": 0.256024
+          "priority_weight": 0.253731
         },
         {
           "capability_key": "product_strategy",
           "label": "AI 产品策略与路线图",
-          "market_score": 78,
+          "market_score": 79,
           "job_penetration": 0.7778,
           "jd_job_count": 28,
           "jd_signal_count": 28,
           "core_job_count": 14,
-          "interview_count": 12,
-          "interview_report_count": 12,
-          "interview_question_count": 22,
+          "interview_count": 15,
+          "interview_report_count": 15,
+          "interview_question_count": 25,
           "companies": [
             "Anthropic",
             "Asana",
@@ -218,7 +218,7 @@
             "准备一次模型能力、用户价值和商业约束的取舍案例"
           ],
           "rank": 2,
-          "priority_weight": 0.23494
+          "priority_weight": 0.235821
         },
         {
           "capability_key": "api_system_integration",
@@ -293,19 +293,19 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 3,
-          "priority_weight": 0.120482
+          "priority_weight": 0.119403
         },
         {
           "capability_key": "llm_evaluation",
           "label": "LLM 评测与实验",
-          "market_score": 48,
+          "market_score": 49,
           "job_penetration": 0.4444,
           "jd_job_count": 16,
           "jd_signal_count": 16,
           "core_job_count": 8,
-          "interview_count": 10,
-          "interview_report_count": 10,
-          "interview_question_count": 13,
+          "interview_count": 13,
+          "interview_report_count": 13,
+          "interview_question_count": 16,
           "companies": [
             "Binance",
             "Braze",
@@ -367,7 +367,7 @@
             "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
           ],
           "rank": 4,
-          "priority_weight": 0.144578
+          "priority_weight": 0.146269
         },
         {
           "capability_key": "customer_discovery",
@@ -377,9 +377,9 @@
           "jd_job_count": 16,
           "jd_signal_count": 16,
           "core_job_count": 7,
-          "interview_count": 10,
-          "interview_report_count": 10,
-          "interview_question_count": 11,
+          "interview_count": 12,
+          "interview_report_count": 12,
+          "interview_question_count": 13,
           "companies": [
             "Capco",
             "Corelight",
@@ -449,19 +449,19 @@
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
           "rank": 5,
-          "priority_weight": 0.144578
+          "priority_weight": 0.143284
         },
         {
           "capability_key": "security_safety",
           "label": "安全、权限与合规",
-          "market_score": 33,
+          "market_score": 34,
           "job_penetration": 0.3889,
           "jd_job_count": 14,
           "jd_signal_count": 14,
           "core_job_count": 6,
-          "interview_count": 0,
-          "interview_report_count": 0,
-          "interview_question_count": 0,
+          "interview_count": 1,
+          "interview_report_count": 1,
+          "interview_question_count": 1,
           "companies": [
             "Anthropic",
             "Braze",
@@ -475,7 +475,9 @@
             "岗位要求处理 AI 系统的安全、权限、合规、隐私或护栏设计。",
             "岗位要求处理 AI 系统的安全、权限、合规、隐私或护栏设计。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "金融 AI 如何持续控制偏见与合规风险？"
+          ],
           "resume_evidence_groups": [
             {
               "name": "权限",
@@ -510,7 +512,7 @@
             "准备一次 Prompt Injection 或敏感数据防护方案"
           ],
           "rank": 6,
-          "priority_weight": 0.099398
+          "priority_weight": 0.101493
         }
       ],
       "constraints": {
@@ -575,23 +577,23 @@
       "coverage_status": "provisional",
       "jd_job_count": 30,
       "jd_signal_count": 170,
-      "real_interview_count": 15,
-      "real_interview_report_count": 15,
-      "real_interview_question_count": 85,
+      "real_interview_count": 23,
+      "real_interview_report_count": 23,
+      "real_interview_question_count": 132,
       "legacy_snapshot_question_count": 11,
       "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
         {
           "capability_key": "agent_architecture",
           "label": "Agent 架构与运行时",
-          "market_score": 71,
+          "market_score": 70,
           "job_penetration": 0.6667,
           "jd_job_count": 20,
           "jd_signal_count": 20,
           "core_job_count": 12,
-          "interview_count": 14,
-          "interview_report_count": 14,
-          "interview_question_count": 30,
+          "interview_count": 21,
+          "interview_report_count": 21,
+          "interview_question_count": 37,
           "companies": [
             "BJAK",
             "Baseten",
@@ -671,19 +673,19 @@
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
           "rank": 1,
-          "priority_weight": 0.23127
+          "priority_weight": 0.22508
         },
         {
           "capability_key": "production_reliability",
           "label": "生产可靠性、监控与排障",
-          "market_score": 61,
+          "market_score": 62,
           "job_penetration": 0.6333,
           "jd_job_count": 19,
           "jd_signal_count": 19,
           "core_job_count": 12,
-          "interview_count": 7,
-          "interview_report_count": 7,
-          "interview_question_count": 8,
+          "interview_count": 12,
+          "interview_report_count": 12,
+          "interview_question_count": 13,
           "companies": [
             "BJAK",
             "Baseten",
@@ -759,19 +761,19 @@
             "整理一次真实生产故障的定位与修复复盘"
           ],
           "rank": 2,
-          "priority_weight": 0.198697
+          "priority_weight": 0.199357
         },
         {
           "capability_key": "llm_evaluation",
           "label": "LLM 评测与实验",
-          "market_score": 55,
+          "market_score": 56,
           "job_penetration": 0.6,
           "jd_job_count": 18,
           "jd_signal_count": 18,
           "core_job_count": 10,
-          "interview_count": 4,
-          "interview_report_count": 4,
-          "interview_question_count": 4,
+          "interview_count": 8,
+          "interview_report_count": 8,
+          "interview_question_count": 8,
           "companies": [
             "Baseten",
             "Capco",
@@ -837,19 +839,19 @@
             "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
           ],
           "rank": 3,
-          "priority_weight": 0.179153
+          "priority_weight": 0.180064
         },
         {
           "capability_key": "project_delivery",
           "label": "项目推进与端到端交付",
-          "market_score": 43,
+          "market_score": 45,
           "job_penetration": 0.4667,
           "jd_job_count": 14,
           "jd_signal_count": 14,
           "core_job_count": 8,
-          "interview_count": 3,
-          "interview_report_count": 3,
-          "interview_question_count": 3,
+          "interview_count": 8,
+          "interview_report_count": 8,
+          "interview_question_count": 8,
           "companies": [
             "Binance",
             "Capco",
@@ -920,19 +922,19 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 4,
-          "priority_weight": 0.140065
+          "priority_weight": 0.144695
         },
         {
           "capability_key": "api_system_integration",
           "label": "API、Webhook 与企业系统集成",
-          "market_score": 43,
+          "market_score": 44,
           "job_penetration": 0.4667,
           "jd_job_count": 14,
           "jd_signal_count": 14,
           "core_job_count": 5,
-          "interview_count": 3,
-          "interview_report_count": 3,
-          "interview_question_count": 3,
+          "interview_count": 7,
+          "interview_report_count": 7,
+          "interview_question_count": 7,
           "companies": [
             "Binance",
             "Cognition",
@@ -999,7 +1001,7 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 5,
-          "priority_weight": 0.140065
+          "priority_weight": 0.141479
         },
         {
           "capability_key": "fullstack_delivery",
@@ -1080,7 +1082,7 @@
             "补充部署、测试和性能证据"
           ],
           "rank": 6,
-          "priority_weight": 0.110749
+          "priority_weight": 0.109325
         }
       ],
       "constraints": {
@@ -1145,23 +1147,23 @@
       "coverage_status": "provisional",
       "jd_job_count": 40,
       "jd_signal_count": 230,
-      "real_interview_count": 15,
-      "real_interview_report_count": 15,
-      "real_interview_question_count": 46,
+      "real_interview_count": 16,
+      "real_interview_report_count": 16,
+      "real_interview_question_count": 51,
       "legacy_snapshot_question_count": 2,
       "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
         {
           "capability_key": "project_delivery",
           "label": "项目推进与端到端交付",
-          "market_score": 73,
+          "market_score": 74,
           "job_penetration": 0.825,
           "jd_job_count": 33,
           "jd_signal_count": 33,
           "core_job_count": 24,
-          "interview_count": 3,
-          "interview_report_count": 3,
-          "interview_question_count": 4,
+          "interview_count": 4,
+          "interview_report_count": 4,
+          "interview_question_count": 5,
           "companies": [
             "Accordion ",
             "Aircall",
@@ -1236,7 +1238,7 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 1,
-          "priority_weight": 0.220544
+          "priority_weight": 0.222892
         },
         {
           "capability_key": "api_system_integration",
@@ -1315,7 +1317,7 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 2,
-          "priority_weight": 0.199396
+          "priority_weight": 0.198795
         },
         {
           "capability_key": "agent_architecture",
@@ -1399,7 +1401,7 @@
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
           "rank": 3,
-          "priority_weight": 0.1571
+          "priority_weight": 0.156627
         },
         {
           "capability_key": "customer_communication",
@@ -1409,9 +1411,9 @@
           "jd_job_count": 23,
           "jd_signal_count": 23,
           "core_job_count": 9,
-          "interview_count": 8,
-          "interview_report_count": 8,
-          "interview_question_count": 9,
+          "interview_count": 9,
+          "interview_report_count": 9,
+          "interview_question_count": 10,
           "companies": [
             "Accordion ",
             "Anthropic",
@@ -1477,7 +1479,7 @@
             "用 STAR 结构整理一次跨团队推动案例"
           ],
           "rank": 4,
-          "priority_weight": 0.172205
+          "priority_weight": 0.171687
         },
         {
           "capability_key": "customer_discovery",
@@ -1559,7 +1561,7 @@
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
           "rank": 5,
-          "priority_weight": 0.132931
+          "priority_weight": 0.13253
         },
         {
           "capability_key": "production_reliability",
@@ -1639,7 +1641,7 @@
             "整理一次真实生产故障的定位与修复复盘"
           ],
           "rank": 6,
-          "priority_weight": 0.117825
+          "priority_weight": 0.11747
         }
       ],
       "constraints": {

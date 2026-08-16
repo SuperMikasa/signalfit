@@ -134,7 +134,7 @@ export default function Home() {
           <p className="hero-intro">
             SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
           </p>
-          <p className="market-proof">当前累计 <strong>{marketTotals.requirements} 条 AI 岗位要求</strong>，来自 {marketTotals.jobs} 份独立 JD；另有 {marketTotals.interviews} 份可追溯真实面经，提取 {marketTotals.questions} 道已验收问题。最近 14 天已扫描 105 个可读官方 ATS 看板与 10299 个 active 职位。</p>
+          <p className="market-proof">当前累计 <strong>{marketTotals.requirements} 条 AI 岗位要求</strong>，来自 {marketTotals.jobs} 份独立 JD；另有 {marketTotals.interviews} 份可追溯真实面经，提取 {marketTotals.questions} 道已验收问题。最近 14 天已扫描 123 个可读官方 ATS 看板与 11278 个 active 职位。</p>
           <div className="role-scope" aria-label="当前覆盖的 AI 岗位">
             <span>AI 产品</span><span>AI 全栈 / Agent 工程</span><span>FDE</span>
           </div>

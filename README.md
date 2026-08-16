@@ -12,7 +12,7 @@ SignalFit is a local-first career intelligence toolkit focused exclusively on AI
 
 It compares a local resume with an evidence-backed capability baseline derived from public job descriptions and accepted interview reports. The result is a role scorecard, quoted resume evidence, prioritized gaps, SVG radar charts, and a standalone HTML report.
 
-The current `provisional` baseline contains 106 role-classified independent active JD URLs, 606 atomic job-requirement signals, 45 traceable interview reports, and 207 accepted question summaries. By role: AI Product 36 / 206 / 15 / 76, AI Full-stack 30 / 170 / 15 / 85, and FDE 40 / 230 / 15 / 46 (JD / requirements / reports / questions). The latest strict rolling window covers 2026-08-02 through 2026-08-15: 138 official ATS boards attempted, 105 readable boards, 10,299 active jobs scanned, 1,581 in-window jobs, 76 accepted target jobs, and 22 adjacent roles kept out of scoring for manual review.
+The current `provisional` baseline contains 106 role-classified independent active JD URLs, 606 atomic job-requirement signals, 57 traceable interview reports, and 277 accepted question summaries. By role: AI Product 36 / 206 / 18 / 94, AI Full-stack 30 / 170 / 23 / 132, and FDE 40 / 230 / 16 / 51 (JD / requirements / reports / questions). Ten accepted reports were published in the latest 14-day interview window. The latest reviewed JD rolling window covers 2026-08-03 through 2026-08-16: 123 official ATS boards attempted and readable, 11,278 active jobs scanned, 1,755 in-window jobs, 100 accepted target jobs, and 29 adjacent roles kept out of scoring for manual review.
 
 The public-safe evidence layer lives in [`data/evidence`](data/evidence): every JD signal keeps its official source URL, retrieval date, role family, capability key, and separate eligibility constraint. Each accepted interview question keeps a report ID, public source URL, review status, and paraphrased prompt. Full copyrighted pages and candidate identities are not mirrored.
 
@@ -90,7 +90,7 @@ Maintainers can reproduce the high-recall official ATS scan before review:
 tools/run_daily_discovery.sh
 ```
 
-The daily runner streams a detailed Chinese log and writes an auditable run under `.signalfit-cache/runs/YYYY-MM-DD/`. Full provider responses are gzip-compressed under `.signalfit-cache/raw/YYYY-MM-DD/`; both locations are Git-ignored. The scheduled discovery run never promotes evidence or rewrites the public capability map automatically.
+The daily runner streams detailed Chinese JD and interview-discovery logs and writes an auditable run under `.signalfit-cache/runs/YYYY-MM-DD/`. It queries the public Nowcoder search surface, writes new review candidates to `interview-candidates.jsonl`, and records every query in `interview-source-runs.jsonl`. Full provider and interview-search responses are gzip-compressed under `.signalfit-cache/raw/YYYY-MM-DD/`; both locations are Git-ignored. The scheduled discovery run never promotes evidence or rewrites the public capability map automatically.
 
 On macOS with cmux installed, open the same run in a dedicated workspace:
 

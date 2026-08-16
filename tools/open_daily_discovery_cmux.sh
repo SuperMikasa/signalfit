@@ -10,8 +10,8 @@ if [ ! -x "$CMUX_BIN" ]; then
 fi
 
 exec "$CMUX_BIN" new-workspace \
-  --name "SignalFit 每日岗位侦查" \
-  --description "逐站中文日志、14 天 JD 增量、24 个月面经基线与 Raw 证据快照" \
+  --name "SignalFit JD+面经每日侦查" \
+  --description "逐站中文日志、14 天 JD 与面经增量、待验收链接和 Raw 证据快照" \
   --cwd "$PROJECT_DIR" \
   --command "tools/run_daily_discovery.sh" \
   --focus true

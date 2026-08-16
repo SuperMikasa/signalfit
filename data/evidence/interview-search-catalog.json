@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-16",
+  "increment_window_days": 14,
+  "queries": [
+    {"id":"nowcoder-ai-pm","provider":"nowcoder_search","role_family":"ai_pm","query":"AI 产品经理 面经"},
+    {"id":"nowcoder-llm-pm","provider":"nowcoder_search","role_family":"ai_pm","query":"大模型 产品经理 面经"},
+    {"id":"nowcoder-agent","provider":"nowcoder_search","role_family":"ai_fullstack","query":"AI Agent 面经"},
+    {"id":"nowcoder-ai-fullstack","provider":"nowcoder_search","role_family":"ai_fullstack","query":"AI 全栈 面经"},
+    {"id":"nowcoder-llm-app","provider":"nowcoder_search","role_family":"ai_fullstack","query":"大模型 应用开发 面经"},
+    {"id":"nowcoder-fde","provider":"nowcoder_search","role_family":"fde","query":"Forward Deployed Engineer 面经"}
+  ],
+  "manual_sources": [
+    {"platform":"xiaohongshu","status":"needs_login_review","reason":"公开搜索可发现线索，但正文和发布日期需要登录后逐条验收。"},
+    {"platform":"1point3acres","status":"needs_login_review","reason":"帖子正文通常需要登录，自动任务不得把标题或摘要当成真实面经。"},
+    {"platform":"linkedin","status":"external_search_review","reason":"公开帖子可作为一手来源，但站内搜索不提供稳定的无人值守公开接口。"},
+    {"platform":"reddit","status":"external_search_review","reason":"公开搜索端点在无人值守环境中返回登录页，改由外部搜索发现后逐条验收。"},
+    {"platform":"exponent","status":"external_search_review","reason":"只验收 candidate experience 页面，不采通用 guide。"},
+    {"platform":"glassdoor","status":"external_search_review","reason":"聚合页需要按候选人记录拆分并人工核对日期与岗位。"}
+  ]
+}

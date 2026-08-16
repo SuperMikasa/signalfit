@@ -23,6 +23,14 @@ python3 "${PROJECT_DIR}/tools/scan_recent_jds.py" \
   --output-dir "$RUN_DIR" \
   --raw-dir "$RAW_ROOT"
 
+python3 "${PROJECT_DIR}/tools/scan_recent_interviews.py" \
+  --as-of "$SCAN_DAY" \
+  --days "$WINDOW_DAYS" \
+  --catalog "${PROJECT_DIR}/data/evidence/interview-search-catalog.json" \
+  --evidence-dir "${PROJECT_DIR}/data/evidence" \
+  --output-dir "$RUN_DIR" \
+  --raw-dir "$RAW_ROOT"
+
 python3 "${PROJECT_DIR}/tools/audit_interview_evidence.py" \
   --evidence-dir "${PROJECT_DIR}/data/evidence" \
   --log "${RUN_DIR}/interview-evidence.log"
@@ -30,4 +38,7 @@ python3 "${PROJECT_DIR}/tools/audit_interview_evidence.py" \
 echo "SignalFit 每日侦查完成。中文日志：${RUN_DIR}/source-run.log"
 echo "逐来源审计：${RUN_DIR}/source-runs.jsonl"
 echo "面经逐网站审计：${RUN_DIR}/interview-evidence.log"
+echo "面经增量发现日志：${RUN_DIR}/interview-source-run.log"
+echo "面经待验收链接：${RUN_DIR}/interview-candidates.jsonl"
+echo "面经搜索 Raw：${RAW_ROOT}/${SCAN_DAY}/interviews/"
 echo "本次结果只进入侦查缓存，未自动改写公开能力地图。"

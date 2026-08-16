@@ -14,6 +14,7 @@
     {"platform":"exponent","access":"public","status":"active","role_families":["fde"],"notes":"只采候选人 experience 页面，不把通用 guide 算作真实面经。"},
     {"platform":"glassdoor","access":"partial_public","status":"active_with_medium_confidence","role_families":["fde"],"notes":"按公司、岗位与日期拆分候选人记录，平台聚合页置信度为 medium。"},
     {"platform":"jointaro","access":"public","status":"active_with_medium_confidence","role_families":["fde"],"notes":"只保留可见的候选人问题摘要。"},
+    {"platform":"linkedin","access":"public_post_via_external_search","status":"active_with_manual_discovery","role_families":["ai_pm","ai_fullstack","fde"],"notes":"只验收候选人明确以第一人称分享的公开帖子；搜索发现依赖外部索引。"},
     {"platform":"1point3acres","access":"login_limited","status":"lead_only","role_families":["ai_pm","ai_fullstack","fde"],"notes":"登录墙内容不能在无人值守链路中直接验收。"},
     {"platform":"xiaohongshu","access":"login_limited","status":"lead_only","role_families":["ai_pm","ai_fullstack","fde"],"notes":"公开搜索线索进入人工核验队列，正文不可读时不计分。"}
   ]
