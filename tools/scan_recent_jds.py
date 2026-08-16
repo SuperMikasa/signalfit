@@ -179,6 +179,7 @@ class SourceScan:
     resolver_snapshot_path: str | None = None
     resolver_body_sha256: str | None = None
     resolution: dict[str, str] | None = None
+    fetch_audit: dict[str, Any] | None = None
 
 
 def _source_key(index: int, source: dict[str, Any]) -> str:
@@ -235,6 +236,23 @@ def validate_source_catalog(catalog: Any) -> list[dict[str, Any]]:
         if identity in seen:
             raise ValueError(f"duplicate source #{index}: {provider} / {company} / {identity_value}")
         seen.add(identity)
+    for collection in ("deferred_sources", "retired_sources"):
+        entries = catalog.get(collection, [])
+        if not isinstance(entries, list):
+            raise ValueError(f"catalog {collection} must be a list")
+        for index, entry in enumerate(entries):
+            if not isinstance(entry, dict):
+                raise ValueError(f"{collection} #{index} must be an object")
+            if not str(entry.get("company") or ""):
+                raise ValueError(f"{collection} #{index} requires company")
+            if not str(entry.get("reason") or ""):
+                raise ValueError(f"{collection} #{index} requires reason")
+            if not str(entry.get("last_verified") or ""):
+                raise ValueError(f"{collection} #{index} requires last_verified")
+            if collection == "deferred_sources":
+                official_url = str(entry.get("official_url") or "")
+                if not official_url.startswith("https://"):
+                    raise ValueError(f"{collection} #{index} requires an HTTPS official_url")
     return sources
 
 
@@ -426,6 +444,11 @@ def scan_source(
             f"HTTP {response.status_code}，获取 active 职位 {len(jobs)} 个，"
             f"入口 {response.request_url}，耗时 {elapsed_ms}ms"
         )
+        if response.audit:
+            logger.emit(
+                f"适配器明细：{effective.get('provider')} / {effective.get('company')}，"
+                + "，".join(f"{key}={value}" for key, value in response.audit.items())
+            )
         if raw_path:
             logger.emit(f"Raw 快照：{effective.get('company')} → {raw_path}（sha256 {raw_sha[:12]}…）")
         return SourceScan(
@@ -445,6 +468,8 @@ def scan_source(
             resolver_snapshot_path=resolver_raw_path,
             resolver_body_sha256=resolver_raw_sha,
             resolution=resolution_payload,
+            fetch_audit=response.audit,
+            outcome="success" if jobs else "empty_success",
         )
     except Exception as exc:  # network/provider error is part of the audit report
         finished_at = datetime.now(timezone.utc).isoformat()
@@ -487,6 +512,7 @@ def render_report(report: dict[str, Any]) -> str:
         "",
         f"时间窗：{report['window']['start']} 至 {report['window']['end']}（含首尾）",
         f"来源：{report['sources']['succeeded']} / {report['sources']['attempted']} 个官方招聘来源读取成功",
+        f"目录缺口：{report['sources']['deferred']} 个待适配来源；{report['sources']['retired']} 个旧入口已退役",
         f"扫描：{report['jobs']['raw']} 个 active 职位；时间窗内 {report['jobs']['within_window']} 个；目标岗位 {report['jobs']['accepted']} 个",
         "",
         "| 岗位 | 已验收 JD | 待复核相邻岗 | 原子信号 | 公司数 |",
@@ -518,6 +544,33 @@ def render_report(report: dict[str, Any]) -> str:
     failures = report["sources"]["failures"]
     if failures:
         lines.extend(f"- {item['provider']} / {item['board']}: {item['error']}" for item in failures)
+    else:
+        lines.append("- 无")
+    lines.extend(["", "## HTTP 成功但当前为空的来源", ""])
+    empty_entries = report["sources"]["empty_entries"]
+    if empty_entries:
+        lines.extend(
+            f"- {item['provider']} / {item['company']}: 0 个 active 职位（{item['request_url']}）"
+            for item in empty_entries
+        )
+    else:
+        lines.append("- 无")
+    lines.extend(["", "## 待适配来源", ""])
+    deferred = report["sources"]["deferred_entries"]
+    if deferred:
+        lines.extend(
+            f"- {item['company']}: {item['reason']}（{item['official_url']}）"
+            for item in deferred
+        )
+    else:
+        lines.append("- 无")
+    lines.extend(["", "## 已退役旧入口", ""])
+    retired = report["sources"]["retired_entries"]
+    if retired:
+        lines.extend(
+            f"- {item['company']}: {item['reason']}"
+            for item in retired
+        )
     else:
         lines.append("- 无")
     lines.append("")
@@ -558,6 +611,7 @@ def source_run_record(scan: SourceScan, counts: Counter[str]) -> dict[str, Any]:
         "resolver_snapshot_path": scan.resolver_snapshot_path,
         "resolver_body_sha256": scan.resolver_body_sha256,
         "resolution": scan.resolution,
+        "fetch_audit": scan.fetch_audit,
         "error": scan.error,
     }
 
@@ -588,12 +642,22 @@ def main() -> int:
     window_start = args.as_of - timedelta(days=args.days - 1)
     output_dir = args.output_dir.resolve()
     raw_dir = args.raw_dir.resolve()
+    deferred_sources = catalog.get("deferred_sources", [])
+    retired_sources = catalog.get("retired_sources", [])
     logger = ChineseRunLogger(quiet=args.quiet)
     client = HttpClient(USER_AGENT)
     logger.emit(
         f"SignalFit v0.7 开始：时间窗 {window_start.isoformat()} 至 {args.as_of.isoformat()}，"
         f"来源 {len(sources)} 个，并发 {args.workers}，Raw 缓存 {'关闭' if args.no_raw_cache else raw_dir}"
     )
+    logger.emit(
+        f"来源目录审计：active {len(sources)}，待适配 {len(deferred_sources)}，"
+        f"已退役旧入口 {len(retired_sources)}"
+    )
+    for item in deferred_sources:
+        logger.emit(
+            f"待适配来源：{item['company']}，原因 {item['reason']}，官网 {item['official_url']}"
+        )
 
     all_jobs: list[dict[str, Any]] = []
     scans: list[SourceScan] = []
@@ -628,6 +692,15 @@ def main() -> int:
             "error": scan.error,
         }
         for scan in scans if scan.error
+    ]
+    empty_sources = [
+        {
+            "provider": scan.effective_source.get("provider"),
+            "board": scan.effective_source.get("board"),
+            "company": scan.effective_source.get("company"),
+            "request_url": scan.request_url,
+        }
+        for scan in scans if not scan.error and not scan.jobs
     ]
 
     counters = Counter({
@@ -721,8 +794,14 @@ def main() -> int:
             "attempted": len(sources),
             "succeeded": succeeded,
             "failed": len(failures),
+            "deferred": len(deferred_sources),
+            "retired": len(retired_sources),
             "outcomes": dict(Counter(scan.outcome for scan in scans)),
             "failures": sorted(failures, key=lambda item: (str(item["provider"]), str(item["board"]))),
+            "empty": len(empty_sources),
+            "empty_entries": empty_sources,
+            "deferred_entries": deferred_sources,
+            "retired_entries": retired_sources,
         },
         "jobs": dict(counters),
         "roles": role_report,

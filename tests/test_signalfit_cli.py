@@ -83,16 +83,19 @@ class SignalFitCliTest(unittest.TestCase):
         jobs = [json.loads(line) for line in (RECENT_DIR / "recent-jobs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
         signals = [json.loads(line) for line in (RECENT_DIR / "jd-signals.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 
-        self.assertEqual(report["window"], {"start": "2026-08-02", "end": "2026-08-15", "days": 14})
-        self.assertEqual(report["sources"]["attempted"], 138)
-        self.assertEqual(report["sources"]["succeeded"], 105)
-        self.assertEqual(report["jobs"]["accepted"], 76)
-        self.assertEqual(report["jobs"]["adjacent_review"], 22)
-        self.assertEqual(len(jobs), 98)
-        self.assertEqual(len(signals), 456)
-        self.assertEqual(sum(job["review_status"] == "accepted" for job in jobs), 76)
-        self.assertEqual(sum(job["review_status"] == "needs_review" for job in jobs), 22)
-        self.assertTrue(all("2026-08-02" <= job["posted_at"] <= "2026-08-15" for job in jobs))
+        self.assertEqual(report["window"], {"start": "2026-08-03", "end": "2026-08-16", "days": 14})
+        self.assertEqual(report["sources"]["attempted"], 123)
+        self.assertEqual(report["sources"]["succeeded"], 123)
+        self.assertEqual(report["sources"]["failed"], 0)
+        self.assertEqual(report["sources"]["deferred"], 8)
+        self.assertEqual(report["sources"]["empty"], 1)
+        self.assertEqual(report["jobs"]["accepted"], 100)
+        self.assertEqual(report["jobs"]["adjacent_review"], 29)
+        self.assertEqual(len(jobs), 129)
+        self.assertEqual(len(signals), 600)
+        self.assertEqual(sum(job["review_status"] == "accepted" for job in jobs), 100)
+        self.assertEqual(sum(job["review_status"] == "needs_review" for job in jobs), 29)
+        self.assertTrue(all("2026-08-03" <= job["posted_at"] <= "2026-08-16" for job in jobs))
         self.assertTrue(all(row["scope_tier"] != "adjacent_review" for row in signals))
 
 

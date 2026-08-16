@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urljoin, urlsplit
 
 from .adapters import extract_job_postings
 from .base import FetchResponse, HttpClient
@@ -21,6 +22,7 @@ PROVIDER_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("ashby", re.compile(r"https?://jobs\.ashbyhq\.com/([^\s/?#\"'<>]+)", re.I)),
     ("greenhouse", re.compile(r"https?://(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([^\s/?#&\"'<>]+)", re.I)),
     ("lever", re.compile(r"https?://jobs(?:\.eu)?\.lever\.co/([^\s/?#\"'<>]+)", re.I)),
+    ("smartrecruiters", re.compile(r"https?://(?:jobs|careers)\.smartrecruiters\.com/([^\s/?#\"'<>]+)", re.I)),
 )
 
 
@@ -34,6 +36,14 @@ def detect_provider(final_url: str, page: str) -> ProviderResolution | None:
                 board=match.group(1).strip(),
                 evidence_url=match.group(0).strip(),
             )
+    if "teamtailor-cdn.com" in page and re.search(r"href=[\"'][^\"']*jobs\.rss[\"']", page, re.I):
+        parsed = urlsplit(final_url)
+        board = f"{parsed.scheme}://{parsed.netloc}"
+        return ProviderResolution(
+            provider="teamtailor",
+            board=board,
+            evidence_url=urljoin(final_url, "/jobs.rss"),
+        )
     if extract_job_postings(page):
         return ProviderResolution(provider="jsonld", board=final_url, evidence_url=final_url)
     return None

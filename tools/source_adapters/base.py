@@ -16,6 +16,7 @@ class FetchResponse:
     status_code: int
     content_type: str
     body: bytes
+    audit: dict[str, Any] | None = None
 
     def json(self) -> Any:
         return json.loads(self.body.decode("utf-8"))

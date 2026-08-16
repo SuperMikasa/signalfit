@@ -87,6 +87,33 @@ class SourceAdaptersTest(unittest.TestCase):
                 "board": "example",
                 "basis": "createdAt",
             },
+            "smartrecruiters": {
+                "payload": {"jobs": [{
+                    "id": "s4", "uuid": "uuid-s4", "name": "Forward Deployed AI Engineer",
+                    "postingUrl": "https://jobs.smartrecruiters.com/Example/s4",
+                    "location": {"fullLocation": "New York, NY, United States"},
+                    "releasedDate": "2026-08-15T10:00:00Z",
+                    "jobAd": {"sections": {
+                        "jobDescription": {"text": "<p>Build customer-facing AI agents.</p>"},
+                        "qualifications": {"text": "<p>Python, APIs and production delivery.</p>"},
+                    }},
+                }]},
+                "board": "Example",
+                "basis": "releasedDate",
+            },
+            "teamtailor": {
+                "payload": b'''<?xml version="1.0" encoding="UTF-8"?>
+                <rss version="2.0" xmlns:tt="https://teamtailor.com/locations"><channel><item>
+                  <title>AI Product Engineer</title>
+                  <description>&lt;p&gt;Build production AI agents with TypeScript.&lt;/p&gt;</description>
+                  <pubDate>Sat, 15 Aug 2026 10:00:00 -0700</pubDate>
+                  <link>https://careers.example.ai/jobs/42-ai-product-engineer</link>
+                  <guid>tt-42</guid>
+                  <tt:locations><tt:location><tt:name>San Francisco</tt:name></tt:location></tt:locations>
+                </item></channel></rss>''',
+                "board": "careers.example.ai",
+                "basis": "pubDate",
+            },
         }
         for provider, fixture in fixtures.items():
             with self.subTest(provider=provider):
@@ -106,6 +133,21 @@ class SourceAdaptersTest(unittest.TestCase):
         )
         self.assertIsNotNone(ashby)
         self.assertEqual((ashby.provider, ashby.board), ("ashby", "example-ai"))
+
+        smartrecruiters = detect_provider(
+            "https://example.ai/careers",
+            '<a href="https://jobs.smartrecruiters.com/ServiceNow/123-ai-engineer">Open role</a>',
+        )
+        self.assertIsNotNone(smartrecruiters)
+        self.assertEqual((smartrecruiters.provider, smartrecruiters.board), ("smartrecruiters", "ServiceNow"))
+
+        teamtailor = detect_provider(
+            "https://careers.example.ai/",
+            '<script src="https://assets-aws.teamtailor-cdn.com/app.js"></script>'
+            '<link rel="alternate" type="application/rss+xml" title="Jobs" href="/jobs.rss">',
+        )
+        self.assertIsNotNone(teamtailor)
+        self.assertEqual((teamtailor.provider, teamtailor.board), ("teamtailor", "https://careers.example.ai"))
 
         direct_ashby = detect_provider("https://jobs.ashbyhq.com/Perplexity", "")
         self.assertIsNotNone(direct_ashby)

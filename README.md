@@ -98,7 +98,7 @@ On macOS with cmux installed, open the same run in a dedicated workspace:
 tools/open_daily_discovery_cmux.sh
 ```
 
-The source registry is [`data/evidence/source-catalog.json`](data/evidence/source-catalog.json). SignalFit v0.7 uses provider adapters for Ashby, Greenhouse, and Lever, plus an official-page resolver that can detect those providers or standards-based `JobPosting` JSON-LD. A resolver entry looks like:
+The source registry is [`data/evidence/source-catalog.json`](data/evidence/source-catalog.json). It keeps daily `sources`, official pages in `deferred_sources` that still need an adapter, and migrated/duplicate `retired_sources` as separate auditable lists. SignalFit uses provider adapters for Ashby, Greenhouse, Lever, SmartRecruiters, and Teamtailor's public jobs RSS, plus an official-page resolver that can detect those providers or standards-based `JobPosting` JSON-LD. SmartRecruiters sources may include a `query` so an acquired product such as Moveworks can be isolated inside its parent company's board. A resolver entry looks like:
 
 ```json
 {
@@ -109,7 +109,7 @@ The source registry is [`data/evidence/source-catalog.json`](data/evidence/sourc
 }
 ```
 
-Each run produces `source-run.log` with the site, request URL, HTTP result, raw count, 14-day count, accepted count, review count, and raw snapshot location. `source-runs.jsonl` contains the same evidence in machine-readable form. Generic roles that merely mention AI stay in `needs_review`; only strict or explicitly reviewed AI roles produce scoring signals.
+Each run produces `source-run.log` with the site, request URL, HTTP result, raw count, 14-day count, accepted count, review count, raw snapshot location, and deferred-source reasons. `source-runs.jsonl` contains the per-source scan evidence in machine-readable form. An HTTP-success source with zero active jobs is reported as `empty_success`, not silently mixed into non-empty sources. Generic roles that merely mention AI stay in `needs_review`; only strict or explicitly reviewed AI roles produce scoring signals.
 
 ## How it works
 

@@ -1,0 +1,504 @@
+[2026-08-16T00:28:34-04:00] SignalFit v0.7 开始：时间窗 2026-08-03 至 2026-08-16，来源 123 个，并发 8，Raw 缓存 /Users/hexuchen/Desktop/Projects/PB/career-skill-map/.signalfit-cache/raw
+[2026-08-16T00:28:34-04:00] 来源目录审计：active 123，待适配 8，已退役旧入口 10
+[2026-08-16T00:28:34-04:00] 待适配来源：Captions，原因 official_careers_endpoint_unverified，官网 https://www.captions.ai/
+[2026-08-16T00:28:34-04:00] 待适配来源：Superblocks，原因 self_hosted_adapter_pending，官网 https://www.superblocks.com/careers
+[2026-08-16T00:28:34-04:00] 待适配来源：AI21 Labs，原因 self_hosted_adapter_pending，官网 https://www.ai21.com/careers/
+[2026-08-16T00:28:34-04:00] 待适配来源：Crusoe，原因 self_hosted_adapter_pending，官网 https://www.crusoe.ai/about/careers
+[2026-08-16T00:28:34-04:00] 待适配来源：Rippling，原因 self_hosted_adapter_pending，官网 https://www.rippling.com/careers/open-roles
+[2026-08-16T00:28:34-04:00] 待适配来源：DataRobot，原因 self_hosted_adapter_pending，官网 https://www.datarobot.com/careers/open-positions/
+[2026-08-16T00:28:34-04:00] 待适配来源：Thoughtworks，原因 self_hosted_adapter_pending，官网 https://www.thoughtworks.com/en-us/careers
+[2026-08-16T00:28:34-04:00] 待适配来源：Groq，原因 no_public_open_roles_endpoint，官网 https://groq.com/company
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Perplexity （Perplexity）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Cohere （cohere）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Zip （zip）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Kestra （kestra）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Reflection AI （reflectionai）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / ElevenLabs （elevenlabs）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Distyl AI （distyl）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / forgd （forgd-ai）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / forgd，HTTP 200，获取 active 职位 4 个，入口 https://api.ashbyhq.com/posting-api/job-board/forgd-ai，耗时 277ms
+[2026-08-16T00:28:34-04:00] Raw 快照：forgd → .signalfit-cache/raw/2026-08-16/ashby/forgd-b3e4cde678.json.gz（sha256 3427696594ae…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / NextLink Labs （nextlinklabs）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Kestra，HTTP 200，获取 active 职位 13 个，入口 https://api.ashbyhq.com/posting-api/job-board/kestra，耗时 300ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Kestra → .signalfit-cache/raw/2026-08-16/ashby/kestra-4c4140db3d.json.gz（sha256 e9652b69b8f0…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Fluidstack （fluidstack）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Distyl AI，HTTP 200，获取 active 职位 25 个，入口 https://api.ashbyhq.com/posting-api/job-board/distyl，耗时 323ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Distyl AI → .signalfit-cache/raw/2026-08-16/ashby/distyl-ai-5742147534.json.gz（sha256 cb59d8f40211…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Eliza （eliza）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Reflection AI，HTTP 200，获取 active 职位 57 个，入口 https://api.ashbyhq.com/posting-api/job-board/reflectionai，耗时 354ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Reflection AI → .signalfit-cache/raw/2026-08-16/ashby/reflection-ai-e13ae5cf1c.json.gz（sha256 8207739b3fdb…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / January （january）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / NextLink Labs，HTTP 200，获取 active 职位 3 个，入口 https://api.ashbyhq.com/posting-api/job-board/nextlinklabs，耗时 186ms
+[2026-08-16T00:28:34-04:00] Raw 快照：NextLink Labs → .signalfit-cache/raw/2026-08-16/ashby/nextlink-labs-250812408e.json.gz（sha256 c7ed9751fb31…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Harvey （harvey）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Perplexity，HTTP 200，获取 active 职位 100 个，入口 https://api.ashbyhq.com/posting-api/job-board/Perplexity，耗时 537ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Perplexity → .signalfit-cache/raw/2026-08-16/ashby/perplexity-f394cc2a6d.json.gz（sha256 66c7a3eb4c40…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Decagon （decagon）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Zip，HTTP 200，获取 active 职位 127 个，入口 https://api.ashbyhq.com/posting-api/job-board/zip，耗时 570ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Zip → .signalfit-cache/raw/2026-08-16/ashby/zip-4a70fe9aa6.json.gz（sha256 4a87205e357e…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Sierra （sierra）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / Eliza，HTTP 200，获取 active 职位 11 个，入口 https://api.ashbyhq.com/posting-api/job-board/eliza，耗时 278ms
+[2026-08-16T00:28:34-04:00] Raw 快照：Eliza → .signalfit-cache/raw/2026-08-16/ashby/eliza-833dc86954.json.gz（sha256 7b2fa6034a61…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / Cursor （cursor）
+[2026-08-16T00:28:34-04:00] 读取完成：ashby / January，HTTP 200，获取 active 职位 14 个，入口 https://api.ashbyhq.com/posting-api/job-board/january，耗时 253ms
+[2026-08-16T00:28:34-04:00] Raw 快照：January → .signalfit-cache/raw/2026-08-16/ashby/january-7a6d859633.json.gz（sha256 97c7e0204b26…）
+[2026-08-16T00:28:34-04:00] 开始扫描：ashby / LangChain （langchain）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / ElevenLabs，HTTP 200，获取 active 职位 242 个，入口 https://api.ashbyhq.com/posting-api/job-board/elevenlabs，耗时 1133ms
+[2026-08-16T00:28:35-04:00] Raw 快照：ElevenLabs → .signalfit-cache/raw/2026-08-16/ashby/elevenlabs-e853b4e183.json.gz（sha256 e6ca654bd960…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Baseten （baseten）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Cohere，HTTP 200，获取 active 职位 144 个，入口 https://api.ashbyhq.com/posting-api/job-board/cohere，耗时 1229ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Cohere → .signalfit-cache/raw/2026-08-16/ashby/cohere-72e8088a05.json.gz（sha256 e7be7651268c…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Hebbia （hebbia-ai）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Cursor，HTTP 200，获取 active 职位 114 个，入口 https://api.ashbyhq.com/posting-api/job-board/cursor，耗时 660ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Cursor → .signalfit-cache/raw/2026-08-16/ashby/cursor-46a4eebd20.json.gz（sha256 77822de9a50f…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Dust （dust）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / LangChain，HTTP 200，获取 active 职位 107 个，入口 https://api.ashbyhq.com/posting-api/job-board/langchain，耗时 720ms
+[2026-08-16T00:28:35-04:00] Raw 快照：LangChain → .signalfit-cache/raw/2026-08-16/ashby/langchain-f3f2184b56.json.gz（sha256 6ac318aeeb2e…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Unstructured （unstructured）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Fluidstack，HTTP 200，获取 active 职位 273 个，入口 https://api.ashbyhq.com/posting-api/job-board/fluidstack，耗时 1111ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Fluidstack → .signalfit-cache/raw/2026-08-16/ashby/fluidstack-c10ef8fac8.json.gz（sha256 db158c927e4c…）
+[2026-08-16T00:28:35-04:00] 开始扫描：greenhouse / Together AI （togetherai）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Decagon，HTTP 200，获取 active 职位 134 个，入口 https://api.ashbyhq.com/posting-api/job-board/decagon，耗时 887ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Decagon → .signalfit-cache/raw/2026-08-16/ashby/decagon-5aa1ab8d95.json.gz（sha256 4290db711968…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Fireworks AI （fireworks）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Baseten，HTTP 200，获取 active 职位 71 个，入口 https://api.ashbyhq.com/posting-api/job-board/baseten，耗时 601ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Baseten → .signalfit-cache/raw/2026-08-16/ashby/baseten-add1d26222.json.gz（sha256 77e541014454…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Modal （modal）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Dust，HTTP 200，获取 active 职位 23 个，入口 https://api.ashbyhq.com/posting-api/job-board/dust，耗时 479ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Dust → .signalfit-cache/raw/2026-08-16/ashby/dust-abb3270111.json.gz（sha256 db99f81aaa7e…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Replit （replit）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Unstructured，HTTP 200，获取 active 职位 6 个，入口 https://api.ashbyhq.com/posting-api/job-board/unstructured，耗时 442ms
+[2026-08-16T00:28:35-04:00] Raw 快照：Unstructured → .signalfit-cache/raw/2026-08-16/ashby/unstructured-5d660f58c5.json.gz（sha256 12595b9992c3…）
+[2026-08-16T00:28:35-04:00] 开始扫描：ashby / Vori （vori）
+[2026-08-16T00:28:35-04:00] 读取完成：ashby / Sierra，HTTP 200，获取 active 职位 191 个，入口 https://api.ashbyhq.com/posting-api/job-board/sierra，耗时 1230ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Sierra → .signalfit-cache/raw/2026-08-16/ashby/sierra-dca6ec9510.json.gz（sha256 0ceb19768d40…）
+[2026-08-16T00:28:36-04:00] 开始扫描：ashby / Guild.ai （guild）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Harvey，HTTP 200，获取 active 职位 393 个，入口 https://api.ashbyhq.com/posting-api/job-board/harvey，耗时 1494ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Harvey → .signalfit-cache/raw/2026-08-16/ashby/harvey-c9fd53f326.json.gz（sha256 2ab6d074950f…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Anthropic （anthropic）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Hebbia，HTTP 200，获取 active 职位 22 个，入口 https://api.ashbyhq.com/posting-api/job-board/hebbia-ai，耗时 735ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Hebbia → .signalfit-cache/raw/2026-08-16/ashby/hebbia-eaadbb0095.json.gz（sha256 06e2520c5825…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Glean （gleanwork）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Fireworks AI，HTTP 200，获取 active 职位 60 个，入口 https://api.ashbyhq.com/posting-api/job-board/fireworks，耗时 571ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Fireworks AI → .signalfit-cache/raw/2026-08-16/ashby/fireworks-ai-0caee180da.json.gz（sha256 95d1449b3e97…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Figma （figma）
+[2026-08-16T00:28:36-04:00] 读取完成：greenhouse / Together AI，HTTP 200，获取 active 职位 60 个，入口 https://boards-api.greenhouse.io/v1/boards/togetherai/jobs?content=true，耗时 649ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Together AI → .signalfit-cache/raw/2026-08-16/greenhouse/together-ai-0cbcb08ff1.json.gz（sha256 a8d0147c8c35…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Arize AI （arizeai）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Modal，HTTP 200，获取 active 职位 30 个，入口 https://api.ashbyhq.com/posting-api/job-board/modal，耗时 338ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Modal → .signalfit-cache/raw/2026-08-16/ashby/modal-c5803a6e4d.json.gz（sha256 bb706ed02892…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Unframe （unframe）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Guild.ai，HTTP 200，获取 active 职位 4 个，入口 https://api.ashbyhq.com/posting-api/job-board/guild，耗时 239ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Guild.ai → .signalfit-cache/raw/2026-08-16/ashby/guild.ai-5a20fe2f1b.json.gz（sha256 c64d261a6534…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Sidecar Health （sidecarhealth）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Vori，HTTP 200，获取 active 职位 11 个，入口 https://api.ashbyhq.com/posting-api/job-board/vori，耗时 316ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Vori → .signalfit-cache/raw/2026-08-16/ashby/vori-ed7565ef81.json.gz（sha256 aa33520cf917…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Future Secure AI （futuresecureai）
+[2026-08-16T00:28:36-04:00] 读取完成：greenhouse / Unframe，HTTP 200，获取 active 职位 36 个，入口 https://boards-api.greenhouse.io/v1/boards/unframe/jobs?content=true，耗时 445ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Unframe → .signalfit-cache/raw/2026-08-16/greenhouse/unframe-507084d439.json.gz（sha256 321170df822a…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Accordion （accordion）
+[2026-08-16T00:28:36-04:00] 读取完成：ashby / Replit，HTTP 200，获取 active 职位 76 个，入口 https://api.ashbyhq.com/posting-api/job-board/replit，耗时 796ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Replit → .signalfit-cache/raw/2026-08-16/ashby/replit-53b69ef92c.json.gz（sha256 9a41ec695a35…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / DevRev （devrev）
+[2026-08-16T00:28:36-04:00] 读取完成：greenhouse / Sidecar Health，HTTP 200，获取 active 职位 13 个，入口 https://boards-api.greenhouse.io/v1/boards/sidecarhealth/jobs?content=true，耗时 521ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Sidecar Health → .signalfit-cache/raw/2026-08-16/greenhouse/sidecar-health-d306a2f1b4.json.gz（sha256 68c024c2ab14…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Braze （braze）
+[2026-08-16T00:28:36-04:00] 读取完成：greenhouse / Arize AI，HTTP 200，获取 active 职位 27 个，入口 https://boards-api.greenhouse.io/v1/boards/arizeai/jobs?content=true，耗时 551ms
+[2026-08-16T00:28:36-04:00] Raw 快照：Arize AI → .signalfit-cache/raw/2026-08-16/greenhouse/arize-ai-8b9e56e968.json.gz（sha256 6e8c0c9bafb1…）
+[2026-08-16T00:28:36-04:00] 开始扫描：greenhouse / Natera （natera）
+[2026-08-16T00:28:37-04:00] 读取完成：greenhouse / Future Secure AI，HTTP 200，获取 active 职位 41 个，入口 https://boards-api.greenhouse.io/v1/boards/futuresecureai/jobs?content=true，耗时 757ms
+[2026-08-16T00:28:37-04:00] Raw 快照：Future Secure AI → .signalfit-cache/raw/2026-08-16/greenhouse/future-secure-ai-fe954e3e0d.json.gz（sha256 60fd39e58af6…）
+[2026-08-16T00:28:37-04:00] 开始扫描：greenhouse / Webflow （webflow）
+[2026-08-16T00:28:37-04:00] 读取完成：greenhouse / DevRev，HTTP 200，获取 active 职位 42 个，入口 https://boards-api.greenhouse.io/v1/boards/devrev/jobs?content=true，耗时 405ms
+[2026-08-16T00:28:37-04:00] Raw 快照：DevRev → .signalfit-cache/raw/2026-08-16/greenhouse/devrev-bf410c800b.json.gz（sha256 80b02c99e1cd…）
+[2026-08-16T00:28:37-04:00] 开始扫描：greenhouse / Databricks （databricks）
+[2026-08-16T00:28:37-04:00] 读取完成：greenhouse / Accordion，HTTP 200，获取 active 职位 47 个，入口 https://boards-api.greenhouse.io/v1/boards/accordion/jobs?content=true，耗时 1132ms
+[2026-08-16T00:28:37-04:00] Raw 快照：Accordion → .signalfit-cache/raw/2026-08-16/greenhouse/accordion-ae05a3bf72.json.gz（sha256 1b23b03de04a…）
+[2026-08-16T00:28:37-04:00] 开始扫描：greenhouse / Scale AI （scaleai）
+[2026-08-16T00:28:37-04:00] 读取完成：greenhouse / Figma，HTTP 200，获取 active 职位 162 个，入口 https://boards-api.greenhouse.io/v1/boards/figma/jobs?content=true，耗时 1696ms
+[2026-08-16T00:28:37-04:00] Raw 快照：Figma → .signalfit-cache/raw/2026-08-16/greenhouse/figma-5b79d0d574.json.gz（sha256 277235fcd395…）
+[2026-08-16T00:28:37-04:00] 开始扫描：ashby / Pinecone （pinecone）
+[2026-08-16T00:28:37-04:00] 读取完成：greenhouse / Webflow，HTTP 200，获取 active 职位 28 个，入口 https://boards-api.greenhouse.io/v1/boards/webflow/jobs?content=true，耗时 906ms
+[2026-08-16T00:28:37-04:00] Raw 快照：Webflow → .signalfit-cache/raw/2026-08-16/greenhouse/webflow-77e5604fee.json.gz（sha256 671d6aec6070…）
+[2026-08-16T00:28:37-04:00] 开始扫描：ashby / Runway （runway-ml）
+[2026-08-16T00:28:38-04:00] 读取完成：greenhouse / Glean，HTTP 200，获取 active 职位 112 个，入口 https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs?content=true，耗时 1986ms
+[2026-08-16T00:28:38-04:00] Raw 快照：Glean → .signalfit-cache/raw/2026-08-16/greenhouse/glean-c8fbcb12af.json.gz（sha256 ffaee8b792c9…）
+[2026-08-16T00:28:38-04:00] 开始扫描：lever / Highspot （highspot）
+[2026-08-16T00:28:38-04:00] 读取完成：ashby / Pinecone，HTTP 200，获取 active 职位 8 个，入口 https://api.ashbyhq.com/posting-api/job-board/pinecone，耗时 666ms
+[2026-08-16T00:28:38-04:00] Raw 快照：Pinecone → .signalfit-cache/raw/2026-08-16/ashby/pinecone-e2fde0483f.json.gz（sha256 b39ec42b321a…）
+[2026-08-16T00:28:38-04:00] 开始扫描：greenhouse / Cresta （cresta）
+[2026-08-16T00:28:38-04:00] 读取完成：ashby / Runway，HTTP 200，获取 active 职位 41 个，入口 https://api.ashbyhq.com/posting-api/job-board/runway-ml，耗时 719ms
+[2026-08-16T00:28:38-04:00] Raw 快照：Runway → .signalfit-cache/raw/2026-08-16/ashby/runway-bcaf8730e0.json.gz（sha256 c2deb3c63788…）
+[2026-08-16T00:28:38-04:00] 开始扫描：greenhouse / Aircall （aircallioinc）
+[2026-08-16T00:28:39-04:00] 读取完成：lever / Highspot，HTTP 200，获取 active 职位 0 个，入口 https://api.lever.co/v0/postings/highspot?mode=json，耗时 1210ms
+[2026-08-16T00:28:39-04:00] Raw 快照：Highspot → .signalfit-cache/raw/2026-08-16/lever/highspot-2b12803106.json.gz（sha256 4f53cda18c2b…）
+[2026-08-16T00:28:39-04:00] 开始扫描：greenhouse / Diligent （diligentcorporation）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Natera，HTTP 200，获取 active 职位 204 个，入口 https://boards-api.greenhouse.io/v1/boards/natera/jobs?content=true，耗时 3443ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Natera → .signalfit-cache/raw/2026-08-16/greenhouse/natera-9031c39eab.json.gz（sha256 85df3edd37aa…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / Capco （capco）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Cresta，HTTP 200，获取 active 职位 95 个，入口 https://boards-api.greenhouse.io/v1/boards/cresta/jobs?content=true，耗时 1747ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Cresta → .signalfit-cache/raw/2026-08-16/greenhouse/cresta-526ed1fc84.json.gz（sha256 5db4beba420c…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / AI Foundry （aifoundry）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Aircall，HTTP 200，获取 active 职位 66 个，入口 https://boards-api.greenhouse.io/v1/boards/aircallioinc/jobs?content=true，耗时 1661ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Aircall → .signalfit-cache/raw/2026-08-16/greenhouse/aircall-3769820530.json.gz（sha256 f5154a4f4757…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / Corelight （corelight）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Braze，HTTP 200，获取 active 职位 251 个，入口 https://boards-api.greenhouse.io/v1/boards/braze/jobs?content=true，耗时 3773ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Braze → .signalfit-cache/raw/2026-08-16/greenhouse/braze-82c825401e.json.gz（sha256 2a4648853cb1…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / MinIO （minio）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / AI Foundry，HTTP 200，获取 active 职位 3 个，入口 https://boards-api.greenhouse.io/v1/boards/aifoundry/jobs?content=true，耗时 488ms
+[2026-08-16T00:28:40-04:00] Raw 快照：AI Foundry → .signalfit-cache/raw/2026-08-16/greenhouse/ai-foundry-8e9fd15514.json.gz（sha256 d77d17227dc4…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / Pelago （pelago）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Corelight，HTTP 200，获取 active 职位 26 个，入口 https://boards-api.greenhouse.io/v1/boards/corelight/jobs?content=true，耗时 449ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Corelight → .signalfit-cache/raw/2026-08-16/greenhouse/corelight-339b162de4.json.gz（sha256 57e5b5a477dd…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / Cloudflare （cloudflare）
+[2026-08-16T00:28:40-04:00] 读取完成：greenhouse / Scale AI，HTTP 200，获取 active 职位 211 个，入口 https://boards-api.greenhouse.io/v1/boards/scaleai/jobs?content=true，耗时 3005ms
+[2026-08-16T00:28:40-04:00] Raw 快照：Scale AI → .signalfit-cache/raw/2026-08-16/greenhouse/scale-ai-364897100f.json.gz（sha256 907e3d94bbe9…）
+[2026-08-16T00:28:40-04:00] 开始扫描：greenhouse / MongoDB （mongodb）
+[2026-08-16T00:28:41-04:00] 读取完成：greenhouse / MinIO，HTTP 200，获取 active 职位 21 个，入口 https://boards-api.greenhouse.io/v1/boards/minio/jobs?content=true，耗时 653ms
+[2026-08-16T00:28:41-04:00] Raw 快照：MinIO → .signalfit-cache/raw/2026-08-16/greenhouse/minio-5791b62267.json.gz（sha256 65b2647f7734…）
+[2026-08-16T00:28:41-04:00] 开始扫描：greenhouse / Elastic （elastic）
+[2026-08-16T00:28:41-04:00] 读取完成：greenhouse / Pelago，HTTP 200，获取 active 职位 17 个，入口 https://boards-api.greenhouse.io/v1/boards/pelago/jobs?content=true，耗时 460ms
+[2026-08-16T00:28:41-04:00] Raw 快照：Pelago → .signalfit-cache/raw/2026-08-16/greenhouse/pelago-ecb78c7006.json.gz（sha256 9ea76a1273ab…）
+[2026-08-16T00:28:41-04:00] 开始扫描：greenhouse / Samsara （samsara）
+[2026-08-16T00:28:42-04:00] 读取完成：greenhouse / Diligent，HTTP 200，获取 active 职位 113 个，入口 https://boards-api.greenhouse.io/v1/boards/diligentcorporation/jobs?content=true，耗时 2786ms
+[2026-08-16T00:28:42-04:00] Raw 快照：Diligent → .signalfit-cache/raw/2026-08-16/greenhouse/diligent-e071c66905.json.gz（sha256 4b41e08270a4…）
+[2026-08-16T00:28:42-04:00] 开始扫描：greenhouse / Reddit （reddit）
+[2026-08-16T00:28:42-04:00] 读取完成：greenhouse / Anthropic，HTTP 200，获取 active 职位 441 个，入口 https://boards-api.greenhouse.io/v1/boards/anthropic/jobs?content=true，耗时 6039ms
+[2026-08-16T00:28:42-04:00] Raw 快照：Anthropic → .signalfit-cache/raw/2026-08-16/greenhouse/anthropic-c70eca6b0f.json.gz（sha256 350d3c749d62…）
+[2026-08-16T00:28:42-04:00] 开始扫描：greenhouse / Roblox （roblox）
+[2026-08-16T00:28:44-04:00] 读取完成：greenhouse / Reddit，HTTP 200，获取 active 职位 151 个，入口 https://boards-api.greenhouse.io/v1/boards/reddit/jobs?content=true，耗时 2795ms
+[2026-08-16T00:28:44-04:00] Raw 快照：Reddit → .signalfit-cache/raw/2026-08-16/greenhouse/reddit-2e183f2a7a.json.gz（sha256 dc53a777afe7…）
+[2026-08-16T00:28:44-04:00] 开始扫描：greenhouse / Discord （discord）
+[2026-08-16T00:28:45-04:00] 读取完成：greenhouse / Roblox，HTTP 200，获取 active 职位 230 个，入口 https://boards-api.greenhouse.io/v1/boards/roblox/jobs?content=true，耗时 3175ms
+[2026-08-16T00:28:45-04:00] Raw 快照：Roblox → .signalfit-cache/raw/2026-08-16/greenhouse/roblox-d36e5a1a7a.json.gz（sha256 4bf4c346ef91…）
+[2026-08-16T00:28:45-04:00] 开始扫描：greenhouse / Dropbox （dropbox）
+[2026-08-16T00:28:45-04:00] 读取完成：greenhouse / Samsara，HTTP 200，获取 active 职位 270 个，入口 https://boards-api.greenhouse.io/v1/boards/samsara/jobs?content=true，耗时 4117ms
+[2026-08-16T00:28:45-04:00] Raw 快照：Samsara → .signalfit-cache/raw/2026-08-16/greenhouse/samsara-2b219c9dc0.json.gz（sha256 0447a197a303…）
+[2026-08-16T00:28:45-04:00] 开始扫描：greenhouse / Asana （asana）
+[2026-08-16T00:28:45-04:00] 读取完成：greenhouse / Databricks，HTTP 200，获取 active 职位 809 个，入口 https://boards-api.greenhouse.io/v1/boards/databricks/jobs?content=true，耗时 8789ms
+[2026-08-16T00:28:45-04:00] Raw 快照：Databricks → .signalfit-cache/raw/2026-08-16/greenhouse/databricks-2dc010636b.json.gz（sha256 42aedda234f0…）
+[2026-08-16T00:28:45-04:00] 开始扫描：ashby / Sentry （sentry）
+[2026-08-16T00:28:45-04:00] 读取完成：greenhouse / Elastic，HTTP 200，获取 active 职位 257 个，入口 https://boards-api.greenhouse.io/v1/boards/elastic/jobs?content=true，耗时 4742ms
+[2026-08-16T00:28:45-04:00] Raw 快照：Elastic → .signalfit-cache/raw/2026-08-16/greenhouse/elastic-986051385f.json.gz（sha256 ea9ef2df7f89…）
+[2026-08-16T00:28:45-04:00] 开始扫描：greenhouse / Snorkel AI （snorkelai）
+[2026-08-16T00:28:46-04:00] 读取完成：greenhouse / Discord，HTTP 200，获取 active 职位 50 个，入口 https://boards-api.greenhouse.io/v1/boards/discord/jobs?content=true，耗时 1060ms
+[2026-08-16T00:28:46-04:00] Raw 快照：Discord → .signalfit-cache/raw/2026-08-16/greenhouse/discord-e1ba4807a1.json.gz（sha256 f831eb6669e5…）
+[2026-08-16T00:28:46-04:00] 开始扫描：greenhouse / Labelbox （labelbox）
+[2026-08-16T00:28:46-04:00] 读取完成：greenhouse / Labelbox，HTTP 200，获取 active 职位 9 个，入口 https://boards-api.greenhouse.io/v1/boards/labelbox/jobs?content=true，耗时 350ms
+[2026-08-16T00:28:46-04:00] Raw 快照：Labelbox → .signalfit-cache/raw/2026-08-16/greenhouse/labelbox-ce084d4801.json.gz（sha256 2b7127d0f711…）
+[2026-08-16T00:28:46-04:00] 开始扫描：ashby / Anyscale （anyscale）
+[2026-08-16T00:28:46-04:00] 读取完成：greenhouse / Cloudflare，HTTP 200，获取 active 职位 305 个，入口 https://boards-api.greenhouse.io/v1/boards/cloudflare/jobs?content=true，耗时 6062ms
+[2026-08-16T00:28:46-04:00] Raw 快照：Cloudflare → .signalfit-cache/raw/2026-08-16/greenhouse/cloudflare-738e22f0ac.json.gz（sha256 3bbd1378fc15…）
+[2026-08-16T00:28:46-04:00] 开始扫描：ashby / Growth Protocol （growthprotocol）
+[2026-08-16T00:28:46-04:00] 读取完成：ashby / Sentry，HTTP 200，获取 active 职位 46 个，入口 https://api.ashbyhq.com/posting-api/job-board/sentry，耗时 1055ms
+[2026-08-16T00:28:46-04:00] Raw 快照：Sentry → .signalfit-cache/raw/2026-08-16/ashby/sentry-0cf6855c1a.json.gz（sha256 c7a3986b9261…）
+[2026-08-16T00:28:46-04:00] 开始扫描：ashby / Causal Labs （causal）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Anyscale，HTTP 200，获取 active 职位 16 个，入口 https://api.ashbyhq.com/posting-api/job-board/anyscale，耗时 666ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Anyscale → .signalfit-cache/raw/2026-08-16/ashby/anyscale-b0c5ed0373.json.gz（sha256 4b6d93ab0915…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Truelogic （truelogic）
+[2026-08-16T00:28:47-04:00] 读取完成：greenhouse / Dropbox，HTTP 200，获取 active 职位 35 个，入口 https://boards-api.greenhouse.io/v1/boards/dropbox/jobs?content=true，耗时 1851ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Dropbox → .signalfit-cache/raw/2026-08-16/greenhouse/dropbox-75170593d5.json.gz（sha256 74c3fd9ee480…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Novita AI （novita-ai）
+[2026-08-16T00:28:47-04:00] 读取完成：greenhouse / Snorkel AI，HTTP 200，获取 active 职位 39 个，入口 https://boards-api.greenhouse.io/v1/boards/snorkelai/jobs?content=true，耗时 1294ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Snorkel AI → .signalfit-cache/raw/2026-08-16/greenhouse/snorkel-ai-b749e00d51.json.gz（sha256 b06fa8745264…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Varick Agents （Varick-Agents）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Causal Labs，HTTP 200，获取 active 职位 20 个，入口 https://api.ashbyhq.com/posting-api/job-board/causal，耗时 352ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Causal Labs → .signalfit-cache/raw/2026-08-16/ashby/causal-labs-42a7d499c5.json.gz（sha256 9d1a26f50e5c…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Puzzle （puzzle.io）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Growth Protocol，HTTP 200，获取 active 职位 10 个，入口 https://api.ashbyhq.com/posting-api/job-board/growthprotocol，耗时 487ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Growth Protocol → .signalfit-cache/raw/2026-08-16/ashby/growth-protocol-3504ee7ba6.json.gz（sha256 d2441999d5ab…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Applied Compute （Applied Compute）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Varick Agents，HTTP 200，获取 active 职位 4 个，入口 https://api.ashbyhq.com/posting-api/job-board/Varick-Agents，耗时 411ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Varick Agents → .signalfit-cache/raw/2026-08-16/ashby/varick-agents-b268d1c93a.json.gz（sha256 77cb0c68764c…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Brain Co. （brainco）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Puzzle，HTTP 200，获取 active 职位 2 个，入口 https://api.ashbyhq.com/posting-api/job-board/puzzle.io，耗时 454ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Puzzle → .signalfit-cache/raw/2026-08-16/ashby/puzzle-c54b884525.json.gz（sha256 c43e9faf6417…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / OpusClip （opusclip）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Novita AI，HTTP 200，获取 active 职位 2 个，入口 https://api.ashbyhq.com/posting-api/job-board/novita-ai，耗时 586ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Novita AI → .signalfit-cache/raw/2026-08-16/ashby/novita-ai-5cd126bf34.json.gz（sha256 2f7ca5c77e26…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Notion （notion）
+[2026-08-16T00:28:47-04:00] 读取完成：ashby / Applied Compute，HTTP 200，获取 active 职位 13 个，入口 https://api.ashbyhq.com/posting-api/job-board/Applied%20Compute，耗时 632ms
+[2026-08-16T00:28:47-04:00] Raw 快照：Applied Compute → .signalfit-cache/raw/2026-08-16/ashby/applied-compute-7ff4c6bd6d.json.gz（sha256 4837bd7972ee…）
+[2026-08-16T00:28:47-04:00] 开始扫描：ashby / Mercor （mercor）
+[2026-08-16T00:28:48-04:00] 读取完成：greenhouse / Asana，HTTP 200，获取 active 职位 132 个，入口 https://boards-api.greenhouse.io/v1/boards/asana/jobs?content=true，耗时 2702ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Asana → .signalfit-cache/raw/2026-08-16/greenhouse/asana-4de4a07ad0.json.gz（sha256 6dd9cfd51a67…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Gamma （gamma）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / OpusClip，HTTP 200，获取 active 职位 9 个，入口 https://api.ashbyhq.com/posting-api/job-board/opusclip，耗时 353ms
+[2026-08-16T00:28:48-04:00] Raw 快照：OpusClip → .signalfit-cache/raw/2026-08-16/ashby/opusclip-1f2cfd282d.json.gz（sha256 85189bb3aba8…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Granola （granola）
+[2026-08-16T00:28:48-04:00] 读取完成：greenhouse / MongoDB，HTTP 200，获取 active 职位 409 个，入口 https://boards-api.greenhouse.io/v1/boards/mongodb/jobs?content=true，耗时 7382ms
+[2026-08-16T00:28:48-04:00] Raw 快照：MongoDB → .signalfit-cache/raw/2026-08-16/greenhouse/mongodb-1cc9a79bda.json.gz（sha256 43a8a7975c7c…）
+[2026-08-16T00:28:48-04:00] 开始扫描：teamtailor / Lindy （careers.lindy.ai）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Brain Co.，HTTP 200，获取 active 职位 37 个，入口 https://api.ashbyhq.com/posting-api/job-board/brainco，耗时 640ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Brain Co. → .signalfit-cache/raw/2026-08-16/ashby/brain-co-d0371d5f12.json.gz（sha256 92d1cff8166f…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Retell AI （retell-ai）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Granola，HTTP 200，获取 active 职位 17 个，入口 https://api.ashbyhq.com/posting-api/job-board/granola，耗时 358ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Granola → .signalfit-cache/raw/2026-08-16/ashby/granola-89601a2c41.json.gz（sha256 d7318b9150a6…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Stack AI （stack-ai）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Truelogic，HTTP 200，获取 active 职位 148 个，入口 https://api.ashbyhq.com/posting-api/job-board/truelogic，耗时 1520ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Truelogic → .signalfit-cache/raw/2026-08-16/ashby/truelogic-3ba9f76eda.json.gz（sha256 2a7bdd558934…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Tavus （tavus）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Gamma，HTTP 200，获取 active 职位 32 个，入口 https://api.ashbyhq.com/posting-api/job-board/gamma，耗时 633ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Gamma → .signalfit-cache/raw/2026-08-16/ashby/gamma-be9d587def.json.gz（sha256 1d7a711b50d1…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Braintrust （braintrust）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Mercor，HTTP 200，获取 active 职位 85 个，入口 https://api.ashbyhq.com/posting-api/job-board/mercor，耗时 762ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Mercor → .signalfit-cache/raw/2026-08-16/ashby/mercor-d3a0532451.json.gz（sha256 2423d764d7f8…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Mintlify （mintlify）
+[2026-08-16T00:28:48-04:00] 读取完成：teamtailor / Lindy，HTTP 200，获取 active 职位 6 个，入口 https://careers.lindy.ai/jobs.rss，耗时 694ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Lindy → .signalfit-cache/raw/2026-08-16/teamtailor/lindy-82cde80e46.json.gz（sha256 8b4ebecbb9b8…）
+[2026-08-16T00:28:48-04:00] 开始扫描：ashby / Pylon （pylon）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Tavus，HTTP 200，获取 active 职位 15 个，入口 https://api.ashbyhq.com/posting-api/job-board/tavus，耗时 373ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Tavus → .signalfit-cache/raw/2026-08-16/ashby/tavus-ae2d06b750.json.gz（sha256 48fe78a74ab0…）
+[2026-08-16T00:28:48-04:00] 开始扫描：lever / Binance （binance）
+[2026-08-16T00:28:48-04:00] 读取完成：ashby / Stack AI，HTTP 200，获取 active 职位 20 个，入口 https://api.ashbyhq.com/posting-api/job-board/stack-ai，耗时 508ms
+[2026-08-16T00:28:48-04:00] Raw 快照：Stack AI → .signalfit-cache/raw/2026-08-16/ashby/stack-ai-8083918d04.json.gz（sha256 1f863b67c089…）
+[2026-08-16T00:28:48-04:00] 开始扫描：lever / Caseware （caseware）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Retell AI，HTTP 200，获取 active 职位 31 个，入口 https://api.ashbyhq.com/posting-api/job-board/retell-ai，耗时 652ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Retell AI → .signalfit-cache/raw/2026-08-16/ashby/retell-ai-2189eeae84.json.gz（sha256 70276d579426…）
+[2026-08-16T00:28:49-04:00] 开始扫描：lever / Wing Assistant （getwingapp）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Mintlify，HTTP 200，获取 active 职位 19 个，入口 https://api.ashbyhq.com/posting-api/job-board/mintlify，耗时 424ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Mintlify → .signalfit-cache/raw/2026-08-16/ashby/mintlify-8bc74bb8d4.json.gz（sha256 93b6fc539585…）
+[2026-08-16T00:28:49-04:00] 开始扫描：lever / Arcadia （arcadia）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Notion，HTTP 200，获取 active 职位 133 个，入口 https://api.ashbyhq.com/posting-api/job-board/notion，耗时 1393ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Notion → .signalfit-cache/raw/2026-08-16/ashby/notion-31f61ed3e6.json.gz（sha256 24e9a760aa34…）
+[2026-08-16T00:28:49-04:00] 开始扫描：lever / RAVL （ravl_io）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Pylon，HTTP 200，获取 active 职位 12 个，入口 https://api.ashbyhq.com/posting-api/job-board/pylon，耗时 307ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Pylon → .signalfit-cache/raw/2026-08-16/ashby/pylon-4e6c51c33f.json.gz（sha256 4974f6fa9604…）
+[2026-08-16T00:28:49-04:00] 开始扫描：lever / Turgon AI （turgon-ai）
+[2026-08-16T00:28:49-04:00] 读取完成：greenhouse / Capco，HTTP 200，获取 active 职位 735 个，入口 https://boards-api.greenhouse.io/v1/boards/capco/jobs?content=true，耗时 9004ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Capco → .signalfit-cache/raw/2026-08-16/greenhouse/capco-bd9930ed0e.json.gz（sha256 0ee493144579…）
+[2026-08-16T00:28:49-04:00] 开始扫描：lever / SiteGround （siteground）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Braintrust，HTTP 200，获取 active 职位 23 个，入口 https://api.ashbyhq.com/posting-api/job-board/braintrust，耗时 552ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Braintrust → .signalfit-cache/raw/2026-08-16/ashby/braintrust-c0a49b8a72.json.gz（sha256 bc318b926a55…）
+[2026-08-16T00:28:49-04:00] 开始扫描：ashby / Hippocratic AI （Hippocratic AI）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Hippocratic AI，HTTP 200，获取 active 职位 78 个，入口 https://api.ashbyhq.com/posting-api/job-board/Hippocratic%20AI，耗时 390ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Hippocratic AI → .signalfit-cache/raw/2026-08-16/ashby/hippocratic-ai-ead3b3cdc3.json.gz（sha256 93943c7137e6…）
+[2026-08-16T00:28:49-04:00] 开始扫描：ashby / Ema （ema）
+[2026-08-16T00:28:49-04:00] 读取完成：ashby / Ema，HTTP 200，获取 active 职位 40 个，入口 https://api.ashbyhq.com/posting-api/job-board/ema，耗时 257ms
+[2026-08-16T00:28:49-04:00] Raw 快照：Ema → .signalfit-cache/raw/2026-08-16/ashby/ema-8c15a76388.json.gz（sha256 9f870ea2e7aa…）
+[2026-08-16T00:28:49-04:00] 开始扫描：ashby / Cognition （cognition）
+[2026-08-16T00:28:49-04:00] 读取完成：lever / SiteGround，HTTP 200，获取 active 职位 2 个，入口 https://api.lever.co/v0/postings/siteground?mode=json，耗时 684ms
+[2026-08-16T00:28:49-04:00] Raw 快照：SiteGround → .signalfit-cache/raw/2026-08-16/lever/siteground-b0e91ff370.json.gz（sha256 72a616a9b202…）
+[2026-08-16T00:28:49-04:00] 开始扫描：ashby / Poolside （poolside）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Poolside，HTTP 200，获取 active 职位 15 个，入口 https://api.ashbyhq.com/posting-api/job-board/poolside，耗时 105ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Poolside → .signalfit-cache/raw/2026-08-16/ashby/poolside-0d1e478de2.json.gz（sha256 d202d106d6eb…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Physical Intelligence （physicalintelligence）
+[2026-08-16T00:28:50-04:00] 读取完成：lever / Turgon AI，HTTP 200，获取 active 职位 8 个，入口 https://api.lever.co/v0/postings/turgon-ai?mode=json，耗时 810ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Turgon AI → .signalfit-cache/raw/2026-08-16/lever/turgon-ai-f916118ff6.json.gz（sha256 9ccdd3bb193e…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Supabase （supabase）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Cognition，HTTP 200，获取 active 职位 85 个，入口 https://api.ashbyhq.com/posting-api/job-board/cognition，耗时 299ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Cognition → .signalfit-cache/raw/2026-08-16/ashby/cognition-ac32f27ba7.json.gz（sha256 7369a62b61f3…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Ramp （ramp）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Physical Intelligence，HTTP 200，获取 active 职位 31 个，入口 https://api.ashbyhq.com/posting-api/job-board/physicalintelligence，耗时 234ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Physical Intelligence → .signalfit-cache/raw/2026-08-16/ashby/physical-intelligence-f8c0c97d31.json.gz（sha256 4c4d501ec9e4…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Cluely （cluely）
+[2026-08-16T00:28:50-04:00] 读取完成：lever / Arcadia，HTTP 200，获取 active 职位 15 个，入口 https://api.lever.co/v0/postings/arcadia?mode=json，耗时 1202ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Arcadia → .signalfit-cache/raw/2026-08-16/lever/arcadia-3259138318.json.gz（sha256 a916085c8913…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Pika （pika）
+[2026-08-16T00:28:50-04:00] 读取完成：lever / RAVL，HTTP 200，获取 active 职位 25 个，入口 https://api.lever.co/v0/postings/ravl_io?mode=json，耗时 1176ms
+[2026-08-16T00:28:50-04:00] Raw 快照：RAVL → .signalfit-cache/raw/2026-08-16/lever/ravl-f86d33340b.json.gz（sha256 9b3438c7dccd…）
+[2026-08-16T00:28:50-04:00] 开始扫描：greenhouse / Hume AI （humeai）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Supabase，HTTP 200，获取 active 职位 54 个，入口 https://api.ashbyhq.com/posting-api/job-board/supabase，耗时 381ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Supabase → .signalfit-cache/raw/2026-08-16/ashby/supabase-4d7594e57f.json.gz（sha256 9b1180be9892…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Writer （writer）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Cluely，HTTP 200，获取 active 职位 4 个，入口 https://api.ashbyhq.com/posting-api/job-board/cluely，耗时 154ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Cluely → .signalfit-cache/raw/2026-08-16/ashby/cluely-18758646e2.json.gz（sha256 600d8dbb8917…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Mem0 （mem0）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Pika，HTTP 200，获取 active 职位 10 个，入口 https://api.ashbyhq.com/posting-api/job-board/pika，耗时 92ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Pika → .signalfit-cache/raw/2026-08-16/ashby/pika-5982776464.json.gz（sha256 d6d543828204…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Vapi （vapi）
+[2026-08-16T00:28:50-04:00] 读取完成：greenhouse / Hume AI，HTTP 200，获取 active 职位 5 个，入口 https://boards-api.greenhouse.io/v1/boards/humeai/jobs?content=true，耗时 108ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Hume AI → .signalfit-cache/raw/2026-08-16/greenhouse/hume-ai-7742c3a94f.json.gz（sha256 cd8ad23eb5cf…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Cartesia （cartesia）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Mem0，HTTP 200，获取 active 职位 3 个，入口 https://api.ashbyhq.com/posting-api/job-board/mem0，耗时 86ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Mem0 → .signalfit-cache/raw/2026-08-16/ashby/mem0-a9aff9e073.json.gz（sha256 8c5825abef2c…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Abridge （Abridge）
+[2026-08-16T00:28:50-04:00] 读取完成：lever / Caseware，HTTP 200，获取 active 职位 43 个，入口 https://api.lever.co/v0/postings/caseware?mode=json，耗时 1535ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Caseware → .signalfit-cache/raw/2026-08-16/lever/caseware-e870937ab5.json.gz（sha256 27458003cb75…）
+[2026-08-16T00:28:50-04:00] 开始扫描：smartrecruiters / Moveworks （ServiceNow）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Vapi，HTTP 200，获取 active 职位 31 个，入口 https://api.ashbyhq.com/posting-api/job-board/vapi，耗时 258ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Vapi → .signalfit-cache/raw/2026-08-16/ashby/vapi-29e1a48836.json.gz（sha256 63eb113b0452…）
+[2026-08-16T00:28:50-04:00] 开始扫描：greenhouse / Stability AI （stabilityai）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Writer，HTTP 200，获取 active 职位 53 个，入口 https://api.ashbyhq.com/posting-api/job-board/writer，耗时 314ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Writer → .signalfit-cache/raw/2026-08-16/ashby/writer-b93006774c.json.gz（sha256 3e9f309084b8…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / DeepL （DeepL）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Abridge，HTTP 200，获取 active 职位 45 个，入口 https://api.ashbyhq.com/posting-api/job-board/Abridge，耗时 331ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Abridge → .signalfit-cache/raw/2026-08-16/ashby/abridge-7d752a76e4.json.gz（sha256 efe4bae839e1…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Superhuman （Superhuman Platform Inc）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Cartesia，HTTP 200，获取 active 职位 34 个，入口 https://api.ashbyhq.com/posting-api/job-board/cartesia，耗时 345ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Cartesia → .signalfit-cache/raw/2026-08-16/ashby/cartesia-98e3aa01fc.json.gz（sha256 b15fe8ad277b…）
+[2026-08-16T00:28:50-04:00] 开始扫描：ashby / Zapier （zapier）
+[2026-08-16T00:28:50-04:00] 读取完成：greenhouse / Stability AI，HTTP 200，获取 active 职位 5 个，入口 https://boards-api.greenhouse.io/v1/boards/stabilityai/jobs?content=true，耗时 254ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Stability AI → .signalfit-cache/raw/2026-08-16/greenhouse/stability-ai-06e88eae7e.json.gz（sha256 e0a05a7f8a92…）
+[2026-08-16T00:28:50-04:00] 开始扫描：greenhouse / Vercel （vercel）
+[2026-08-16T00:28:50-04:00] 读取完成：ashby / Ramp，HTTP 200，获取 active 职位 136 个，入口 https://api.ashbyhq.com/posting-api/job-board/ramp，耗时 811ms
+[2026-08-16T00:28:50-04:00] Raw 快照：Ramp → .signalfit-cache/raw/2026-08-16/ashby/ramp-f7d9f5a904.json.gz（sha256 b24d9b82525c…）
+[2026-08-16T00:28:50-04:00] 开始扫描：greenhouse / Brex （brex）
+[2026-08-16T00:28:51-04:00] 读取完成：ashby / Zapier，HTTP 200，获取 active 职位 12 个，入口 https://api.ashbyhq.com/posting-api/job-board/zapier，耗时 176ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Zapier → .signalfit-cache/raw/2026-08-16/ashby/zapier-d21800cafd.json.gz（sha256 0e13d29511c5…）
+[2026-08-16T00:28:51-04:00] 开始扫描：ashby / Synthesia （synthesia）
+[2026-08-16T00:28:51-04:00] 读取完成：ashby / DeepL，HTTP 200，获取 active 职位 55 个，入口 https://api.ashbyhq.com/posting-api/job-board/DeepL，耗时 377ms
+[2026-08-16T00:28:51-04:00] Raw 快照：DeepL → .signalfit-cache/raw/2026-08-16/ashby/deepl-35d1922b7f.json.gz（sha256 039f1ede7672…）
+[2026-08-16T00:28:51-04:00] 开始扫描：ashby / Deepgram （Deepgram）
+[2026-08-16T00:28:51-04:00] 读取完成：lever / Binance，HTTP 200，获取 active 职位 272 个，入口 https://api.lever.co/v0/postings/binance?mode=json，耗时 2307ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Binance → .signalfit-cache/raw/2026-08-16/lever/binance-59bba35714.json.gz（sha256 d3d8d49c7c4a…）
+[2026-08-16T00:28:51-04:00] 开始扫描：greenhouse / AssemblyAI （assemblyai）
+[2026-08-16T00:28:51-04:00] 读取完成：ashby / Superhuman，HTTP 200，获取 active 职位 80 个，入口 https://api.ashbyhq.com/posting-api/job-board/Superhuman%20Platform%20Inc，耗时 574ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Superhuman → .signalfit-cache/raw/2026-08-16/ashby/superhuman-c8cb304c28.json.gz（sha256 7505fdd3e777…）
+[2026-08-16T00:28:51-04:00] 开始扫描：greenhouse / Observe.AI （observeai）
+[2026-08-16T00:28:51-04:00] 读取完成：ashby / Synthesia，HTTP 200，获取 active 职位 63 个，入口 https://api.ashbyhq.com/posting-api/job-board/synthesia，耗时 425ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Synthesia → .signalfit-cache/raw/2026-08-16/ashby/synthesia-fa6d7e7ab8.json.gz（sha256 81135b886e6f…）
+[2026-08-16T00:28:51-04:00] 开始扫描：greenhouse / PolyAI （polyai）
+[2026-08-16T00:28:51-04:00] 读取完成：greenhouse / Vercel，HTTP 200，获取 active 职位 83 个，入口 https://boards-api.greenhouse.io/v1/boards/vercel/jobs?content=true，耗时 528ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Vercel → .signalfit-cache/raw/2026-08-16/greenhouse/vercel-9d3508a848.json.gz（sha256 00ff6a9ae0e2…）
+[2026-08-16T00:28:51-04:00] 开始扫描：greenhouse / Parloa （parloa）
+[2026-08-16T00:28:51-04:00] 读取完成：greenhouse / AssemblyAI，HTTP 200，获取 active 职位 9 个，入口 https://boards-api.greenhouse.io/v1/boards/assemblyai/jobs?content=true，耗时 364ms
+[2026-08-16T00:28:51-04:00] Raw 快照：AssemblyAI → .signalfit-cache/raw/2026-08-16/greenhouse/assemblyai-71e6d3836a.json.gz（sha256 9bf321c6ecd0…）
+[2026-08-16T00:28:51-04:00] 开始扫描：greenhouse / CoreWeave （coreweave）
+[2026-08-16T00:28:51-04:00] 读取完成：ashby / Deepgram，HTTP 200，获取 active 职位 82 个，入口 https://api.ashbyhq.com/posting-api/job-board/Deepgram，耗时 571ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Deepgram → .signalfit-cache/raw/2026-08-16/ashby/deepgram-c44f658198.json.gz（sha256 ae066cfa78e6…）
+[2026-08-16T00:28:51-04:00] 开始扫描：ashby / Lambda （lambda）
+[2026-08-16T00:28:51-04:00] 读取完成：greenhouse / Observe.AI，HTTP 200，获取 active 职位 19 个，入口 https://boards-api.greenhouse.io/v1/boards/observeai/jobs?content=true，耗时 328ms
+[2026-08-16T00:28:51-04:00] Raw 快照：Observe.AI → .signalfit-cache/raw/2026-08-16/greenhouse/observe.ai-1ab8277fd3.json.gz（sha256 91e92cbe7b82…）
+[2026-08-16T00:28:51-04:00] 开始扫描：ashby / Mistral AI （mistral.ai）
+[2026-08-16T00:28:52-04:00] 读取完成：greenhouse / PolyAI，HTTP 200，获取 active 职位 15 个，入口 https://boards-api.greenhouse.io/v1/boards/polyai/jobs?content=true，耗时 649ms
+[2026-08-16T00:28:52-04:00] Raw 快照：PolyAI → .signalfit-cache/raw/2026-08-16/greenhouse/polyai-906063196e.json.gz（sha256 92f0d3984b69…）
+[2026-08-16T00:28:52-04:00] 读取完成：ashby / Lambda，HTTP 200，获取 active 职位 70 个，入口 https://api.ashbyhq.com/posting-api/job-board/lambda，耗时 633ms
+[2026-08-16T00:28:52-04:00] Raw 快照：Lambda → .signalfit-cache/raw/2026-08-16/ashby/lambda-554e79e652.json.gz（sha256 101266d08371…）
+[2026-08-16T00:28:52-04:00] 读取完成：greenhouse / Parloa，HTTP 200，获取 active 职位 52 个，入口 https://boards-api.greenhouse.io/v1/boards/parloa/jobs?content=true，耗时 816ms
+[2026-08-16T00:28:52-04:00] Raw 快照：Parloa → .signalfit-cache/raw/2026-08-16/greenhouse/parloa-28d0bd9811.json.gz（sha256 4b56090d9c98…）
+[2026-08-16T00:28:52-04:00] 读取完成：ashby / Mistral AI，HTTP 200，获取 active 职位 164 个，入口 https://api.ashbyhq.com/posting-api/job-board/mistral.ai，耗时 812ms
+[2026-08-16T00:28:52-04:00] Raw 快照：Mistral AI → .signalfit-cache/raw/2026-08-16/ashby/mistral-ai-c14044aac3.json.gz（sha256 06d0e3dcb5d3…）
+[2026-08-16T00:28:52-04:00] 读取完成：greenhouse / Brex，HTTP 200，获取 active 职位 293 个，入口 https://boards-api.greenhouse.io/v1/boards/brex/jobs?content=true，耗时 1721ms
+[2026-08-16T00:28:52-04:00] Raw 快照：Brex → .signalfit-cache/raw/2026-08-16/greenhouse/brex-9db728d18b.json.gz（sha256 c000eb99d51b…）
+[2026-08-16T00:28:53-04:00] 读取完成：greenhouse / CoreWeave，HTTP 200，获取 active 职位 268 个，入口 https://boards-api.greenhouse.io/v1/boards/coreweave/jobs?content=true，耗时 2087ms
+[2026-08-16T00:28:53-04:00] Raw 快照：CoreWeave → .signalfit-cache/raw/2026-08-16/greenhouse/coreweave-8348e0915f.json.gz（sha256 e9f557d3dd84…）
+[2026-08-16T00:28:54-04:00] 读取完成：lever / Wing Assistant，HTTP 200，获取 active 职位 494 个，入口 https://api.lever.co/v0/postings/getwingapp?mode=json，耗时 5721ms
+[2026-08-16T00:28:54-04:00] Raw 快照：Wing Assistant → .signalfit-cache/raw/2026-08-16/lever/wing-assistant-7b18d94982.json.gz（sha256 9d83b05b295e…）
+[2026-08-16T00:28:56-04:00] 读取完成：smartrecruiters / Moveworks，HTTP 200，获取 active 职位 74 个，入口 https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&offset=0&q=Moveworks，耗时 6195ms
+[2026-08-16T00:28:56-04:00] 适配器明细：smartrecruiters / Moveworks，list_requests=1，listed_postings=74，detail_requests=74，detail_succeeded=74，detail_failed=0
+[2026-08-16T00:28:56-04:00] Raw 快照：Moveworks → .signalfit-cache/raw/2026-08-16/smartrecruiters/moveworks-a11413b0a4.json.gz（sha256 f50e1a8b7d55…）
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Perplexity，原始 100，14 天内 23，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Cohere，原始 144，14 天内 22，目标 3，已验收 3，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Zip，原始 127，14 天内 23，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Kestra，原始 13，14 天内 3，目标 1，已验收 0，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Reflection AI，原始 57，14 天内 7，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / ElevenLabs，原始 242，14 天内 53，目标 11，已验收 11，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Distyl AI，原始 25，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / forgd，原始 4，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / NextLink Labs，原始 3，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Fluidstack，原始 273，14 天内 37，目标 3，已验收 0，待复核 3，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Eliza，原始 11，14 天内 2，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / January，原始 14，14 天内 3，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Harvey，原始 393，14 天内 89，目标 5，已验收 4，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Decagon，原始 134，14 天内 24，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Sierra，原始 191，14 天内 36，目标 3，已验收 3，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Cursor，原始 114，14 天内 11，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / LangChain，原始 107，14 天内 32，目标 3，已验收 3，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Baseten，原始 71，14 天内 10，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Hebbia，原始 22，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Dust，原始 23，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Unstructured，原始 6，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Together AI，原始 60，14 天内 7，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Fireworks AI，原始 60，14 天内 15，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Modal，原始 30，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Replit，原始 76，14 天内 8，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Vori，原始 11，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Guild.ai，原始 4，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Anthropic，原始 441，14 天内 89，目标 5，已验收 5，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Glean，原始 112，14 天内 16，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Figma，原始 162，14 天内 16，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Arize AI，原始 27，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Unframe，原始 36，14 天内 23，目标 5，已验收 5，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Sidecar Health，原始 13，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Future Secure AI，原始 41，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Accordion，原始 47，14 天内 1，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / DevRev，原始 42，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Braze，原始 251，14 天内 36，目标 6，已验收 3，待复核 3，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Natera，原始 204，14 天内 37，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Webflow，原始 28，14 天内 6，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Databricks，原始 809，14 天内 75，目标 5，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Scale AI，原始 211，14 天内 20，目标 5，已验收 5，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Pinecone，原始 8，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Runway，原始 41，14 天内 6，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Highspot，原始 0，14 天内 0，目标 0，已验收 0，待复核 0，状态 empty_success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Cresta，原始 95，14 天内 4，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Aircall，原始 66，14 天内 21，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Diligent，原始 113，14 天内 22，目标 2，已验收 1，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Capco，原始 735，14 天内 121，目标 3，已验收 2，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / AI Foundry，原始 3，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Corelight，原始 26，14 天内 6，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / MinIO，原始 21，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Pelago，原始 17，14 天内 5，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Cloudflare，原始 305，14 天内 56，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / MongoDB，原始 409，14 天内 59，目标 7，已验收 0，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Elastic，原始 257，14 天内 64，目标 6，已验收 0，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Samsara，原始 270，14 天内 47，目标 4，已验收 2，待复核 2，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Reddit，原始 151，14 天内 24，目标 2，已验收 0，待复核 2，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Roblox，原始 230，14 天内 35，目标 1，已验收 0，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Discord，原始 50，14 天内 13，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Dropbox，原始 35，14 天内 11，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Asana，原始 132，14 天内 21，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Sentry，原始 46，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Snorkel AI，原始 39，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Labelbox，原始 9，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Anyscale，原始 16，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Growth Protocol，原始 10，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Causal Labs，原始 20，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Truelogic，原始 148，14 天内 41，目标 2，已验收 0，待复核 2，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Novita AI，原始 2，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Varick Agents，原始 4，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Puzzle，原始 2，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Applied Compute，原始 13，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Brain Co.，原始 37，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / OpusClip，原始 9，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Notion，原始 133，14 天内 36，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Mercor，原始 85，14 天内 21，目标 2，已验收 1，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Gamma，原始 32，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Granola，原始 17，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：teamtailor / Lindy，原始 6，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Retell AI，原始 31，14 天内 7，目标 3，已验收 3，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Stack AI，原始 20，14 天内 2，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Tavus，原始 15，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Braintrust，原始 23，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Mintlify，原始 19，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Pylon，原始 12，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Binance，原始 272，14 天内 29，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Caseware，原始 43，14 天内 7，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Wing Assistant，原始 494，14 天内 38，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Arcadia，原始 15，14 天内 4，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / RAVL，原始 25，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / Turgon AI，原始 8，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：lever / SiteGround，原始 2，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Hippocratic AI，原始 78，14 天内 20，目标 12，已验收 12，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Ema，原始 40，14 天内 3，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Cognition，原始 85，14 天内 15，目标 2，已验收 2，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Poolside，原始 15，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Physical Intelligence，原始 31，14 天内 7，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Supabase，原始 54，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Ramp，原始 136，14 天内 32，目标 3，已验收 1，待复核 2，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Cluely，原始 4，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Pika，原始 10，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Hume AI，原始 5，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Writer，原始 53，14 天内 4，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Mem0，原始 3，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Vapi，原始 31，14 天内 3，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Cartesia，原始 34，14 天内 5，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Abridge，原始 45，14 天内 5，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：smartrecruiters / Moveworks，原始 74，14 天内 34，目标 10，已验收 9，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Stability AI，原始 5，14 天内 0，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / DeepL，原始 55，14 天内 15，目标 1，已验收 0，待复核 1，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Superhuman，原始 80，14 天内 18，目标 2，已验收 0，待复核 2，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Zapier，原始 12，14 天内 3，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Vercel，原始 83，14 天内 7，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Brex，原始 293，14 天内 29，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Synthesia，原始 63，14 天内 9，目标 3，已验收 0，待复核 3，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Deepgram，原始 82，14 天内 8，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / AssemblyAI，原始 9，14 天内 1，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Observe.AI，原始 19，14 天内 4，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / PolyAI，原始 15，14 天内 4，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / Parloa，原始 52，14 天内 3，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：greenhouse / CoreWeave，原始 268，14 天内 32，目标 4，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Lambda，原始 70，14 天内 18，目标 0，已验收 0，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 来源汇总：ashby / Mistral AI，原始 164，14 天内 13，目标 1，已验收 1，待复核 0，状态 success
+[2026-08-16T00:28:57-04:00] 扫描完成：成功来源 123/123，active 职位 11278，14 天内 1755，已验收 100，待复核 29

@@ -5,9 +5,11 @@ from __future__ import annotations
 import html
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 from .base import FetchResponse, SourceAdapter
 
@@ -110,6 +112,172 @@ class LeverAdapter(SourceAdapter):
         return jobs
 
 
+class SmartRecruitersAdapter(SourceAdapter):
+    provider = "smartrecruiters"
+
+    def endpoint(self, source: dict[str, Any]) -> str:
+        query = {"limit": 100, "offset": 0}
+        if source.get("query"):
+            query["q"] = str(source["query"])
+        board = quote(str(source["board"]), safe="")
+        return f"https://api.smartrecruiters.com/v1/companies/{board}/postings?{urlencode(query)}"
+
+    def fetch(self, source: dict[str, Any], client: Any) -> FetchResponse:
+        first = client.get(self.endpoint(source))
+        first_payload = first.json()
+        if not isinstance(first_payload, dict):
+            raise ValueError("SmartRecruiters postings response must be an object")
+
+        rows = [row for row in first_payload.get("content", []) if isinstance(row, dict)]
+        total = int(first_payload.get("totalFound") or len(rows))
+        limit = int(first_payload.get("limit") or 100)
+        list_requests = 1
+        for offset in range(limit, total, limit):
+            query = {"limit": limit, "offset": offset}
+            if source.get("query"):
+                query["q"] = str(source["query"])
+            board = quote(str(source["board"]), safe="")
+            page_url = (
+                f"https://api.smartrecruiters.com/v1/companies/{board}/postings?"
+                f"{urlencode(query)}"
+            )
+            page = client.get(page_url).json()
+            if isinstance(page, dict):
+                rows.extend(row for row in page.get("content", []) if isinstance(row, dict))
+            list_requests += 1
+
+        details: list[dict[str, Any]] = []
+        failures: list[dict[str, str]] = []
+
+        def fetch_detail(row: dict[str, Any]) -> dict[str, Any]:
+            detail_url = str(row.get("ref") or "")
+            if not detail_url.startswith("https://"):
+                board = quote(str(source["board"]), safe="")
+                detail_url = (
+                    f"https://api.smartrecruiters.com/v1/companies/{board}/postings/"
+                    f"{quote(str(row.get('id') or row.get('uuid') or ''), safe='')}"
+                )
+            payload = client.get(detail_url).json()
+            if not isinstance(payload, dict):
+                raise ValueError("SmartRecruiters posting detail must be an object")
+            return payload
+
+        with ThreadPoolExecutor(max_workers=min(8, max(1, len(rows)))) as executor:
+            future_rows = {executor.submit(fetch_detail, row): row for row in rows}
+            for future in as_completed(future_rows):
+                row = future_rows[future]
+                try:
+                    details.append(future.result())
+                except Exception as exc:
+                    failures.append({
+                        "id": str(row.get("id") or row.get("uuid") or "unknown"),
+                        "error": f"{type(exc).__name__}: {exc}",
+                    })
+
+        details.sort(key=lambda row: (str(row.get("releasedDate") or ""), str(row.get("id") or "")), reverse=True)
+        audit = {
+            "list_requests": list_requests,
+            "listed_postings": len(rows),
+            "detail_requests": len(rows),
+            "detail_succeeded": len(details),
+            "detail_failed": len(failures),
+        }
+        aggregate = {
+            "provider": self.provider,
+            "company_identifier": source.get("board"),
+            "query": source.get("query"),
+            "total_found": total,
+            "audit": audit,
+            "detail_failures": failures,
+            "jobs": details,
+        }
+        return FetchResponse(
+            request_url=first.request_url,
+            final_url=first.final_url,
+            status_code=first.status_code,
+            content_type="application/json",
+            body=json.dumps(aggregate, ensure_ascii=False, separators=(",", ":")).encode("utf-8"),
+            audit=audit,
+        )
+
+    def normalize(self, source: dict[str, Any], response: FetchResponse) -> list[dict[str, Any]]:
+        payload = response.json()
+        rows = payload.get("jobs", []) if isinstance(payload, dict) else []
+        jobs: list[dict[str, Any]] = []
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            location = row.get("location") or {}
+            job_ad = row.get("jobAd") or {}
+            sections = job_ad.get("sections") if isinstance(job_ad, dict) else {}
+            description_parts: list[str] = []
+            if isinstance(sections, dict):
+                for section in sections.values():
+                    if isinstance(section, dict):
+                        description_parts.append(strip_html(str(section.get("text") or "")))
+            jobs.append(self.job(
+                source,
+                provider_job_id=row.get("uuid") or row.get("id"),
+                title=row.get("name"),
+                source_url=row.get("postingUrl") or row.get("applyUrl"),
+                location=location.get("fullLocation") if isinstance(location, dict) else location,
+                posted_at=row.get("releasedDate"),
+                timestamp_basis="releasedDate",
+                description=" ".join(part for part in description_parts if part),
+            ))
+        return jobs
+
+
+class TeamtailorAdapter(SourceAdapter):
+    provider = "teamtailor"
+    validation_method = "official_teamtailor_rss+strict_date_window+body_readable"
+
+    def endpoint(self, source: dict[str, Any]) -> str:
+        board = str(source["board"]).strip().rstrip("/")
+        base_url = board if board.startswith(("https://", "http://")) else f"https://{board}"
+        return f"{base_url}/jobs.rss"
+
+    def fetch(self, source: dict[str, Any], client: Any) -> FetchResponse:
+        return client.get(self.endpoint(source), accept="application/rss+xml,application/xml,text/xml")
+
+    def normalize(self, source: dict[str, Any], response: FetchResponse) -> list[dict[str, Any]]:
+        jobs: list[dict[str, Any]] = []
+        page = response.text()
+        for match in re.finditer(r"<item\b[^>]*>(.*?)</item>", page, flags=re.I | re.S):
+            item = match.group(1)
+
+            def value(tag: str) -> str:
+                found = re.search(
+                    rf"<{re.escape(tag)}\b[^>]*>(.*?)</{re.escape(tag)}>",
+                    item,
+                    flags=re.I | re.S,
+                )
+                if not found:
+                    return ""
+                raw = re.sub(r"^\s*<!\[CDATA\[(.*)\]\]>\s*$", r"\1", found.group(1), flags=re.S)
+                return html.unescape(raw).strip()
+
+            posted_at = value("pubDate")
+            if posted_at:
+                posted_at = parsedate_to_datetime(posted_at).isoformat()
+            locations = [
+                html.unescape(location).strip()
+                for location in re.findall(r"<tt:name\b[^>]*>(.*?)</tt:name>", item, flags=re.I | re.S)
+                if html.unescape(location).strip()
+            ]
+            jobs.append(self.job(
+                source,
+                provider_job_id=value("guid") or value("link"),
+                title=value("title"),
+                source_url=value("link"),
+                location=" / ".join(locations) or "Unspecified",
+                posted_at=posted_at,
+                timestamp_basis="pubDate",
+                description=strip_html(value("description")),
+            ))
+        return jobs
+
+
 def _walk_jsonld(value: Any) -> list[dict[str, Any]]:
     found: list[dict[str, Any]] = []
     if isinstance(value, list):
@@ -193,7 +361,10 @@ class JsonLdJobPostingAdapter(SourceAdapter):
 
 _ADAPTERS: dict[str, SourceAdapter] = {
     adapter.provider: adapter
-    for adapter in (AshbyAdapter(), GreenhouseAdapter(), LeverAdapter(), JsonLdJobPostingAdapter())
+    for adapter in (
+        AshbyAdapter(), GreenhouseAdapter(), LeverAdapter(), SmartRecruitersAdapter(),
+        TeamtailorAdapter(), JsonLdJobPostingAdapter(),
+    )
 }
 
 
