@@ -187,7 +187,13 @@ TOPIC_TO_CAPABILITY = {
     "python": "coding_python",
     "system_design": "system_design",
     "customer_delivery": "customer_discovery",
+    "customer_communication": "customer_communication",
+    "project_delivery": "project_delivery",
+    "product_metrics": "product_metrics",
     "product": "product_strategy",
+    "security": "security_safety",
+    "fullstack": "fullstack_delivery",
+    "cloud": "cloud_devops",
     "sql": "data_sql_pipeline",
 }
 
@@ -285,7 +291,8 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
                 "core_urls": set(),
                 "companies": set(),
                 "signals": [],
-                "interview_ids": set(),
+                "interview_report_ids": set(),
+                "interview_question_ids": set(),
                 "interview_questions": [],
             }
         )
@@ -306,20 +313,28 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
                 continue
             item = aggregates[key]
             record_id = str(row.get("record_id") or "")
-            item["interview_ids"].add(record_id)
+            report_id = str(row.get("report_id") or record_id)
+            item["interview_report_ids"].add(report_id)
+            item["interview_question_ids"].add(record_id)
             item["interview_questions"].append(str(row.get("question") or ""))
 
-        role_interview_total = len({str(row.get("record_id") or "") for row in role_interviews})
+        role_interview_report_total = len({
+            str(row.get("report_id") or row.get("record_id") or "") for row in role_interviews
+        })
+        role_interview_question_total = len({
+            str(row.get("record_id") or "") for row in role_interviews
+        })
         snapshot_role = interview_snapshot.get(role) if isinstance(interview_snapshot.get(role), dict) else {}
-        use_snapshot = role_interview_total == 0 and bool(snapshot_role)
+        legacy_snapshot_question_count = int(snapshot_role.get("accepted_record_count") or 0)
+        use_snapshot = role_interview_report_total == 0 and bool(snapshot_role)
         if use_snapshot:
-            role_interview_total = int(snapshot_role.get("accepted_record_count") or 0)
+            role_interview_question_total = legacy_snapshot_question_count
             for key, snapshot_item in (snapshot_role.get("capabilities") or {}).items():
                 if not isinstance(snapshot_item, dict):
                     continue
                 item = aggregates[str(key)]
                 snapshot_count = int(snapshot_item.get("interview_count") or 0)
-                item["interview_ids"].update(
+                item["interview_question_ids"].update(
                     f"snapshot:{role}:{key}:{index}" for index in range(snapshot_count)
                 )
                 item["interview_questions"].extend(
@@ -328,10 +343,14 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
         capabilities: list[dict[str, Any]] = []
         for key, item in aggregates.items():
             jd_count = len(item["jd_urls"])
-            interview_count = len(item["interview_ids"])
+            interview_report_count = len(item["interview_report_ids"])
+            interview_question_count = len(item["interview_question_ids"])
             penetration = jd_count / len(role_jobs) if role_jobs else 0.0
-            interview_share = interview_count / role_interview_total if role_interview_total else 0.0
-            if role_interview_total:
+            interview_share = (
+                interview_report_count / role_interview_report_total
+                if role_interview_report_total else 0.0
+            )
+            if role_interview_report_total:
                 market_score = round(100 * (0.85 * penetration + 0.15 * interview_share))
             else:
                 market_score = round(100 * penetration)
@@ -348,7 +367,11 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
                 "jd_job_count": jd_count,
                 "jd_signal_count": len(item["signals"]),
                 "core_job_count": len(item["core_urls"]),
-                "interview_count": interview_count,
+                # Backwards-compatible alias. It now means independent reports,
+                # never extracted questions.
+                "interview_count": interview_report_count,
+                "interview_report_count": interview_report_count,
+                "interview_question_count": interview_question_count,
                 "companies": sorted(item["companies"]),
                 "sample_signals": [value for value in item["signals"] if value][:3],
                 "sample_interview_questions": [value for value in item["interview_questions"] if value][:3],
@@ -360,7 +383,7 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
             key=lambda row: (
                 -row["jd_job_count"],
                 -row["core_job_count"],
-                -row["interview_count"],
+                -row["interview_report_count"],
                 row["label"],
             )
         )
@@ -376,7 +399,12 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
             "coverage_status": "complete" if baseline["status"] == "complete" else "provisional",
             "jd_job_count": len(role_jobs),
             "jd_signal_count": len(role_signals),
-            "real_interview_count": role_interview_total,
+            # Backwards-compatible alias for consumers on schema v1.
+            "real_interview_count": role_interview_report_total,
+            "real_interview_report_count": role_interview_report_total,
+            "real_interview_question_count": role_interview_question_total,
+            "legacy_snapshot_question_count": legacy_snapshot_question_count,
+            "interview_evidence_mode": "traceable_rows" if role_interview_report_total else "legacy_snapshot",
             "top_capabilities": top,
             "constraints": {
                 "signal_count": len(constraints),
@@ -392,7 +420,7 @@ def build_maps(scout_root: Path, top_n: int) -> dict[str, Any]:
         }
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": datetime.now(TIMEZONE).isoformat(),
         "source_root": "data/evidence",
         "baseline": baseline,
@@ -414,15 +442,18 @@ def render_markdown(result: dict[str, Any]) -> str:
             "",
             f"## {role['role_label']}",
             "",
-            f"覆盖：{role['jd_job_count']} 个独立 JD / {role['jd_signal_count']} 条 JD 信号 / {role['real_interview_count']} 条真实面经；状态：{role['coverage_status']}",
+            f"覆盖：{role['jd_job_count']} 个独立 JD / {role['jd_signal_count']} 条 JD 信号 / "
+            f"{role['real_interview_report_count']} 份可追溯真实面经 / "
+            f"{role['real_interview_question_count']} 道已验收问题；状态：{role['coverage_status']}",
             "",
-            "| Top | 能力 | 市场分 | 独立 JD | JD 信号 | 真实面经 |",
-            "|---:|---|---:|---:|---:|---:|",
+            "| Top | 能力 | 市场分 | 独立 JD | JD 信号 | 面经覆盖 | 问题数 |",
+            "|---:|---|---:|---:|---:|---:|---:|",
         ])
         for item in role["top_capabilities"]:
             lines.append(
                 f"| {item['rank']} | {item['label']} | {item['market_score']} | "
-                f"{item['jd_job_count']} | {item['jd_signal_count']} | {item['interview_count']} |"
+                f"{item['jd_job_count']} | {item['jd_signal_count']} | "
+                f"{item['interview_report_count']} | {item['interview_question_count']} |"
             )
         lines.extend(["", f"硬约束信号：{role['constraints']['signal_count']} 条（不计能力分）。"])
     lines.append("")

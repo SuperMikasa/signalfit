@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "snapshot_date": "2026-08-14",
-  "policy": "Only previously accepted real-interview aggregates are retained here; full posts and personal data are not republished.",
+  "policy": "Legacy non-traceable question aggregates retained for migration history only. These counts are not independent interview reports and are ignored when traceable accepted rows exist.",
   "roles": {
     "ai_pm": {
       "accepted_record_count": 7,

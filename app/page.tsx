@@ -42,14 +42,17 @@ const marketRoles = baselineMap.roles as Record<string, {
   jd_job_count: number;
   jd_signal_count: number;
   real_interview_count: number;
+  real_interview_report_count: number;
+  real_interview_question_count: number;
 }>;
 const marketTotals = Object.values(marketRoles).reduce(
   (total, role) => ({
     jobs: total.jobs + role.jd_job_count,
     requirements: total.requirements + role.jd_signal_count,
-    interviews: total.interviews + role.real_interview_count,
+    interviews: total.interviews + role.real_interview_report_count,
+    questions: total.questions + role.real_interview_question_count,
   }),
-  { jobs: 0, requirements: 0, interviews: 0 },
+  { jobs: 0, requirements: 0, interviews: 0, questions: 0 },
 );
 
 const installCommand = "git clone https://github.com/SuperMikasa/signalfit.git && cd signalfit && ./signalfit doctor";
@@ -131,7 +134,7 @@ export default function Home() {
           <p className="hero-intro">
             SignalFit 只做 AI 相关岗位。目前聚焦 AI 产品、AI 全栈 / Agent 工程和 FDE，把公开 JD、已核验面经与简历证据压缩成可解释的匹配度和补强路径。
           </p>
-          <p className="market-proof">当前累计 <strong>{marketTotals.requirements} 条 AI 岗位要求</strong>，来自 {marketTotals.jobs} 份独立 JD，并纳入 {marketTotals.interviews} 条已验收真实面经。最近 14 天已扫描 105 个可读官方 ATS 看板与 10299 个 active 职位。</p>
+          <p className="market-proof">当前累计 <strong>{marketTotals.requirements} 条 AI 岗位要求</strong>，来自 {marketTotals.jobs} 份独立 JD；另有 {marketTotals.interviews} 份可追溯真实面经，提取 {marketTotals.questions} 道已验收问题。最近 14 天已扫描 105 个可读官方 ATS 看板与 10299 个 active 职位。</p>
           <div className="role-scope" aria-label="当前覆盖的 AI 岗位">
             <span>AI 产品</span><span>AI 全栈 / Agent 工程</span><span>FDE</span>
           </div>
@@ -154,7 +157,7 @@ export default function Home() {
             <i aria-hidden="true">→</i>
             <div><b>02</b><span>岗位要求</span><strong>{marketTotals.requirements}</strong><small>原子能力信号</small></div>
             <i aria-hidden="true">→</i>
-            <div><b>03</b><span>真实面经</span><strong>{marketTotals.interviews}</strong><small>已验收记录</small></div>
+            <div><b>03</b><span>真实面经</span><strong>{marketTotals.interviews}</strong><small>{marketTotals.questions} 道问题</small></div>
           </div>
           <div className="board-foot">
             <span className="status-dot" />
@@ -180,7 +183,7 @@ export default function Home() {
             >
               <div>
                 <span>{fitData.roles[key].role_label}</span>
-                <small>{marketRoles[key].jd_job_count} JD · {marketRoles[key].jd_signal_count} 条要求 · {marketRoles[key].real_interview_count} 面经</small>
+                <small>{marketRoles[key].jd_job_count} JD · {marketRoles[key].jd_signal_count} 条要求 · {marketRoles[key].real_interview_report_count} 份面经 / {marketRoles[key].real_interview_question_count} 题</small>
               </div>
               <strong>{fitData.roles[key].overall_score}</strong>
             </button>

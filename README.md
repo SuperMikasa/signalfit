@@ -12,9 +12,9 @@ SignalFit is a local-first career intelligence toolkit focused exclusively on AI
 
 It compares a local resume with an evidence-backed capability baseline derived from public job descriptions and accepted interview reports. The result is a role scorecard, quoted resume evidence, prioritized gaps, SVG radar charts, and a standalone HTML report.
 
-The current `provisional` baseline contains 106 role-classified independent active JD URLs, 606 atomic job-requirement signals, and 20 accepted real-interview records: AI Product 36 / 206 / 7, AI Full-stack 30 / 170 / 11, and FDE 40 / 230 / 2 (JD / requirements / interviews). The latest strict rolling window covers 2026-08-02 through 2026-08-15: 138 official ATS boards attempted, 105 readable boards, 10,299 active jobs scanned, 1,581 in-window jobs, 76 accepted target jobs, and 22 adjacent roles kept out of scoring for manual review.
+The current `provisional` baseline contains 106 role-classified independent active JD URLs, 606 atomic job-requirement signals, 22 traceable interview reports, and 111 accepted question summaries. By role: AI Product 36 / 206 / 6 / 40, AI Full-stack 30 / 170 / 7 / 45, and FDE 40 / 230 / 9 / 26 (JD / requirements / reports / questions). The latest strict rolling window covers 2026-08-02 through 2026-08-15: 138 official ATS boards attempted, 105 readable boards, 10,299 active jobs scanned, 1,581 in-window jobs, 76 accepted target jobs, and 22 adjacent roles kept out of scoring for manual review.
 
-The public-safe evidence layer lives in [`data/evidence`](data/evidence): every JD signal keeps its official source URL, retrieval date, role family, capability key, and separate eligibility constraint. Full copyrighted job pages and personal interview-post data are not mirrored.
+The public-safe evidence layer lives in [`data/evidence`](data/evidence): every JD signal keeps its official source URL, retrieval date, role family, capability key, and separate eligibility constraint. Each accepted interview question keeps a report ID, public source URL, review status, and paraphrased prompt. Full copyrighted pages and candidate identities are not mirrored.
 
 Scores mean **resume evidence coverage**. They are not hiring probabilities and do not measure abilities that are absent from the document.
 

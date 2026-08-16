@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "signalfit_cli.py"
 SAMPLE_RESUME = ROOT / "examples" / "resume.sample.md"
 EVIDENCE = ROOT / "data" / "evidence" / "jd-signals.jsonl"
+INTERVIEW_QUESTIONS = ROOT / "data" / "evidence" / "question-bank.jsonl"
+INTERVIEW_STATUSES = ROOT / "data" / "evidence" / "record-status.jsonl"
 RECENT_DIR = ROOT / "data" / "evidence" / "recent-14d"
 
 spec = importlib.util.spec_from_file_location("signalfit_cli", CLI)
@@ -77,6 +79,27 @@ class SignalFitCliTest(unittest.TestCase):
             self.assertEqual(role_map["jd_job_count"], counts["jobs"])
             self.assertEqual(role_map["jd_signal_count"], counts["signals"])
             self.assertEqual(role_map["constraints"]["signal_count"], counts["jobs"])
+
+    def test_interview_reports_and_questions_are_counted_separately(self):
+        questions = [json.loads(line) for line in INTERVIEW_QUESTIONS.read_text(encoding="utf-8").splitlines() if line.strip()]
+        statuses = [json.loads(line) for line in INTERVIEW_STATUSES.read_text(encoding="utf-8").splitlines() if line.strip()]
+        accepted_ids = {row["record_id"] for row in statuses if row["status"] == "accepted"}
+        baseline = json.loads((ROOT / "data" / "baseline" / "role-capability-map.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(len(questions), 111)
+        self.assertEqual(len(accepted_ids), 111)
+        expected = {
+            "ai_pm": {"reports": 6, "questions": 40},
+            "ai_fullstack": {"reports": 7, "questions": 45},
+            "fde": {"reports": 9, "questions": 26},
+        }
+        for role_key, counts in expected.items():
+            rows = [row for row in questions if row["role_family"] == role_key and row["record_id"] in accepted_ids]
+            role_map = baseline["roles"][role_key]
+            self.assertEqual(len(rows), counts["questions"])
+            self.assertEqual(len({row["report_id"] for row in rows}), counts["reports"])
+            self.assertEqual(role_map["real_interview_report_count"], counts["reports"])
+            self.assertEqual(role_map["real_interview_question_count"], counts["questions"])
 
     def test_recent_14_day_scan_is_auditable_and_quality_gated(self):
         report = json.loads((RECENT_DIR / "coverage-report.json").read_text(encoding="utf-8"))

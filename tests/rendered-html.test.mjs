@@ -28,9 +28,10 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /606<!-- --> 条 AI 岗位要求/);
   assert.match(html, /106<!-- --> 份独立 JD/);
   assert.match(html, /最近 14 天已扫描 105 个可读官方 ATS 看板/);
-  assert.match(html, /20<!-- --> 条已验收真实面经/);
-  assert.match(html, /36<!-- --> JD · <!-- -->206<!-- --> 条要求 · <!-- -->7<!-- --> 面经/);
-  assert.match(html, /40<!-- --> JD · <!-- -->230<!-- --> 条要求 · <!-- -->2<!-- --> 面经/);
+  assert.match(html, /22<!-- --> 份可追溯真实面经/);
+  assert.match(html, /111<!-- --> 道已验收问题/);
+  assert.match(html, /36<!-- --> JD · <!-- -->206<!-- --> 条要求 · <!-- -->6<!-- --> 份面经 \/ <!-- -->40<!-- --> 题/);
+  assert.match(html, /40<!-- --> JD · <!-- -->230<!-- --> 条要求 · <!-- -->9<!-- --> 份面经 \/ <!-- -->26<!-- --> 题/);
   assert.match(html, /三个 AI 方向，一套证据口径/);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /使用 Coding Agent 一键启动/);

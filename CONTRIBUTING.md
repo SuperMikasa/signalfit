@@ -19,7 +19,7 @@ Use the structured GitHub forms for [AI job descriptions](https://github.com/Sup
 Submissions are an intake queue, not accepted evidence. A maintainer must verify the source and classify it before it can affect a baseline:
 
 1. Official JD signals require a public company careers URL and an active-role check.
-2. Interview evidence requires a public, traceable source. Only the latest `accepted` record with `evidence_type=real_interview_report` enters interview counts.
+2. Interview evidence requires a public, traceable source. One company/role interview is one `report_id`; each paraphrased question has its own `record_id`. Only the latest `accepted` decision with `evidence_type=real_interview_report` enters counts.
 3. Practice questions and inferred topics never count as real interview reports.
 4. Location, work authorization, graduation timing, experience years, and working hours remain eligibility constraints rather than capabilities.
 
@@ -32,6 +32,8 @@ tools/run_daily_discovery.sh
 ```
 
 Use `provider: auto` with an official HTTPS `careers_url` when the ATS slug is unknown or may have migrated. The resolver currently recognizes Ashby, Greenhouse, Lever, and `JobPosting` JSON-LD. Review `source-run.log`, `source-runs.jsonl`, every `needs_review` row, and the accepted atomic signals before promotion. A successful API response is discovery evidence, not automatic admission into the scored baseline.
+
+For interview evidence, run `python3 tools/audit_interview_evidence.py`. The audit must show the website, URL, company, independent report count, question count, topics, and every excluded lead with its reason. A 24-month window is used for the sparse historical baseline; the daily incremental window remains 14 days.
 
 ## Baseline refresh cadence
 

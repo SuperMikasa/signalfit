@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-16",
+  "baseline_window_months": 24,
+  "increment_window_days": 14,
+  "policy": {
+    "accepted": "公开可读、可回链的候选人一手面经，或明确标注为候选人提交的面试平台记录。",
+    "excluded": "通用题库、面试指南、招聘流程预告、二手转述、仅标题可见或需要登录后才能核验的内容。",
+    "unit": "一场独立公司/岗位面试为一份 report；从中提取的每个问题为一条 question。"
+  },
+  "sources": [
+    {"platform":"nowcoder","access":"public_and_search_index","status":"active","role_families":["ai_pm","ai_fullstack"],"notes":"优先候选人原帖；评论聚合页只在题目与来源可核验时使用。"},
+    {"platform":"reddit","access":"public","status":"active","role_families":["ai_fullstack","fde"],"notes":"要求作者明确表示本人参加过该轮面试。"},
+    {"platform":"exponent","access":"public","status":"active","role_families":["fde"],"notes":"只采候选人 experience 页面，不把通用 guide 算作真实面经。"},
+    {"platform":"glassdoor","access":"partial_public","status":"active_with_medium_confidence","role_families":["fde"],"notes":"按公司、岗位与日期拆分候选人记录，平台聚合页置信度为 medium。"},
+    {"platform":"jointaro","access":"public","status":"active_with_medium_confidence","role_families":["fde"],"notes":"只保留可见的候选人问题摘要。"},
+    {"platform":"1point3acres","access":"login_limited","status":"lead_only","role_families":["ai_pm","ai_fullstack","fde"],"notes":"登录墙内容不能在无人值守链路中直接验收。"},
+    {"platform":"xiaohongshu","access":"login_limited","status":"lead_only","role_families":["ai_pm","ai_fullstack","fde"],"notes":"公开搜索线索进入人工核验队列，正文不可读时不计分。"}
+  ]
+}

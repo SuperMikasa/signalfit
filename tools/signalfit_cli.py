@@ -36,8 +36,8 @@ def run_checked(command: list[str]) -> None:
 
 
 def validate_capability_map(value: Any) -> dict[str, Any]:
-    if not isinstance(value, dict) or value.get("schema_version") != 1:
-        raise ValueError("能力地图 schema_version 必须为 1")
+    if not isinstance(value, dict) or value.get("schema_version") not in {1, 2}:
+        raise ValueError("能力地图 schema_version 必须为 1 或 2")
     roles = value.get("roles")
     if not isinstance(roles, dict) or not REQUIRED_ROLES.issubset(roles):
         raise ValueError("能力地图必须包含 AI 产品、AI 全栈 / Agent 工程和 FDE")

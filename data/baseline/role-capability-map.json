@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-08-15T22:05:38.851505-04:00",
+  "schema_version": 2,
+  "generated_at": "2026-08-16T15:02:51.830585-04:00",
   "source_root": "data/evidence",
   "baseline": {
     "status": "in_progress",
@@ -34,17 +34,23 @@
       "coverage_status": "provisional",
       "jd_job_count": 36,
       "jd_signal_count": 206,
-      "real_interview_count": 7,
+      "real_interview_count": 6,
+      "real_interview_report_count": 6,
+      "real_interview_question_count": 40,
+      "legacy_snapshot_question_count": 7,
+      "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
         {
           "capability_key": "project_delivery",
           "label": "项目推进与端到端交付",
-          "market_score": 78,
+          "market_score": 85,
           "job_penetration": 0.9167,
           "jd_job_count": 33,
           "jd_signal_count": 33,
           "core_job_count": 26,
-          "interview_count": 0,
+          "interview_count": 3,
+          "interview_report_count": 3,
+          "interview_question_count": 3,
           "companies": [
             "Anthropic",
             "Asana",
@@ -71,7 +77,11 @@
             "以 Builder 身份亲手推进产品从概念、原型到快速上线和迭代。",
             "与技术负责人、前端和 Skill 设计协作，把业务需求拆为可交付、可测试的产品规格。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "如何定义 AI 功能 MVP，并用上线后的数据决定下一轮迭代？",
+            "数据标注过程中遇到过什么困难，如何与算法研发协作解决？",
+            "描述一个大模型应用项目的场景、挑战和解决路径。"
+          ],
           "resume_evidence_groups": [
             {
               "name": "所有权",
@@ -118,17 +128,19 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 1,
-          "priority_weight": 0.256579
+          "priority_weight": 0.252226
         },
         {
           "capability_key": "product_strategy",
           "label": "AI 产品策略与路线图",
-          "market_score": 77,
+          "market_score": 79,
           "job_penetration": 0.7778,
           "jd_job_count": 28,
           "jd_signal_count": 28,
           "core_job_count": 14,
           "interview_count": 5,
+          "interview_report_count": 5,
+          "interview_question_count": 11,
           "companies": [
             "Anthropic",
             "Asana",
@@ -154,9 +166,9 @@
             "规划企业级 AI Native 工程平台，覆盖需求、设计、研发、测试、环境和知识全链路。"
           ],
           "sample_interview_questions": [
-            "你为什么想做 AI 产品经理？请结合算法/技术背景说明动机。",
-            "AI 产品经理与传统互联网产品经理的差异是什么？",
-            "你认为产品经理需要哪些素质？分别用经历说明。"
+            "如何判断当前 LLM/AIGC 的核心能力、优势与边界？",
+            "优秀 AI 产品相较传统软件有哪些不同的设计与迭代挑战？",
+            "拆解一个近期深度使用的 AI 产品：定位、用户、功能、成功点和改进点。"
           ],
           "resume_evidence_groups": [
             {
@@ -206,7 +218,7 @@
             "准备一次模型能力、用户价值和商业约束的取舍案例"
           ],
           "rank": 2,
-          "priority_weight": 0.253289
+          "priority_weight": 0.234421
         },
         {
           "capability_key": "api_system_integration",
@@ -217,6 +229,8 @@
           "jd_signal_count": 17,
           "core_job_count": 8,
           "interview_count": 0,
+          "interview_report_count": 0,
+          "interview_question_count": 0,
           "companies": [
             "Anthropic",
             "Asana",
@@ -279,17 +293,19 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 3,
-          "priority_weight": 0.131579
+          "priority_weight": 0.118694
         },
         {
           "capability_key": "llm_evaluation",
           "label": "LLM 评测与实验",
-          "market_score": 38,
+          "market_score": 50,
           "job_penetration": 0.4444,
           "jd_job_count": 16,
           "jd_signal_count": 16,
           "core_job_count": 8,
-          "interview_count": 0,
+          "interview_count": 5,
+          "interview_report_count": 5,
+          "interview_question_count": 8,
           "companies": [
             "Binance",
             "Braze",
@@ -308,7 +324,11 @@
             "搭建 Agent 效果指标看板，使组织效率问题可观测、可量化。",
             "定义模型能力、可信度和治理状态的评估机制。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "如何为企业 AI 助手设计评测体系、评测集与核心指标？",
+            "说明一项模型评测工作的业务背景和目标。",
+            "评测集的 query 数量、构建方式和更新频率如何确定？"
+          ],
           "resume_evidence_groups": [
             {
               "name": "评测",
@@ -347,17 +367,19 @@
             "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
           ],
           "rank": 4,
-          "priority_weight": 0.125
+          "priority_weight": 0.148368
         },
         {
           "capability_key": "customer_discovery",
           "label": "客户发现、需求澄清与方案设计",
-          "market_score": 38,
+          "market_score": 50,
           "job_penetration": 0.4444,
           "jd_job_count": 16,
           "jd_signal_count": 16,
           "core_job_count": 7,
-          "interview_count": 0,
+          "interview_count": 5,
+          "interview_report_count": 5,
+          "interview_question_count": 6,
           "companies": [
             "Capco",
             "Corelight",
@@ -377,7 +399,11 @@
             "从用户真实工作流和高价值问题中发现下一代 Agent 产品机会。",
             "识别 IT、安全、工程等企业工作流，洞察组织流程和效率瓶颈。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "在企业协作场景中，哪些 LLM 用例最可能显著提升效率，为什么？",
+            "如何从用户痛点出发，为飞书设计新的 LLM 功能并验证价值？",
+            "ToB 大模型产品服务外部企业时，产品经理应重点处理哪些问题？"
+          ],
           "resume_evidence_groups": [
             {
               "name": "用户研究",
@@ -423,7 +449,7 @@
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
           "rank": 5,
-          "priority_weight": 0.125
+          "priority_weight": 0.148368
         },
         {
           "capability_key": "security_safety",
@@ -434,6 +460,8 @@
           "jd_signal_count": 14,
           "core_job_count": 6,
           "interview_count": 0,
+          "interview_report_count": 0,
+          "interview_question_count": 0,
           "companies": [
             "Anthropic",
             "Braze",
@@ -482,7 +510,7 @@
             "准备一次 Prompt Injection 或敏感数据防护方案"
           ],
           "rank": 6,
-          "priority_weight": 0.108553
+          "priority_weight": 0.097923
         }
       ],
       "constraints": {
@@ -547,17 +575,23 @@
       "coverage_status": "provisional",
       "jd_job_count": 30,
       "jd_signal_count": 170,
-      "real_interview_count": 11,
+      "real_interview_count": 7,
+      "real_interview_report_count": 7,
+      "real_interview_question_count": 45,
+      "legacy_snapshot_question_count": 11,
+      "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
         {
           "capability_key": "agent_architecture",
           "label": "Agent 架构与运行时",
-          "market_score": 62,
+          "market_score": 72,
           "job_penetration": 0.6667,
           "jd_job_count": 20,
           "jd_signal_count": 20,
           "core_job_count": 12,
-          "interview_count": 4,
+          "interview_count": 7,
+          "interview_report_count": 7,
+          "interview_question_count": 14,
           "companies": [
             "BJAK",
             "Baseten",
@@ -584,9 +618,9 @@
             "构建专家发现、语音访谈、内容合成和 Agent 基础设施中的自主 Agent 管道。"
           ],
           "sample_interview_questions": [
-            "Agent runtime 和 multi-agent 的实现细节是什么？",
-            "多 Agent 并发的性能问题是什么，如何控制并发量？",
-            "Agent 会话上下文持续变长时，如何做上下文压缩并避免历史信息遗忘？"
+            "你如何理解 Agent，使用过哪些框架与工具？",
+            "说明你在大模型提示词上的工程经验。",
+            "近两年 Agent 框架如何演进，你如何选择？"
           ],
           "resume_evidence_groups": [
             {
@@ -637,17 +671,19 @@
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
           "rank": 1,
-          "priority_weight": 0.219858
+          "priority_weight": 0.231511
         },
         {
           "capability_key": "production_reliability",
           "label": "生产可靠性、监控与排障",
-          "market_score": 55,
+          "market_score": 60,
           "job_penetration": 0.6333,
           "jd_job_count": 19,
           "jd_signal_count": 19,
           "core_job_count": 12,
-          "interview_count": 1,
+          "interview_count": 3,
+          "interview_report_count": 3,
+          "interview_question_count": 3,
           "companies": [
             "BJAK",
             "Baseten",
@@ -673,7 +709,9 @@
             "建设 Agent 可观测、使用分析和调试界面，使非工程用户也能理解运行状态。"
           ],
           "sample_interview_questions": [
-            "模型首字符返回时间过长如何优化，并用哪些模块减少幻觉？"
+            "Java 应用中如何发现与处理内存泄漏风险？",
+            "工具调用报错时，如何让 Agent 利用错误信息安全重试？",
+            "模型路由、熔断和失败恢复怎样落地？"
           ],
           "resume_evidence_groups": [
             {
@@ -721,17 +759,19 @@
             "整理一次真实生产故障的定位与修复复盘"
           ],
           "rank": 2,
-          "priority_weight": 0.195035
+          "priority_weight": 0.192926
         },
         {
           "capability_key": "llm_evaluation",
           "label": "LLM 评测与实验",
-          "market_score": 51,
+          "market_score": 57,
           "job_penetration": 0.6,
           "jd_job_count": 18,
           "jd_signal_count": 18,
           "core_job_count": 10,
-          "interview_count": 0,
+          "interview_count": 3,
+          "interview_report_count": 3,
+          "interview_question_count": 3,
           "companies": [
             "Baseten",
             "Capco",
@@ -754,7 +794,11 @@
             "将 eval、验证、guardrail 与监控嵌入 AI 功能，使质量可测且可回归。",
             "通过 Prompt、评测框架与检索优化持续改进答案质量。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "Agent 评测体系如何建立？",
+            "模型过拟合与欠拟合如何识别和处理？",
+            "语料规模与 batch size 如何影响训练和评测？"
+          ],
           "resume_evidence_groups": [
             {
               "name": "评测",
@@ -793,17 +837,19 @@
             "展示一次模型或 Prompt 变更前后的质量、延迟和成本对比"
           ],
           "rank": 3,
-          "priority_weight": 0.180851
+          "priority_weight": 0.18328
         },
         {
           "capability_key": "project_delivery",
           "label": "项目推进与端到端交付",
-          "market_score": 40,
+          "market_score": 44,
           "job_penetration": 0.4667,
           "jd_job_count": 14,
           "jd_signal_count": 14,
           "core_job_count": 8,
-          "interview_count": 0,
+          "interview_count": 2,
+          "interview_report_count": 2,
+          "interview_question_count": 2,
           "companies": [
             "Binance",
             "Capco",
@@ -823,7 +869,10 @@
             "岗位要求从定义、开发到上线负责项目推进与端到端结果。",
             "岗位要求从定义、开发到上线负责项目推进与端到端结果。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "介绍项目的真实目标、个人贡献和最难的工程问题。",
+            "深入说明一个项目的业务目标、技术方案和实际结果。"
+          ],
           "resume_evidence_groups": [
             {
               "name": "所有权",
@@ -870,17 +919,19 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 4,
-          "priority_weight": 0.141844
+          "priority_weight": 0.141479
         },
         {
           "capability_key": "api_system_integration",
           "label": "API、Webhook 与企业系统集成",
-          "market_score": 40,
+          "market_score": 44,
           "job_penetration": 0.4667,
           "jd_job_count": 14,
           "jd_signal_count": 14,
           "core_job_count": 5,
-          "interview_count": 0,
+          "interview_count": 2,
+          "interview_report_count": 2,
+          "interview_question_count": 2,
           "companies": [
             "Binance",
             "Cognition",
@@ -898,7 +949,10 @@
             "岗位要求通过 API、数据连接器或企业系统集成落地 AI 能力。",
             "岗位要求通过 API、数据连接器或企业系统集成落地 AI 能力。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "流式 Agent 响应应如何选择 SSE 或 WebSocket？",
+            "外部工具返回格式与模型输入不匹配时如何自动映射？"
+          ],
           "resume_evidence_groups": [
             {
               "name": "API",
@@ -943,7 +997,7 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 5,
-          "priority_weight": 0.141844
+          "priority_weight": 0.141479
         },
         {
           "capability_key": "fullstack_delivery",
@@ -954,6 +1008,8 @@
           "jd_signal_count": 12,
           "core_job_count": 8,
           "interview_count": 0,
+          "interview_report_count": 0,
+          "interview_question_count": 0,
           "companies": [
             "Cognition",
             "Cohere",
@@ -1022,7 +1078,7 @@
             "补充部署、测试和性能证据"
           ],
           "rank": 6,
-          "priority_weight": 0.120567
+          "priority_weight": 0.109325
         }
       ],
       "constraints": {
@@ -1087,17 +1143,23 @@
       "coverage_status": "provisional",
       "jd_job_count": 40,
       "jd_signal_count": 230,
-      "real_interview_count": 2,
+      "real_interview_count": 9,
+      "real_interview_report_count": 9,
+      "real_interview_question_count": 26,
+      "legacy_snapshot_question_count": 2,
+      "interview_evidence_mode": "traceable_rows",
       "top_capabilities": [
         {
           "capability_key": "project_delivery",
           "label": "项目推进与端到端交付",
-          "market_score": 70,
+          "market_score": 72,
           "job_penetration": 0.825,
           "jd_job_count": 33,
           "jd_signal_count": 33,
           "core_job_count": 24,
-          "interview_count": 0,
+          "interview_count": 1,
+          "interview_report_count": 1,
+          "interview_question_count": 1,
           "companies": [
             "Accordion ",
             "Aircall",
@@ -1121,7 +1183,9 @@
             "为最具战略价值的客户全程拥有复杂、高影响项目的端到端执行。",
             "领导自主系统在客户环境中的部署、配置、测试与持续运营。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "讲述一个你主导的高难度 AI 项目及其可量化结果。"
+          ],
           "resume_evidence_groups": [
             {
               "name": "所有权",
@@ -1168,7 +1232,7 @@
             "补齐时间线、风险和验收证据"
           ],
           "rank": 1,
-          "priority_weight": 0.214067
+          "priority_weight": 0.219512
         },
         {
           "capability_key": "api_system_integration",
@@ -1179,6 +1243,8 @@
           "jd_signal_count": 31,
           "core_job_count": 22,
           "interview_count": 0,
+          "interview_report_count": 0,
+          "interview_question_count": 0,
           "companies": [
             "Accordion ",
             "Aircall",
@@ -1245,17 +1311,19 @@
             "补充幂等、鉴权、重试和数据一致性说明"
           ],
           "rank": 2,
-          "priority_weight": 0.201835
+          "priority_weight": 0.20122
         },
         {
           "capability_key": "agent_architecture",
           "label": "Agent 架构与运行时",
-          "market_score": 58,
+          "market_score": 51,
           "job_penetration": 0.6,
           "jd_job_count": 24,
           "jd_signal_count": 24,
           "core_job_count": 6,
-          "interview_count": 1,
+          "interview_count": 0,
+          "interview_report_count": 0,
+          "interview_question_count": 0,
           "companies": [
             "Accordion ",
             "Aircall",
@@ -1275,9 +1343,7 @@
             "设计、构建和交付跨工具、API 与敏感企业数据的多步 LLM Agents。",
             "配置 Agent 意图、Prompt、Action、Guardrail 与性能指标，并持续优化。"
           ],
-          "sample_interview_questions": [
-            "如何设计可扩展的 Agent 系统，并处理安全护栏、卡死循环、监控和人工介入？"
-          ],
+          "sample_interview_questions": [],
           "resume_evidence_groups": [
             {
               "name": "Agent 基础",
@@ -1327,17 +1393,19 @@
             "为 Agent 补充可观察运行轨迹与回归用例"
           ],
           "rank": 3,
-          "priority_weight": 0.17737
+          "priority_weight": 0.155488
         },
         {
           "capability_key": "customer_communication",
           "label": "技术沟通、演示与影响力",
-          "market_score": 49,
+          "market_score": 56,
           "job_penetration": 0.575,
           "jd_job_count": 23,
           "jd_signal_count": 23,
           "core_job_count": 9,
-          "interview_count": 0,
+          "interview_count": 4,
+          "interview_report_count": 4,
+          "interview_question_count": 5,
           "companies": [
             "Accordion ",
             "Anthropic",
@@ -1359,7 +1427,11 @@
             "每天与客户工程师和高管协作，并将复杂技术知识压缩成清晰方案。",
             "培训并支持客户操作团队，把复杂技术转成可执行工作流和上线准备。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "描述职业轨迹、学习方式、优势与成长项。",
+            "你的经理会怎样评价你？",
+            "在行为面中说明客户场景下的所有权与协作方式。"
+          ],
           "resume_evidence_groups": [
             {
               "name": "沟通对象",
@@ -1399,17 +1471,19 @@
             "用 STAR 结构整理一次跨团队推动案例"
           ],
           "rank": 4,
-          "priority_weight": 0.149847
+          "priority_weight": 0.170732
         },
         {
           "capability_key": "customer_discovery",
           "label": "客户发现、需求澄清与方案设计",
-          "market_score": 40,
+          "market_score": 45,
           "job_penetration": 0.475,
           "jd_job_count": 19,
           "jd_signal_count": 19,
           "core_job_count": 12,
-          "interview_count": 0,
+          "interview_count": 3,
+          "interview_report_count": 3,
+          "interview_question_count": 3,
           "companies": [
             "Accordion ",
             "Aircall",
@@ -1429,7 +1503,11 @@
             "从技术发现、初始评估到部署，持续把客户业务目标翻译为 LLM 方案。",
             "深入战略客户业务，寻找最大未解决价值并形成可测试的产品假设。"
           ],
-          "sample_interview_questions": [],
+          "sample_interview_questions": [
+            "为什么选择 C3 AI，为什么选择 FDE？",
+            "面对模糊客户问题时，如何系统收集和澄清需求？",
+            "为纽约出租车司机设计一款应用，并澄清真实使用场景。"
+          ],
           "resume_evidence_groups": [
             {
               "name": "用户研究",
@@ -1475,17 +1553,19 @@
             "补充 POC 范围、成功指标和需求变更取舍"
           ],
           "rank": 5,
-          "priority_weight": 0.122324
+          "priority_weight": 0.137195
         },
         {
           "capability_key": "production_reliability",
           "label": "生产可靠性、监控与排障",
-          "market_score": 44,
+          "market_score": 38,
           "job_penetration": 0.425,
           "jd_job_count": 17,
           "jd_signal_count": 17,
           "core_job_count": 2,
           "interview_count": 1,
+          "interview_report_count": 1,
+          "interview_question_count": 1,
           "companies": [
             "Anthropic",
             "Cloudflare",
@@ -1503,7 +1583,7 @@
             "通过 tracing、Prompt 版本、规模评测和回归测试关闭原型到可信生产的差距。"
           ],
           "sample_interview_questions": [
-            "如何为大型代码库设计安全的全库重命名迁移：识别候选、避免破坏外部 API、自动验证、更新测试并安全发布？"
+            "生产 RAG 如何减少幻觉并处理失败？"
           ],
           "resume_evidence_groups": [
             {
@@ -1551,7 +1631,7 @@
             "整理一次真实生产故障的定位与修复复盘"
           ],
           "rank": 6,
-          "priority_weight": 0.134557
+          "priority_weight": 0.115854
         }
       ],
       "constraints": {
