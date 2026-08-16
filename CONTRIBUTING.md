@@ -25,6 +25,14 @@ Submissions are an intake queue, not accepted evidence. A maintainer must verify
 
 Summarize sources in your own words. Do not paste full copyrighted pages or include candidate identities, private messages, or personal contact details.
 
+To add an official ATS board, update `data/evidence/source-catalog.json` and run:
+
+```bash
+python3 tools/scan_recent_jds.py --as-of YYYY-MM-DD --days 14 --output-dir data/evidence/recent-14d
+```
+
+Review `coverage-report.md`, every `needs_review` row, and the accepted atomic signals before promotion. A successful API response is discovery evidence, not automatic admission into the scored baseline.
+
 ## Baseline refresh cadence
 
 The weekly GitHub workflow checks the bundled baseline age. When it exceeds 14 days, it creates or updates a maintainer refresh task. A reviewed refresh uses `build-role-capability-map`, reads back all three role maps, and preserves `provisional` until the expanded baseline is complete.

@@ -24,12 +24,13 @@ test("server-renders the SignalFit workbench", async () => {
   assert.match(html, /<title>SignalFit｜AI 岗位能力地图<\/title>/i);
   assert.match(html, /只看 AI 岗位/);
   assert.match(html, /SignalFit 只做 AI 相关岗位/);
-  assert.match(html, /当前已收集/);
-  assert.match(html, /150<!-- --> 条 AI 岗位要求/);
-  assert.match(html, /30<!-- --> 份独立 JD/);
+  assert.match(html, /当前累计/);
+  assert.match(html, /606<!-- --> 条 AI 岗位要求/);
+  assert.match(html, /106<!-- --> 份独立 JD/);
+  assert.match(html, /最近 14 天已扫描 105 个可读官方 ATS 看板/);
   assert.match(html, /20<!-- --> 条已验收真实面经/);
-  assert.match(html, /10<!-- --> JD · <!-- -->50<!-- --> 条要求 · <!-- -->7<!-- --> 面经/);
-  assert.match(html, /10<!-- --> JD · <!-- -->50<!-- --> 条要求 · <!-- -->2<!-- --> 面经/);
+  assert.match(html, /36<!-- --> JD · <!-- -->206<!-- --> 条要求 · <!-- -->7<!-- --> 面经/);
+  assert.match(html, /40<!-- --> JD · <!-- -->230<!-- --> 条要求 · <!-- -->2<!-- --> 面经/);
   assert.match(html, /三个 AI 方向，一套证据口径/);
   assert.match(html, /沿着证据找差距/);
   assert.match(html, /使用 Coding Agent 一键启动/);

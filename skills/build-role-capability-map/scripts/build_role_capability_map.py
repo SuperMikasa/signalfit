@@ -231,6 +231,8 @@ def baseline_metadata(scout_root: Path) -> dict[str, Any]:
         "status": str(progress.get("status") or "unknown"),
         "current_batch": progress.get("current_batch"),
         "completed_batches": completed,
+        "window": progress.get("window"),
+        "coverage": progress.get("coverage"),
     }
 
 

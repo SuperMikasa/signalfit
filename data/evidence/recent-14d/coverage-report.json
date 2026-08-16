@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-16T02:04:44.891673+00:00",
+  "window": {
+    "start": "2026-08-02",
+    "end": "2026-08-15",
+    "days": 14
+  },
+  "sources": {
+    "attempted": 138,
+    "succeeded": 105,
+    "failed": 33,
+    "failures": [
+      {
+        "provider": "ashby",
+        "board": "anysphere",
+        "company": "Anysphere",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "captions",
+        "company": "Captions",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "guild-ai",
+        "company": "Guild.ai",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "hippocratic-ai",
+        "company": "Hippocratic AI",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "lindy",
+        "company": "Lindy",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "modal-labs",
+        "company": "Modal",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "superblocks",
+        "company": "Superblocks",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "ashby",
+        "board": "together-ai",
+        "company": "Together AI",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "abridge",
+        "company": "Abridge",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "ai21labs",
+        "company": "AI21 Labs",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "aircall",
+        "company": "Aircall",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "anyscale",
+        "company": "Anyscale",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "crusoe",
+        "company": "Crusoe",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "deepgram",
+        "company": "Deepgram",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "deepl",
+        "company": "DeepL",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "grammarly",
+        "company": "Grammarly",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "groq",
+        "company": "Groq",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "hebbia",
+        "company": "Hebbia",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "highspot",
+        "company": "Highspot",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "lambdalabs",
+        "company": "Lambda",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "moveworks",
+        "company": "Moveworks",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "notion",
+        "company": "Notion",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "pinecone",
+        "company": "Pinecone",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "rippling",
+        "company": "Rippling",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "runway",
+        "company": "Runway",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "runwayml",
+        "company": "Runway",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "sentry",
+        "company": "Sentry",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "synthesia",
+        "company": "Synthesia",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "weightsandbiases",
+        "company": "Weights & Biases",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "greenhouse",
+        "board": "writer",
+        "company": "Writer",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "lever",
+        "board": "datarobot",
+        "company": "DataRobot",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "lever",
+        "board": "deepgram",
+        "company": "Deepgram",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      },
+      {
+        "provider": "lever",
+        "board": "thoughtworks",
+        "company": "Thoughtworks",
+        "error": "HTTPError: HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "jobs": {
+    "raw": 10299,
+    "missing_date": 0,
+    "outside_window": 8718,
+    "within_window": 1581,
+    "not_target_role": 1465,
+    "adjacent_review": 22,
+    "duplicates": 18,
+    "insufficient_signals": 0,
+    "accepted": 76
+  },
+  "roles": {
+    "ai_pm": {
+      "jobs": 26,
+      "needs_review": 22,
+      "signals": 156,
+      "companies": 12
+    },
+    "ai_fullstack": {
+      "jobs": 20,
+      "needs_review": 0,
+      "signals": 120,
+      "companies": 15
+    },
+    "fde": {
+      "jobs": 30,
+      "needs_review": 0,
+      "signals": 180,
+      "companies": 13
+    }
+  }
+}

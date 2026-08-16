@@ -1,10 +1,26 @@
 {
   "status": "in_progress",
-  "current_batch": "expanded_public_baseline",
+  "current_batch": "rolling_14_day_official_ats_baseline",
+  "window": {
+    "start": "2026-08-02",
+    "end": "2026-08-15",
+    "days": 14
+  },
+  "coverage": {
+    "sources_attempted": 138,
+    "sources_succeeded": 105,
+    "active_jobs_scanned": 10299,
+    "jobs_within_window": 1581,
+    "accepted_target_jobs": 76,
+    "adjacent_jobs_needing_review": 22,
+    "cumulative_independent_jds": 106,
+    "cumulative_atomic_signals": 606
+  },
   "batches": {
     "frontier_ai": "complete",
     "enterprise_ai": "complete",
     "ai_native_startups": "complete",
+    "rolling_official_ats_14d": "complete",
     "china_ai": "in_progress",
     "accepted_interview_expansion": "in_progress"
   }

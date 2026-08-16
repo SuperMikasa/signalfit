@@ -12,7 +12,7 @@ SignalFit is a local-first career intelligence toolkit focused exclusively on AI
 
 It compares a local resume with an evidence-backed capability baseline derived from public job descriptions and accepted interview reports. The result is a role scorecard, quoted resume evidence, prioritized gaps, SVG radar charts, and a standalone HTML report.
 
-The current `provisional` baseline contains 30 role-classified independent active JD URLs, 150 atomic job-requirement signals, and 20 accepted real-interview records: AI Product 10 / 50 / 7, AI Full-stack 10 / 50 / 11, and FDE 10 / 50 / 2 (JD / requirements / interviews).
+The current `provisional` baseline contains 106 role-classified independent active JD URLs, 606 atomic job-requirement signals, and 20 accepted real-interview records: AI Product 36 / 206 / 7, AI Full-stack 30 / 170 / 11, and FDE 40 / 230 / 2 (JD / requirements / interviews). The latest strict rolling window covers 2026-08-02 through 2026-08-15: 138 official ATS boards attempted, 105 readable boards, 10,299 active jobs scanned, 1,581 in-window jobs, 76 accepted target jobs, and 22 adjacent roles kept out of scoring for manual review.
 
 The public-safe evidence layer lives in [`data/evidence`](data/evidence): every JD signal keeps its official source URL, retrieval date, role family, capability key, and separate eligibility constraint. Full copyrighted job pages and personal interview-post data are not mirrored.
 
@@ -83,6 +83,14 @@ Users can fetch the latest reviewed public baseline without uploading a resume:
 The downloaded map is schema-checked and stored under the Git-ignored `.signalfit/baseline/` directory. Future analyses prefer this cache and fall back to the bundled provisional baseline when no update is available.
 
 The repository also runs a weekly freshness check. If the bundled baseline is older than 14 days, GitHub Actions opens or updates a maintainer task for a reviewed JD and interview-evidence refresh. The scheduled check does not admit unreviewed community content directly into scores.
+
+Maintainers can reproduce the high-recall official ATS scan before review:
+
+```bash
+python3 tools/scan_recent_jds.py --as-of YYYY-MM-DD --days 14 --output-dir data/evidence/recent-14d
+```
+
+The source registry is [`data/evidence/source-catalog.json`](data/evidence/source-catalog.json). Generic roles that merely mention AI stay in `needs_review`; only strict or explicitly reviewed AI roles produce scoring signals.
 
 ## How it works
 

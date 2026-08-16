@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "signalfit_cli.py"
 SAMPLE_RESUME = ROOT / "examples" / "resume.sample.md"
 EVIDENCE = ROOT / "data" / "evidence" / "jd-signals.jsonl"
+RECENT_DIR = ROOT / "data" / "evidence" / "recent-14d"
 
 spec = importlib.util.spec_from_file_location("signalfit_cli", CLI)
 assert spec and spec.loader
@@ -59,19 +60,40 @@ class SignalFitCliTest(unittest.TestCase):
         rows = [json.loads(line) for line in EVIDENCE.read_text(encoding="utf-8").splitlines() if line.strip()]
         baseline = json.loads((ROOT / "data" / "baseline" / "role-capability-map.json").read_text(encoding="utf-8"))
 
-        self.assertEqual(len(rows), 150)
-        for role_key in ("ai_pm", "ai_fullstack", "fde"):
+        self.assertEqual(len(rows), 606)
+        expected = {
+            "ai_pm": {"signals": 206, "jobs": 36},
+            "ai_fullstack": {"signals": 170, "jobs": 30},
+            "fde": {"signals": 230, "jobs": 40},
+        }
+        for role_key, counts in expected.items():
             role_rows = [row for row in rows if row["role_family"] == role_key]
-            self.assertEqual(len(role_rows), 50)
-            self.assertEqual(len({row["source_url"] for row in role_rows}), 10)
-            self.assertEqual(sum(row["capability_key"] == "eligibility_constraint" for row in role_rows), 10)
+            self.assertEqual(len(role_rows), counts["signals"])
+            self.assertEqual(len({row["source_url"] for row in role_rows}), counts["jobs"])
+            self.assertEqual(sum(row["capability_key"] == "eligibility_constraint" for row in role_rows), counts["jobs"])
             self.assertTrue(all(row["source_url"].startswith("https://") for row in role_rows))
-            self.assertTrue(all(row["retrieved_at"] == "2026-08-14" for row in role_rows))
 
             role_map = baseline["roles"][role_key]
-            self.assertEqual(role_map["jd_job_count"], 10)
-            self.assertEqual(role_map["jd_signal_count"], 50)
-            self.assertEqual(role_map["constraints"]["signal_count"], 10)
+            self.assertEqual(role_map["jd_job_count"], counts["jobs"])
+            self.assertEqual(role_map["jd_signal_count"], counts["signals"])
+            self.assertEqual(role_map["constraints"]["signal_count"], counts["jobs"])
+
+    def test_recent_14_day_scan_is_auditable_and_quality_gated(self):
+        report = json.loads((RECENT_DIR / "coverage-report.json").read_text(encoding="utf-8"))
+        jobs = [json.loads(line) for line in (RECENT_DIR / "recent-jobs.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+        signals = [json.loads(line) for line in (RECENT_DIR / "jd-signals.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+
+        self.assertEqual(report["window"], {"start": "2026-08-02", "end": "2026-08-15", "days": 14})
+        self.assertEqual(report["sources"]["attempted"], 138)
+        self.assertEqual(report["sources"]["succeeded"], 105)
+        self.assertEqual(report["jobs"]["accepted"], 76)
+        self.assertEqual(report["jobs"]["adjacent_review"], 22)
+        self.assertEqual(len(jobs), 98)
+        self.assertEqual(len(signals), 456)
+        self.assertEqual(sum(job["review_status"] == "accepted" for job in jobs), 76)
+        self.assertEqual(sum(job["review_status"] == "needs_review" for job in jobs), 22)
+        self.assertTrue(all("2026-08-02" <= job["posted_at"] <= "2026-08-15" for job in jobs))
+        self.assertTrue(all(row["scope_tier"] != "adjacent_review" for row in signals))
 
 
 if __name__ == "__main__":
