@@ -11,7 +11,7 @@ This directory is the auditable, public-safe input for the bundled SignalFit bas
 - `recent-14d/` contains the strict rolling discovery set, accepted signals, source success/failure report, detailed Chinese run log, per-source machine log, and adjacent roles waiting for review.
 - `baseline/baseline-progress.json` records coverage progress. The baseline remains `provisional` while China coverage and accepted interview breadth are still being expanded.
 
-Current cumulative snapshot: 106 independent active JD URLs, 606 atomic requirements, 22 traceable interview reports, and 111 accepted question summaries. Interview coverage is AI Product 6 reports / 40 questions, AI Full-stack 7 / 45, and FDE 9 / 26. The 2026-08-02 to 2026-08-15 rolling scan attempted 138 official ATS boards, read 105 successfully, scanned 10,299 active jobs, found 1,581 jobs in-window, accepted 76 strict target jobs, and separated 22 adjacent jobs for manual review. Every newly accepted job contributes five capability signals plus one eligibility constraint; constraints never enter the radar score.
+Current cumulative snapshot: 106 independent active JD URLs, 606 atomic requirements, 45 traceable interview reports, and 207 accepted question summaries. Interview coverage is AI Product 15 reports / 76 questions, AI Full-stack 15 / 85, and FDE 15 / 46. The 2026-08-02 to 2026-08-15 rolling scan attempted 138 official ATS boards, read 105 successfully, scanned 10,299 active jobs, found 1,581 jobs in-window, accepted 76 strict target jobs, and separated 22 adjacent jobs for manual review. Every newly accepted job contributes five capability signals plus one eligibility constraint; constraints never enter the radar score.
 
 Source policy:
 

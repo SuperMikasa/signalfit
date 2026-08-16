@@ -86,12 +86,12 @@ class SignalFitCliTest(unittest.TestCase):
         accepted_ids = {row["record_id"] for row in statuses if row["status"] == "accepted"}
         baseline = json.loads((ROOT / "data" / "baseline" / "role-capability-map.json").read_text(encoding="utf-8"))
 
-        self.assertEqual(len(questions), 111)
-        self.assertEqual(len(accepted_ids), 111)
+        self.assertEqual(len(questions), 207)
+        self.assertEqual(len(accepted_ids), 207)
         expected = {
-            "ai_pm": {"reports": 6, "questions": 40},
-            "ai_fullstack": {"reports": 7, "questions": 45},
-            "fde": {"reports": 9, "questions": 26},
+            "ai_pm": {"reports": 15, "questions": 76},
+            "ai_fullstack": {"reports": 15, "questions": 85},
+            "fde": {"reports": 15, "questions": 46},
         }
         for role_key, counts in expected.items():
             rows = [row for row in questions if row["role_family"] == role_key and row["record_id"] in accepted_ids]
